@@ -1,5 +1,5 @@
 ---
-import { publicLinks } from '../data/site';
+import { publicLinks, siteMeta } from '../data/site';
 ---
 
 <section class="hero section-shell" id="top" data-section-index="01" aria-labelledby="hero-title">
@@ -53,7 +53,7 @@ import { publicLinks } from '../data/site';
           <dd>Direct by design</dd>
         </div>
       </dl>
-      <p class="hero-aside__foot">NOVA ABME / EDUARDO DE LIMA PARANHOS</p>
+      <p class="hero-aside__foot">NOVA ABME / {siteMeta.profileSlug}</p>
     </aside>
   </div>
 
