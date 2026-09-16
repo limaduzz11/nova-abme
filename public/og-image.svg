@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
-  <title id="title">Eduardo Paranhos — Software Engineering</title>
-  <desc id="description">NOVA Abme profile gateway for Eduardo Paranhos.</desc>
+  <title id="title">Eduardo Paranhos — Desenvolvimento de Software</title>
+  <desc id="description">NOVA Abme — perfil profissional de Eduardo Paranhos.</desc>
   <rect width="1200" height="630" fill="#252525" />
   <g stroke="#545454" stroke-width="1" opacity="0.7">
     <path d="M80 0v630M160 0v630M240 0v630M320 0v630M400 0v630M480 0v630M560 0v630M640 0v630M720 0v630M800 0v630M880 0v630M960 0v630M1040 0v630M1120 0v630" />
@@ -8,10 +8,10 @@
   </g>
   <rect x="80" y="80" width="54" height="54" fill="none" stroke="#CFCFCF" stroke-width="2" />
   <text x="107" y="116" fill="#CFCFCF" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="middle">EP</text>
-  <text x="80" y="220" fill="#7D7D7D" font-family="monospace" font-size="18" letter-spacing="4">NOVA ABME / PROFILE 001</text>
+  <text x="80" y="220" fill="#7D7D7D" font-family="monospace" font-size="18" letter-spacing="4">NOVA ABME / PERFIL 001</text>
   <text x="80" y="350" fill="#CFCFCF" font-family="Arial, Helvetica, sans-serif" font-size="92" font-weight="700" letter-spacing="-6">EDUARDO</text>
   <text x="80" y="445" fill="#CFCFCF" font-family="Arial, Helvetica, sans-serif" font-size="92" font-weight="700" letter-spacing="-6">PARANHOS</text>
-  <text x="80" y="535" fill="#A7A7A7" font-family="monospace" font-size="20" letter-spacing="2">SOFTWARE ENGINEERING</text>
+  <text x="80" y="535" fill="#A7A7A7" font-family="monospace" font-size="20" letter-spacing="2">DESENVOLVIMENTO DE SOFTWARE</text>
   <path d="M1030 520h90" stroke="#CFCFCF" stroke-width="2" />
   <circle cx="1140" cy="520" r="6" fill="none" stroke="#CFCFCF" stroke-width="2" />
 </svg>

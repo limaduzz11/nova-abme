@@ -1,14 +1,14 @@
 # NOVA Abme
 
-**NOVA Abme** is a static engineering gateway. The first public profile is
-**Eduardo de Lima Paranhos**: a focused surface for identity, public work,
-engineering context, ELP Tecnologia and direct routes.
+**NOVA Abme** é um gateway estático de engenharia. O primeiro perfil público é o
+de **Eduardo de Lima Paranhos**: um espaço direto para conhecer sua trajetória,
+seu trabalho público, sua experiência e os caminhos de contato com a ELP Tecnologia.
 
-This is not a conventional CV site. It is a small product shell that keeps the
-profile content in data files, so additional NOVA Abme profiles can be added
-later without introducing a backend or changing the delivery model.
+Não é um currículo convencional. É uma pequena experiência de produto que mantém
+o conteúdo do perfil separado em arquivos de dados. Assim, novos perfis podem ser
+adicionados no futuro sem criar um backend ou mudar a forma de entrega.
 
-## Architecture
+## Arquitetura
 
 ```text
 GitHub repository
@@ -23,40 +23,41 @@ Cloudflare Pages / global CDN
 Browser over HTTPS
 ```
 
-There is no server-side rendering, API route, database, session, authentication,
-runtime secret or process that must stay online. JavaScript is a small progressive
-enhancement for the context router, audience emphasis, command palette, scroll
-reveals and fine-pointer cursor halo.
+Não há renderização no servidor, rota de API, banco, sessão, autenticação, segredo
+de runtime ou processo que precise ficar online. O JavaScript é apenas uma camada
+leve de melhoria progressiva para os caminhos do perfil, o destaque por objetivo,
+o menu de navegação, as entradas em cena e o cursor sutil em dispositivos com
+ponteiro preciso.
 
-## Stack
+## Tecnologias
 
-- Astro 7, statically generated (`output: 'static'`)
-- TypeScript for source and browser enhancement
-- Native HTML, CSS and Web APIs
-- `@astrojs/sitemap` for sitemap generation
-- `@playwright/test` + `@axe-core/playwright` as development-only browser and accessibility QA
-- No analytics, marketing cookies, third-party forms or runtime API calls
+- Astro 7, gerado estaticamente (`output: 'static'`)
+- TypeScript para o código e as melhorias no navegador
+- HTML, CSS e Web APIs nativos
+- `@astrojs/sitemap` para gerar o sitemap
+- `@playwright/test` + `@axe-core/playwright` para QA de navegador e acessibilidade durante o desenvolvimento
+- Sem analytics, cookies de marketing, formulários de terceiros ou chamadas de API em runtime
 
-## Local development
+## Desenvolvimento local
 
-Requirements: Node.js `>=22.12.0` and npm.
+Requisitos: Node.js `>=22.12.0` e npm.
 
 ```bash
 npm ci
 npm run dev
 ```
 
-The development server is bound to `127.0.0.1:4321` only while actively
-developing. It is not part of production. To preview the generated artifact:
+O servidor de desenvolvimento fica disponível em `127.0.0.1:4321` apenas durante
+o desenvolvimento. Ele não faz parte da produção. Para visualizar o artefato gerado:
 
 ```bash
 npm run build
 npm run preview
 ```
 
-The preview server uses `127.0.0.1:4322` and should be stopped after validation.
+O servidor de preview usa `127.0.0.1:4322` e deve ser encerrado após a validação.
 
-## Quality commands
+## Comandos de qualidade
 
 ```bash
 npm run lint
@@ -66,63 +67,63 @@ npm run audit:deps
 npm run verify
 ```
 
-`verify` runs the local lint, Astro/TypeScript checks, secret scan, static build
-and behavior-oriented smoke tests against `dist/`.
+`verify` executa o lint local, as verificações Astro/TypeScript, a varredura de
+segredos, o build estático e os smoke tests de comportamento contra `dist/`.
 
-## Deployment
+## Deploy
 
-Cloudflare Pages is the primary hosting candidate. Configure a Pages project
-connected to the GitHub repository with:
+Cloudflare Pages é o host principal. Configure um projeto Pages conectado ao
+repositório GitHub com:
 
 | Setting | Value |
 |---|---|
-| Production branch | `main` |
-| Build command | `npm run build` |
-| Output directory | `dist` |
+| Branch de produção | `main` |
+| Comando de build | `npm run build` |
+| Diretório de saída | `dist` |
 
-The expected project slug is `nova-abme`, producing a URL in the form
-`https://nova-abme.pages.dev/`. The slug and URL must be confirmed in the
-Cloudflare account at deployment time; this repository does not claim a public
-URL until a real deployment responds over HTTPS.
+O slug esperado é `nova-abme`, gerando uma URL no formato
+`https://nova-abme.pages.dev/`. O slug e a URL devem ser confirmados na conta
+Cloudflare durante o deploy; este repositório só considera a URL pública depois
+que um deploy real responder por HTTPS.
 
-See [docs/DEPLOY.md](docs/DEPLOY.md) for Cloudflare Pages, the GitHub Pages
-fallback and custom-domain migration.
+Veja [docs/DEPLOY.md](docs/DEPLOY.md) para Cloudflare Pages, o fallback no GitHub
+Pages e a migração para domínio próprio.
 
-## Public configuration
+## Configuração pública
 
-The build accepts two optional public configuration values:
+O build aceita duas configurações públicas opcionais:
 
-- `PUBLIC_SITE_URL`: canonical site origin, for example `https://example.com`;
-- `PUBLIC_BASE_PATH`: path prefix for a GitHub Pages project, for example
+- `PUBLIC_SITE_URL`: origem canônica do site, por exemplo `https://example.com`;
+- `PUBLIC_BASE_PATH`: prefixo de caminho para um projeto GitHub Pages, por exemplo
   `/nova-abme/`.
 
-Neither value is a secret. Do not add credentials, tokens or private endpoints
-to them. Cloudflare Pages uses the defaults for the root site; the fallback
-workflow sets the GitHub Pages values explicitly.
+Nenhum dos dois valores é secreto. Não adicione credenciais, tokens ou endpoints
+privados. O Cloudflare Pages usa os padrões para o site na raiz; o workflow de
+fallback define explicitamente os valores do GitHub Pages.
 
 ## Project structure
 
 ```text
 src/
-├── components/     # section-level UI and command palette
-├── data/           # public profile, links, stack and work index
-├── layouts/        # document shell and metadata
-├── pages/          # static routes and 404
-├── scripts/        # small browser enhancement
-└── styles/         # Ink Wash design system
-public/             # favicon, social card, robots and static headers
-docs/               # architecture, research, deploy, ADRs and screenshots
-scripts/            # deterministic local quality checks
-tests/              # static and browser smoke tests
+├── components/     # interface por seção e menu de navegação
+├── data/           # perfil público, links, tecnologias e projetos
+├── layouts/        # estrutura do documento e metadados
+├── pages/          # rotas estáticas e 404
+├── scripts/        # melhorias leves no navegador
+└── styles/         # sistema visual Ink Wash
+public/             # favicon, card social, robots e headers estáticos
+docs/               # arquitetura, pesquisa, deploy, ADRs e screenshots
+scripts/            # verificações locais determinísticas
+tests/              # smoke tests estáticos e de navegador
 ```
 
-## Updating the profile
+## Atualizando o perfil
 
-Public content is maintained in `src/data/site.ts` and the section components.
-Only links and professional information already approved for public exposure
-should be added. Corporate code, client information, internal infrastructure
-and NOVA implementation details do not belong in this repository.
+O conteúdo público fica em `src/data/site.ts` e nos componentes das seções.
+Adicione apenas links e informações profissionais já aprovados para divulgação.
+Código corporativo, informações de clientes, infraestrutura interna e detalhes de
+implementação da NOVA não pertencem a este repositório.
 
-## License
+## Licença
 
-Released under the [MIT License](LICENSE).
+Publicado sob a [Licença MIT](LICENSE).

@@ -4,31 +4,31 @@ import { publicLinks, workDirectories } from '../data/site';
 
 <section class="section-shell lab-section" id="lab" data-section-index="05" aria-labelledby="lab-title">
   <div class="section-top">
-    <span class="section-code">04 / LAB / OPEN SOURCE</span>
+    <span class="section-code">04 / LABORATÓRIO / CÓDIGO ABERTO</span>
     <span class="section-status">VANTA LABZ</span>
   </div>
 
   <div class="lab-layout">
     <div class="lab-identity reveal">
       <p class="lab-identity__mark" aria-hidden="true">VANTA<br />LABZ</p>
-      <p class="micro-label">LOCAL-FIRST / EXPERIMENTAL</p>
+      <p class="micro-label">LOCAL EM PRIMEIRO LUGAR / EXPERIMENTOS</p>
     </div>
     <div class="lab-copy reveal">
-      <p class="eyebrow">A WORKBENCH FOR PUBLIC EXPERIMENTS</p>
-      <h2 id="lab-title">KEEP THE<br /><em>EDGE</em> OPEN.</h2>
-      <p>VANTA Labz is the open-source side of the practice: local-first software, reading tools and experiments that stay close to the people who use them.</p>
+      <p class="eyebrow">UM ESPAÇO PARA TESTAR IDEIAS</p>
+      <h2 id="lab-title">IDEIAS QUE<br /><em>PODEM IR</em><br />MAIS LONGE.</h2>
+      <p>VANTA Labz reúne ferramentas, leituras e experimentos de código aberto feitos perto de quem usa.</p>
       <a class="text-link" href={publicLinks.github} target="_blank" rel="noopener noreferrer" data-cursor-target>
-        Find the public work on GitHub <span aria-hidden="true">↗</span>
+        Ver trabalhos públicos no GitHub <span aria-hidden="true">↗</span>
       </a>
     </div>
-    <div class="lab-directory reveal" aria-label="Public work directories">
-      <p class="terminal-line"><span aria-hidden="true">~/eduardo $</span> ls ./work</p>
+    <div class="lab-directory reveal" aria-label="Diretórios de trabalho público">
+      <p class="terminal-line"><span aria-hidden="true">~/eduardo $</span> ls ./trabalho</p>
       <ul>
         {
           workDirectories.map((directory) => <li>{directory}</li>)
         }
       </ul>
-      <p class="terminal-line terminal-line--muted">public surface → github.com/limaduzz11</p>
+      <p class="terminal-line terminal-line--muted">trabalho público → github.com/limaduzz11</p>
     </div>
   </div>
 </section>

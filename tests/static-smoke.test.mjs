@@ -20,11 +20,13 @@ const robots = await readFile(join(dist, 'robots.txt'), 'utf8');
 test('static routes and metadata exist', async () => {
   assert.ok(await exists(join(dist, 'index.html')));
   assert.ok(await exists(join(dist, '404.html')));
-  assert.match(indexHtml, /<title>Eduardo Paranhos — Software Engineering<\/title>/);
+  assert.match(indexHtml, /<html lang="pt-BR"/);
+  assert.match(indexHtml, /<title>Eduardo Paranhos — Desenvolvimento de Software<\/title>/);
+  assert.match(indexHtml, /property="og:locale" content="pt_BR"/);
   assert.match(indexHtml, /application\/ld\+json/);
   assert.match(indexHtml, /rel="canonical"/);
   assert.match(indexHtml, /property="og:image"[^>]+og-image\.png/);
-  assert.match(notFoundHtml, /ROUTE_<em>NOT_FOUND\.<\/em>/);
+  assert.match(notFoundHtml, /CAMINHO_<em>NÃO ENCONTRADO\.<\/em>/);
 });
 
 test('core navigation anchors resolve to rendered sections', () => {

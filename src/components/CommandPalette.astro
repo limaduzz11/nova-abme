@@ -6,31 +6,31 @@ import { publicLinks } from '../data/site';
   <div class="command-dialog__header">
     <div>
       <p class="eyebrow">NOVA ABME / EDUARDO</p>
-      <h2 id="command-title">NAVIGATE_</h2>
+      <h2 id="command-title">NAVEGAR_</h2>
     </div>
-    <button class="icon-button" type="button" data-command-close aria-label="Close command palette">
+    <button class="icon-button" type="button" data-command-close aria-label="Fechar menu de navegação">
       <span aria-hidden="true">×</span>
     </button>
   </div>
 
   <label class="command-search">
-    <span class="sr-only">Filter navigation</span>
+    <span class="sr-only">Filtrar navegação</span>
     <span aria-hidden="true">&gt;</span>
     <input
       type="search"
       data-command-search
-      placeholder="Type a destination"
+      placeholder="Digite um destino"
       autocomplete="off"
       spellcheck="false"
     />
   </label>
 
-  <nav class="command-list" aria-label="Command destinations" data-command-list>
-    <a href="#engineering" data-command-item data-command-label="Engineering index">Engineering index <span>→</span></a>
-    <a href="#work" data-command-item data-command-label="Selected work">Selected work <span>→</span></a>
-    <a href="#lab" data-command-item data-command-label="Open source lab">Open source lab <span>→</span></a>
+  <nav class="command-list" aria-label="Destinos do menu" data-command-list>
+    <a href="#engineering" data-command-item data-command-label="Experiência">Experiência <span>→</span></a>
+    <a href="#work" data-command-item data-command-label="Projetos selecionados">Projetos selecionados <span>→</span></a>
+    <a href="#lab" data-command-item data-command-label="Laboratório de código aberto">Laboratório de código aberto <span>→</span></a>
     <a href="#business" data-command-item data-command-label="ELP Tecnologia">ELP Tecnologia <span>↗</span></a>
-    <a href="#connect" data-command-item data-command-label="Contact and links">Contact and links <span>→</span></a>
+    <a href="#connect" data-command-item data-command-label="Contato e links">Contato e links <span>→</span></a>
     <a
       href={publicLinks.github}
       target="_blank"
@@ -47,6 +47,6 @@ import { publicLinks } from '../data/site';
     >LinkedIn <span>↗</span></a>
   </nav>
 
-  <p class="command-empty" data-command-empty hidden>No matching route.</p>
-  <p class="command-hint"><kbd>↑</kbd><kbd>↓</kbd> move <kbd>↵</kbd> open <kbd>esc</kbd> close</p>
+  <p class="command-empty" data-command-empty hidden>Nenhum caminho encontrado.</p>
+  <p class="command-hint"><kbd>↑</kbd><kbd>↓</kbd> mover <kbd>↵</kbd> abrir <kbd>esc</kbd> fechar</p>
 </dialog>

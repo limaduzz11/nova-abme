@@ -4,18 +4,18 @@ import { audienceModes, contextRoutes } from '../data/site';
 
 <section class="section-shell context-section" id="context" data-section-index="02" aria-labelledby="context-title">
   <div class="section-top">
-    <span class="section-code">01 / CONTEXT ROUTER</span>
-    <span class="section-status">SELECT A SURFACE</span>
+    <span class="section-code">01 / CAMINHOS</span>
+    <span class="section-status">ESCOLHA UM CAMINHO</span>
   </div>
 
   <div class="section-heading reveal">
-    <p class="eyebrow">A BETTER STARTING POINT</p>
-    <h2 id="context-title">WHAT BROUGHT<br />YOU HERE?</h2>
-    <p>Different intent, different shortest path. The index stays the same; the route changes.</p>
+      <p class="eyebrow">COMECE POR AQUI</p>
+      <h2 id="context-title">O QUE VOCÊ<br />PROCURA?</h2>
+      <p>Escolha um caminho e chegue rápido ao que faz sentido para você.</p>
   </div>
 
   <div class="router-layout">
-    <nav class="router-options reveal" aria-label="Profile routes">
+    <nav class="router-options reveal" aria-label="Caminhos do perfil">
       {
         contextRoutes.map((route, index) => (
           <a
@@ -23,6 +23,7 @@ import { audienceModes, contextRoutes } from '../data/site';
             href={route.href}
             data-context-option
             data-context-id={route.id}
+            data-context-label={route.label}
             data-description={route.description}
             data-cta={route.cta}
             data-href={route.href}
@@ -38,7 +39,7 @@ import { audienceModes, contextRoutes } from '../data/site';
     </nav>
 
     <aside class="context-detail reveal" id="context-detail" aria-live="polite">
-      <p class="micro-label">CURRENT ROUTE / SOFTWARE</p>
+      <p class="micro-label" data-context-detail-label>CAMINHO ATUAL / RECRUTAMENTO</p>
       <p class="context-detail__copy" data-context-copy>{contextRoutes[0].description}</p>
       <a class="text-link" href={contextRoutes[0].href} data-context-cta data-cursor-target>
         {contextRoutes[0].cta}
@@ -48,10 +49,10 @@ import { audienceModes, contextRoutes } from '../data/site';
 
   <div class="audience-switcher reveal" aria-labelledby="audience-title">
     <div>
-      <p class="eyebrow" id="audience-title">SELECT CONTEXT</p>
+      <p class="eyebrow" id="audience-title">QUAL É O SEU OBJETIVO?</p>
       <p class="audience-switcher__note" data-audience-note>{audienceModes[2].note}</p>
     </div>
-    <div class="audience-switcher__options" role="group" aria-label="Visitor context">
+    <div class="audience-switcher__options" role="group" aria-label="Objetivo da visita">
       {
         audienceModes.map((mode) => (
           <button
@@ -61,7 +62,7 @@ import { audienceModes, contextRoutes } from '../data/site';
             data-note={mode.note}
             data-cta={mode.cta}
             data-href={mode.href}
-            aria-pressed={mode.id === 'exploring' ? 'true' : 'false'}
+             aria-pressed={mode.id === 'hiring' ? 'true' : 'false'}
             data-cursor-target
           >
             {mode.label}
@@ -70,7 +71,7 @@ import { audienceModes, contextRoutes } from '../data/site';
       }
     </div>
     <a class="audience-switcher__cta text-link" href="#lab" data-audience-cta data-cursor-target>
-      Open the lab →
+      Ver projetos públicos →
     </a>
   </div>
 </section>

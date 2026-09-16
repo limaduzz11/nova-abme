@@ -30,6 +30,7 @@ if (reducedMotion || !('IntersectionObserver' in window)) {
 const contextOptions = selectAll<HTMLAnchorElement>('[data-context-option]');
 const contextCopy = select<HTMLElement>('[data-context-copy]');
 const contextCta = select<HTMLAnchorElement>('[data-context-cta]');
+const contextLabel = select<HTMLElement>('[data-context-detail-label]');
 
 const setContext = (option: HTMLAnchorElement): void => {
   contextOptions.forEach((current) => {
@@ -39,9 +40,10 @@ const setContext = (option: HTMLAnchorElement): void => {
   });
 
   if (contextCopy) contextCopy.textContent = option.dataset.description ?? '';
+  if (contextLabel) contextLabel.textContent = `CAMINHO ATUAL / ${option.dataset.contextLabel ?? ''}`;
   if (contextCta) {
     contextCta.href = option.dataset.href ?? '#engineering';
-    contextCta.textContent = option.dataset.cta ?? 'OPEN ROUTE →';
+    contextCta.textContent = option.dataset.cta ?? 'ABRIR CAMINHO →';
   }
 };
 
@@ -66,7 +68,7 @@ const setAudience = (option: HTMLButtonElement, persist = true): void => {
   if (audienceNote) audienceNote.textContent = option.dataset.note ?? '';
   if (audienceCta) {
     audienceCta.href = option.dataset.href ?? '#connect';
-    audienceCta.textContent = option.dataset.cta ?? 'Connect →';
+    audienceCta.textContent = option.dataset.cta ?? 'ENTRAR EM CONTATO →';
   }
 
   if (persist) {
@@ -83,7 +85,7 @@ audienceOptions.forEach((option) => {
 });
 
 const defaultAudience =
-  audienceOptions.find((option) => option.dataset.audienceOption === 'exploring') ?? audienceOptions[0];
+  audienceOptions.find((option) => option.dataset.audienceOption === 'hiring') ?? audienceOptions[0];
 let storedAudience: string | null = null;
 try {
   storedAudience = window.sessionStorage.getItem('nova-abme-audience');

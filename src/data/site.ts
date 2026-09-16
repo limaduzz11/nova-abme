@@ -3,9 +3,9 @@ export const siteMeta = {
   profileSlug: 'eduardodelimaparanhos',
   name: 'Eduardo de Lima Paranhos',
   shortName: 'Eduardo Paranhos',
-  title: 'Eduardo Paranhos — Software Engineering',
+  title: 'Eduardo Paranhos — Desenvolvimento de Software',
   description:
-    'Software engineering across ERP, integrations, automation and open-source systems.',
+    'Desenvolvedor de software com experiência em ERP, integrações, automação e produtos digitais.',
   defaultUrl: 'https://nova-abme.pages.dev',
   year: 2026,
 } as const;
@@ -18,46 +18,46 @@ export const publicLinks = {
 } as const;
 
 export const navItems = [
-  { label: 'Engineering', href: '#engineering' },
-  { label: 'Work', href: '#work' },
-  { label: 'Connect', href: '#connect' },
+  { label: 'Engenharia', href: '#engineering' },
+  { label: 'Projetos', href: '#work' },
+  { label: 'Contato', href: '#connect' },
 ] as const;
 
 export const contextRoutes = [
   {
     id: 'software',
     number: '01',
-    label: 'Software',
+    label: 'Recrutamento',
     description:
-      'ERP systems, APIs and automation — the practical layer where software meets operations.',
-    cta: 'OPEN ENGINEERING INDEX →',
+      'Para conhecer minha experiência, as tecnologias que uso e os problemas que gosto de resolver.',
+    cta: 'VER EXPERIÊNCIA →',
     href: '#engineering',
   },
   {
     id: 'open-source',
     number: '02',
-    label: 'Open source',
+    label: 'Projetos',
     description:
-      'Public repositories, reusable patterns and experiments built in the open.',
-    cta: 'ENTER THE LAB →',
+      'Uma seleção de projetos e repositórios públicos para conhecer meu jeito de trabalhar.',
+    cta: 'VER PROJETOS →',
     href: '#lab',
   },
   {
     id: 'business',
     number: '03',
-    label: 'Business',
+    label: 'ELP Tecnologia',
     description:
-      'A direct route to ELP Tecnologia for software work around business systems.',
-    cta: 'VISIT ELP TECNOLOGIA →',
+      'Para conversar sobre desenvolvimento, integrações e automação em sistemas de negócio.',
+    cta: 'CONHECER A ELP →',
     href: '#business',
   },
   {
     id: 'connect',
     number: '04',
-    label: 'Connect',
+    label: 'Contato',
     description:
-      'Professional profile, public code or a direct conversation — choose the shortest path.',
-    cta: 'CHOOSE A DIRECT ROUTE →',
+      'Se preferir ir direto ao ponto, aqui estão os caminhos para falar comigo.',
+    cta: 'ENTRAR EM CONTATO →',
     href: '#connect',
   },
 ] as const;
@@ -65,23 +65,23 @@ export const contextRoutes = [
 export const audienceModes = [
   {
     id: 'hiring',
-    label: "I'm hiring",
-    note: 'Prioritising the engineering index, selected work and professional profile.',
-    cta: 'SEE THE ENGINEERING INDEX →',
+    label: 'Sou recrutador(a)',
+    note: 'Quero conhecer rapidamente sua experiência, seus projetos e seu perfil profissional.',
+    cta: 'VER EXPERIÊNCIA E PROJETOS →',
     href: '#engineering',
   },
   {
     id: 'software',
-    label: 'I need software',
-    note: 'Prioritising capabilities, ELP Tecnologia and a direct contact route.',
-    cta: 'GO TO THE BUSINESS ROUTE →',
+    label: 'Preciso de software',
+    note: 'Quero entender como você trabalha com ERP, integrações e automação.',
+    cta: 'CONHECER A ELP →',
     href: '#business',
   },
   {
     id: 'exploring',
-    label: "I'm exploring",
-    note: 'Prioritising public work, experiments and the open-source lab.',
-    cta: 'OPEN THE LAB →',
+    label: 'Estou conhecendo',
+    note: 'Quero ver projetos públicos, experimentos e código aberto.',
+    cta: 'VER PROJETOS PÚBLICOS →',
     href: '#lab',
   },
 ] as const;
@@ -91,73 +91,73 @@ export const stackItems = [
     id: 'advpl',
     number: '01',
     label: 'ADVPL / TL++',
-    title: 'Business logic close to the ERP',
+    title: 'Lógica de negócio perto do ERP',
     description:
-      'Custom development and maintenance inside the TOTVS Protheus ecosystem.',
-    context: 'ERP / domain logic',
+      'Desenvolvimento e manutenção sob medida dentro do ecossistema TOTVS Protheus.',
+    context: 'ERP / lógica de negócio',
   },
   {
     id: 'protheus',
     number: '02',
     label: 'TOTVS PROTHEUS',
-    title: 'Enterprise systems with real constraints',
+    title: 'Sistemas corporativos com desafios reais',
     description:
-      'Understanding the product surface, modules and operational context around Protheus.',
-    context: 'ERP / enterprise',
+      'Conhecimento dos módulos, das regras e do contexto operacional que fazem parte do Protheus.',
+    context: 'ERP / corporativo',
   },
   {
     id: 'sql',
     number: '03',
     label: 'SQL SERVER',
-    title: 'Data work that stays explainable',
+    title: 'Dados que continuam fáceis de entender',
     description:
-      'Queries, data models and diagnostics for systems that cannot afford guesswork.',
-    context: 'data / diagnostics',
+      'Consultas, modelos e diagnósticos para sistemas que não podem depender de tentativa e erro.',
+    context: 'dados / diagnóstico',
   },
   {
     id: 'rest',
     number: '04',
-    label: 'REST APIS',
-    title: 'Interfaces with an explicit contract',
+    label: 'APIs REST',
+    title: 'Interfaces com acordos claros',
     description:
-      'Designing and consuming integrations with clear payloads, boundaries and failure paths.',
-    context: 'integration / HTTP',
+      'Integrações com contratos claros, limites bem definidos e caminhos para lidar com falhas.',
+    context: 'integração / HTTP',
   },
   {
     id: 'poui',
     number: '05',
     label: 'PO-UI / ANGULAR',
-    title: 'Operational interfaces, not decoration',
+    title: 'Interfaces que ajudam o trabalho',
     description:
-      'Interfaces that expose the state of a system and make the next action obvious.',
-    context: 'frontend / workflow',
+      'Telas que mostram o estado do sistema e deixam claro qual é o próximo passo.',
+    context: 'interface / operação',
   },
   {
     id: 'automation',
     number: '06',
-    label: 'AUTOMATION',
-    title: 'Less repetition, more control',
+    label: 'AUTOMAÇÃO',
+    title: 'Menos repetição, mais controle',
     description:
-      'Automating repeatable work while keeping the behavior observable and reversible.',
-    context: 'workflow / operations',
+      'Automação de tarefas repetitivas com comportamento observável e reversível.',
+    context: 'fluxo / operação',
   },
   {
     id: 'linux',
     number: '07',
     label: 'LINUX',
-    title: 'The environment is part of the system',
+    title: 'O ambiente também faz parte do sistema',
     description:
-      'Working close to the runtime, tools and delivery path that keep software moving.',
-    context: 'runtime / delivery',
+      'Trabalho próximo do ambiente, das ferramentas e do caminho que leva o software até as pessoas.',
+    context: 'ambiente / entrega',
   },
   {
     id: 'architecture',
     number: '08',
-    label: 'SOFTWARE ARCHITECTURE',
-    title: 'Boundaries before ornament',
+    label: 'ARQUITETURA DE SOFTWARE',
+    title: 'Clareza antes do enfeite',
     description:
-      'Choosing the smallest architecture that makes the system clear, testable and durable.',
-    context: 'design / systems',
+      'Escolha de uma arquitetura simples o bastante para ser clara, testável e durável.',
+    context: 'projeto / sistemas',
   },
 ] as const;
 
@@ -165,50 +165,50 @@ export const projects = [
   {
     number: '01',
     name: 'protheus-research',
-    category: 'TOOLING / PUBLIC',
+    category: 'FERRAMENTA / PÚBLICO',
     description:
-      'A structured research server for technical work in the TOTVS Protheus ecosystem.',
+      'Servidor de pesquisa estruturada para trabalho técnico no ecossistema TOTVS Protheus.',
     stack: 'TypeScript · Node.js · MCP',
-    status: 'PUBLIC REPOSITORY',
+    status: 'REPOSITÓRIO PÚBLICO',
     year: '2026',
     href: 'https://github.com/limaduzz11/protheus-research',
   },
   {
     number: '02',
     name: 'protheus-rest-lab',
-    category: 'INTEGRATION / PUBLIC',
+    category: 'INTEGRAÇÃO / PÚBLICO',
     description:
-      'Practical patterns for consuming and exposing REST APIs around Protheus.',
+      'Padrões práticos para consumir e expor APIs REST ligadas ao Protheus.',
     stack: 'ADVPL · REST · JSON',
-    status: 'PUBLIC REPOSITORY',
+    status: 'REPOSITÓRIO PÚBLICO',
     year: '2026',
     href: 'https://github.com/limaduzz11/protheus-rest-lab',
   },
   {
     number: '03',
     name: 'protheus-po-ui-template',
-    category: 'INTERFACE / PUBLIC',
+    category: 'INTERFACE / PÚBLICO',
     description:
-      'A reference surface for Angular and PO-UI interfaces integrated with ERP backends.',
+      'Base de referência para interfaces Angular e PO-UI conectadas a backends ERP.',
     stack: 'Angular · PO-UI · ADVPL',
-    status: 'PUBLIC REPOSITORY',
+    status: 'REPOSITÓRIO PÚBLICO',
     year: '2026',
     href: 'https://github.com/limaduzz11/protheus-po-ui-template',
   },
   {
     number: '04',
     name: 'nova-hub',
-    category: 'PRODUCT / PUBLIC',
+    category: 'PRODUTO / PÚBLICO',
     description:
-      'A multiplatform dashboard for remote device management and system telemetry.',
+      'Painel multiplataforma para acompanhar dispositivos e a telemetria dos sistemas.',
     stack: 'Flutter · Dart · Material 3',
-    status: 'PUBLIC REPOSITORY',
+    status: 'REPOSITÓRIO PÚBLICO',
     year: '2026',
     href: 'https://github.com/limaduzz11/nova-hub',
   },
 ] as const;
 
-export const workDirectories = ['open-source/', 'systems/', 'experiments/', 'engineering/'] as const;
+export const workDirectories = ['código-aberto/', 'sistemas/', 'experimentos/', 'engenharia/'] as const;
 
 /**
  * Keeps internal links correct for both Cloudflare Pages (/) and the optional

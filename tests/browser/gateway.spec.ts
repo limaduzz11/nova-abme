@@ -20,7 +20,8 @@ test('desktop keeps the main routes visible and captures a reference', async ({ 
   await page.setViewportSize({ width: 1440, height: 1000 });
   await gotoPage(page);
 
-  await expect(page).toHaveTitle('Eduardo Paranhos — Software Engineering');
+  await expect(page).toHaveTitle('Eduardo Paranhos — Desenvolvimento de Software');
+  await expect(page.locator('html')).toHaveAttribute('lang', 'pt-BR');
   await expect(page.locator('#hero-title')).toBeVisible();
   await expect(page.locator('#context')).toBeVisible();
   await expect(page.locator('#engineering')).toBeVisible();
@@ -68,16 +69,22 @@ test('audience and stack context are keyboard and session aware', async ({ page 
   await gotoPage(page);
 
   const hiring = page.locator('[data-audience-option="hiring"]');
+  await expect(hiring).toHaveAttribute('aria-pressed', 'true');
   await hiring.click();
   await expect(hiring).toHaveAttribute('aria-pressed', 'true');
-  await expect(page.locator('[data-audience-cta]')).toContainText('ENGINEERING INDEX');
+  await expect(page.locator('[data-audience-cta]')).toContainText('EXPERIÊNCIA E PROJETOS');
+
+  const businessRoute = page.locator('[data-context-option]').nth(2);
+  await businessRoute.click();
+  await expect(page.locator('[data-context-detail-label]')).toContainText('ELP Tecnologia');
+  await expect(page.locator('[data-context-cta]')).toContainText('CONHECER A ELP');
 
   const firstStackItem = page.locator('[data-stack-option]').first();
   const secondStackItem = page.locator('[data-stack-option]').nth(1);
   await firstStackItem.focus();
   await page.keyboard.press('ArrowDown');
   await expect(secondStackItem).toHaveAttribute('aria-selected', 'true');
-  await expect(page.locator('[data-stack-title]')).toContainText('Enterprise systems');
+  await expect(page.locator('[data-stack-title]')).toContainText('Sistemas corporativos');
 
   await page.reload();
   await expect(hiring).toHaveAttribute('aria-pressed', 'true');

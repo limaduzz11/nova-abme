@@ -37,9 +37,9 @@ body::before {
   z-index: -1;
   inset: 0;
   background-image:
-    linear-gradient(to right, rgba(207, 207, 207, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(207, 207, 207, 0.035) 1px, transparent 1px);
-  background-size: 4rem 4rem;
+    linear-gradient(to right, rgba(207, 207, 207, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(207, 207, 207, 0.02) 1px, transparent 1px);
+  background-size: 5rem 5rem;
   content: '';
   pointer-events: none;
 }
@@ -250,7 +250,7 @@ kbd {
 .section-shell {
   width: min(calc(100% - (var(--gutter) * 2)), var(--measure));
   margin-inline: auto;
-  padding-block: clamp(5rem, 11vw, 10rem);
+  padding-block: clamp(4.5rem, 9vw, 8.5rem);
 }
 
 .section-top {
@@ -293,18 +293,18 @@ kbd {
 
 .hero {
   display: flex;
-  min-height: min(54rem, calc(100svh - 4.5rem));
+  min-height: min(50rem, calc(100svh - 4.5rem));
   flex-direction: column;
   justify-content: center;
-  padding-top: clamp(3.5rem, 8vw, 7rem);
-  padding-bottom: clamp(3rem, 7vw, 6rem);
+  padding-top: clamp(3rem, 7vw, 6rem);
+  padding-bottom: clamp(2.5rem, 6vw, 5rem);
 }
 
 .hero-grid {
   display: grid;
   margin-block: auto;
-  padding-block: clamp(4rem, 9vw, 8rem);
-  gap: clamp(3rem, 8vw, 8rem);
+  padding-block: clamp(3rem, 7vw, 6rem);
+  gap: clamp(2.5rem, 6vw, 6rem);
   grid-template-columns: minmax(0, 1fr);
   align-items: end;
 }
@@ -319,9 +319,9 @@ kbd {
 }
 
 .hero h1 {
-  max-width: 10ch;
-  font-size: clamp(4.2rem, 14vw, 10.5rem);
-  line-height: 0.81;
+  max-width: 12ch;
+  font-size: clamp(2.85rem, 11.5vw, 8.5rem);
+  line-height: 0.84;
   text-transform: uppercase;
 }
 
@@ -413,14 +413,14 @@ kbd {
 
 .hero-aside__title {
   max-width: 18rem;
-  margin-top: 3rem;
+  margin-top: 2.25rem;
   color: var(--paper);
   font-size: 1.05rem;
   line-height: 1.3;
 }
 
 .signal-list {
-  margin-top: 3rem;
+  margin-top: 2.25rem;
 }
 
 .signal-list div {
@@ -483,7 +483,7 @@ kbd {
 .section-heading h2,
 .connect-heading h2 {
   margin-top: 1rem;
-  font-size: clamp(3rem, 8vw, 7.5rem);
+  font-size: clamp(2.75rem, 7vw, 6.5rem);
   text-transform: uppercase;
 }
 
@@ -811,7 +811,6 @@ kbd {
   max-width: 19rem;
   margin-top: 1rem;
   color: var(--quiet);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 0.7rem;
   line-height: 1.45;
 }
@@ -860,7 +859,6 @@ kbd {
 .work-row__main h3 {
   margin-top: 0.5rem;
   color: var(--paper);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: clamp(1.15rem, 2.5vw, 1.7rem);
   letter-spacing: -0.045em;
   line-height: 1.1;
@@ -1471,6 +1469,12 @@ html[data-audience='exploring'] [data-audience-focus~='exploring'] {
 
   .section-heading--split > p:last-child {
     margin-top: 0.5rem;
+  }
+
+  .section-heading h2,
+  .connect-heading h2,
+  .lab-copy h2 {
+    font-size: clamp(2.45rem, 11vw, 5rem);
   }
 
   .work-row {

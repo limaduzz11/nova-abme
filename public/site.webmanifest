@@ -1,10 +1,10 @@
 {
   "name": "NOVA Abme — Eduardo Paranhos",
   "short_name": "NOVA Abme",
-  "description": "Engineering gateway for Eduardo Paranhos.",
+  "description": "Perfil profissional de Eduardo Paranhos.",
   "start_url": "/",
   "display": "browser",
   "background_color": "#252525",
   "theme_color": "#252525",
-  "lang": "en"
+  "lang": "pt-BR"
 }
