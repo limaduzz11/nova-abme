@@ -1,0 +1,52 @@
+---
+import { publicLinks } from '../data/site';
+---
+
+<dialog class="command-dialog" id="command-palette" aria-labelledby="command-title">
+  <div class="command-dialog__header">
+    <div>
+      <p class="eyebrow">NOVA ABME / EDUARDO</p>
+      <h2 id="command-title">NAVIGATE_</h2>
+    </div>
+    <button class="icon-button" type="button" data-command-close aria-label="Close command palette">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+
+  <label class="command-search">
+    <span class="sr-only">Filter navigation</span>
+    <span aria-hidden="true">&gt;</span>
+    <input
+      type="search"
+      data-command-search
+      placeholder="Type a destination"
+      autocomplete="off"
+      spellcheck="false"
+    />
+  </label>
+
+  <nav class="command-list" aria-label="Command destinations" data-command-list>
+    <a href="#engineering" data-command-item data-command-label="Engineering index">Engineering index <span>→</span></a>
+    <a href="#work" data-command-item data-command-label="Selected work">Selected work <span>→</span></a>
+    <a href="#lab" data-command-item data-command-label="Open source lab">Open source lab <span>→</span></a>
+    <a href="#business" data-command-item data-command-label="ELP Tecnologia">ELP Tecnologia <span>↗</span></a>
+    <a href="#connect" data-command-item data-command-label="Contact and links">Contact and links <span>→</span></a>
+    <a
+      href={publicLinks.github}
+      target="_blank"
+      rel="noopener noreferrer"
+      data-command-item
+      data-command-label="GitHub"
+    >GitHub <span>↗</span></a>
+    <a
+      href={publicLinks.linkedin}
+      target="_blank"
+      rel="noopener noreferrer"
+      data-command-item
+      data-command-label="LinkedIn"
+    >LinkedIn <span>↗</span></a>
+  </nav>
+
+  <p class="command-empty" data-command-empty hidden>No matching route.</p>
+  <p class="command-hint"><kbd>↑</kbd><kbd>↓</kbd> move <kbd>↵</kbd> open <kbd>esc</kbd> close</p>
+</dialog>

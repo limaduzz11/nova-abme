@@ -1,0 +1,46 @@
+---
+import { navItems, publicLinks } from '../data/site';
+---
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="#top">
+      <span class="brand__mark" aria-hidden="true">EP</span>
+      <span class="brand__name">NOVA ABME / EDUARDO</span>
+    </a>
+
+    <nav class="primary-nav" aria-label="Primary navigation">
+      {
+        navItems.map((item) => (
+          <a href={item.href} data-cursor-target>
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <a
+      class="header-github"
+      href={publicLinks.github}
+      target="_blank"
+      rel="noopener noreferrer"
+      data-cursor-target
+    >
+      <span class="header-github__label">GitHub</span>
+      <span aria-hidden="true">↗</span>
+    </a>
+
+    <button
+      class="command-trigger"
+      type="button"
+      data-command-open
+      aria-controls="command-palette"
+      aria-haspopup="dialog"
+      aria-keyshortcuts="Control+K"
+      data-cursor-target
+    >
+      <span class="command-trigger__label">Command</span>
+      <kbd>⌘K</kbd>
+    </button>
+  </div>
+</header>

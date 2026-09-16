@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { toPath } from '../data/site';
+---
+
+<BaseLayout title="404 — Route not found" description="The requested NOVA Abme route does not exist." noindex>
+  <main class="not-found" id="main-content">
+    <p class="not-found__code">404</p>
+    <p class="eyebrow">NOVA ABME / ROUTER</p>
+    <h1>ROUTE_<em>NOT_FOUND.</em></h1>
+    <p>The path does not resolve to an Eduardo Paranhos profile surface.</p>
+    <a class="button button-primary" href={toPath('/')}>Return to the index <span aria-hidden="true">→</span></a>
+  </main>
+</BaseLayout>

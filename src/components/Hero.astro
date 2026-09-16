@@ -1,0 +1,64 @@
+---
+import { publicLinks } from '../data/site';
+---
+
+<section class="hero section-shell" id="top" data-section-index="01" aria-labelledby="hero-title">
+  <div class="section-top">
+    <span class="section-code">00 / INTRO</span>
+    <span class="section-status">NOVA ABME / PROFILE 001</span>
+  </div>
+
+  <div class="hero-grid">
+    <div class="hero-copy reveal">
+      <p class="eyebrow">EDUARDO DE LIMA PARANHOS / SOFTWARE ENGINEERING</p>
+      <h1 id="hero-title">
+        <span>BUILD</span>
+        <span>SYSTEMS</span>
+        <span>THAT <em>HOLD.</em></span>
+      </h1>
+      <p class="hero-lede">
+        Software engineering across ERP, integrations, automation and open-source systems.
+      </p>
+
+      <div class="hero-actions" aria-label="Primary routes">
+        <a class="button button-primary" href={publicLinks.github} target="_blank" rel="noopener noreferrer" data-cursor-target>
+          GitHub <span aria-hidden="true">↗</span>
+        </a>
+        <a class="button" href={publicLinks.elp} target="_blank" rel="noopener noreferrer" data-cursor-target>
+          ELP Tecnologia <span aria-hidden="true">↗</span>
+        </a>
+        <a class="button button-text" href="#connect" data-cursor-target>
+          Connect <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+
+    <aside class="hero-aside reveal" aria-label="Profile signal">
+      <div class="hero-aside__top">
+        <span class="micro-label">EDP / 001</span>
+        <span class="signal-dot" aria-hidden="true"></span>
+      </div>
+      <p class="hero-aside__title">A public index of the work, systems and places behind the name.</p>
+      <dl class="signal-list">
+        <div>
+          <dt>Surface</dt>
+          <dd>Personal gateway</dd>
+        </div>
+        <div>
+          <dt>Delivery</dt>
+          <dd>Static / CDN-ready</dd>
+        </div>
+        <div>
+          <dt>Route</dt>
+          <dd>Direct by design</dd>
+        </div>
+      </dl>
+      <p class="hero-aside__foot">NOVA ABME / EDUARDO DE LIMA PARANHOS</p>
+    </aside>
+  </div>
+
+  <a class="scroll-cue" href="#context" data-cursor-target>
+    <span>Scroll to select route</span>
+    <span aria-hidden="true">↓</span>
+  </a>
+</section>

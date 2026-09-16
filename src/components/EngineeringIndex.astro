@@ -1,0 +1,56 @@
+---
+import { stackItems } from '../data/site';
+---
+
+<section class="section-shell engineering-section" id="engineering" data-section-index="03" aria-labelledby="engineering-title">
+  <div class="section-top">
+    <span class="section-code">02 / ENGINEERING</span>
+    <span class="section-status">STACK_INDEX / 08</span>
+  </div>
+
+  <div class="section-heading section-heading--wide reveal">
+    <p class="eyebrow">CAPABILITY WITHOUT A SCORECARD</p>
+    <h2 id="engineering-title">THE STACK IS A MAP,<br />NOT A SCORE.</h2>
+    <p>Tools are useful when they explain the problem they are solving. Select an index entry for the working context.</p>
+  </div>
+
+  <div class="engineering-grid">
+    <div class="stack-index reveal">
+      <p class="index-heading">STACK_INDEX</p>
+      <div class="stack-list" role="tablist" aria-label="Engineering stack">
+        {
+          stackItems.map((item, index) => (
+            <button
+              type="button"
+              role="tab"
+              class="stack-item"
+              aria-selected={index === 0 ? 'true' : 'false'}
+              aria-controls="stack-detail"
+              data-stack-option
+              data-stack-id={item.id}
+              data-number={item.number}
+              data-title={item.title}
+              data-description={item.description}
+              data-context={item.context}
+              data-label={item.label}
+              data-cursor-target
+            >
+              <span>{item.number}</span>
+              <strong>{item.label}</strong>
+              <span aria-hidden="true">+</span>
+            </button>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="stack-detail reveal" id="stack-detail" role="tabpanel" aria-live="polite">
+      <p class="micro-label" data-stack-context>{stackItems[0].context}</p>
+      <p class="stack-detail__code" data-stack-code>{stackItems[0].number} / {stackItems[0].label}</p>
+      <h3 data-stack-title>{stackItems[0].title}</h3>
+      <p data-stack-description>{stackItems[0].description}</p>
+      <span class="stack-detail__rule" aria-hidden="true"></span>
+      <p class="stack-detail__note">No percentage. Just a context where the tool earns its place.</p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,22 @@
+---
+import { publicLinks, siteMeta } from '../data/site';
+---
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>
+      <p class="footer-name">EDUARDO PARANHOS</p>
+      <p class="footer-meta">NOVA ABME / PROFILE 001</p>
+    </div>
+    <div>
+      <p class="footer-meta">SÃO PAULO / BRAZIL</p>
+      <p class="footer-meta">{siteMeta.year}</p>
+    </div>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href={publicLinks.github} target="_blank" rel="noopener noreferrer" data-cursor-target>GitHub ↗</a>
+      <a href={publicLinks.linkedin} target="_blank" rel="noopener noreferrer" data-cursor-target>LinkedIn ↗</a>
+      <a href={publicLinks.elp} target="_blank" rel="noopener noreferrer" data-cursor-target>ELP Tecnologia ↗</a>
+    </nav>
+    <p class="footer-closing">BUILT FOR THE WEB.<br />BUILT TO HOLD.</p>
+  </div>
+</footer>

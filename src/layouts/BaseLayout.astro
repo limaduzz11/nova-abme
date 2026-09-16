@@ -1,0 +1,83 @@
+---
+import CommandPalette from '../components/CommandPalette.astro';
+import { publicLinks, siteMeta, toPath } from '../data/site';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+}
+
+const {
+  title = siteMeta.title,
+  description = siteMeta.description,
+  noindex = false,
+} = Astro.props;
+
+const configuredSite = import.meta.env.SITE || siteMeta.defaultUrl;
+const canonical = new URL(Astro.url.pathname, configuredSite).href;
+const socialImage = new URL(toPath('/og-image.png'), configuredSite).href;
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': `${configuredSite}#person`,
+  name: siteMeta.name,
+  url: configuredSite,
+  jobTitle: 'Software Developer',
+  sameAs: [publicLinks.github, publicLinks.linkedin, publicLinks.elp],
+  knowsAbout: [
+    'TOTVS Protheus',
+    'ADVPL',
+    'TL++',
+    'SQL Server',
+    'REST APIs',
+    'Software architecture',
+    'Open-source software',
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#252525" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="robots" content={noindex ? 'noindex,nofollow' : 'index,follow'} />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href={toPath('/favicon.svg')} type="image/svg+xml" />
+    <link rel="manifest" href={toPath('/site.webmanifest')} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content={siteMeta.productName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Eduardo Paranhos — Software Engineering" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    <meta name="twitter:image:alt" content="Eduardo Paranhos — Software Engineering" />
+
+    <title>{title}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)}></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="cursor-halo" data-cursor aria-hidden="true"></div>
+    <slot />
+    <CommandPalette />
+    <script src="../scripts/gateway.ts"></script>
+  </body>
+</html>
