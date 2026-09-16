@@ -72,8 +72,8 @@ segredos, o build estático e os smoke tests de comportamento contra `dist/`.
 
 ## Deploy
 
-Cloudflare Pages é o host principal. Configure um projeto Pages conectado ao
-repositório GitHub com:
+Cloudflare Pages é o host principal. O projeto já está publicado em:
+`https://nova-abme.pages.dev/`. Para reproduzir a configuração, use:
 
 | Setting | Value |
 |---|---|
@@ -81,10 +81,8 @@ repositório GitHub com:
 | Comando de build | `npm run build` |
 | Diretório de saída | `dist` |
 
-O slug esperado é `nova-abme`, gerando uma URL no formato
-`https://nova-abme.pages.dev/`. O slug e a URL devem ser confirmados na conta
-Cloudflare durante o deploy; este repositório só considera a URL pública depois
-que um deploy real responder por HTTPS.
+O slug confirmado é `nova-abme`, com deploy real respondendo por HTTPS. Um domínio
+próprio futuro deve atualizar `PUBLIC_SITE_URL` e o sitemap antes da publicação.
 
 Veja [docs/DEPLOY.md](docs/DEPLOY.md) para Cloudflare Pages, o fallback no GitHub
 Pages e a migração para domínio próprio.

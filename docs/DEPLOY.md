@@ -2,9 +2,9 @@
 
 ## Primary: Cloudflare Pages
 
-Cloudflare Pages is the preferred host because the site is a static artifact
-and the provider can connect directly to GitHub. No Cloudflare token is stored
-in this repository.
+Cloudflare Pages is the production host because the site is a static artifact
+and the provider connects directly to GitHub. The current deployment is
+`https://nova-abme.pages.dev/`. No Cloudflare token is stored in this repository.
 
 1. Create or select a Cloudflare Pages project.
 2. Connect only the intended GitHub repository through the official GitHub
@@ -16,10 +16,9 @@ in this repository.
 7. Enable pull-request preview deployments.
 8. Test headers, canonical metadata, all primary routes and the 404 response.
 
-The clean project-slug candidate is `nova-abme`, giving the expected shape
-`https://nova-abme.pages.dev/`. Availability is an external account fact and
-must be checked during the actual Pages setup; the code uses the candidate as a
-default only.
+The confirmed project slug is `nova-abme`, serving
+`https://nova-abme.pages.dev/`. If the slug or custom domain changes, update the
+public canonical origin and sitemap and repeat the production checks.
 
 ### Zero-cost posture
 
