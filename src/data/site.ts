@@ -57,21 +57,21 @@ export const stackItems = [
     id: 'protheus',
     number: '02',
     label: 'TOTVS PROTHEUS',
-    title: 'Domínio dos módulos operacionais e do ciclo corporativo',
+    title: 'Domínio funcional em módulos operacionais e financeiros',
     description:
-      'Experiência prática nos módulos de Faturamento (SIGAFAT), Financeiro (SIGAFIN), Estoque e Custos (SIGAEST) e Compras (SIGACOM). Parametrização, regras fiscais e sustentação de processos críticos.',
+      'Experiência prática com regras de negócio e rotinas nos módulos Financeiro (SIGAFIN), Faturamento (SIGAFAT), Compras (SIGACOM), Contabilidade Gerencial (SIGACTB) e manutenção de base via APSDU.',
     context: 'ERP / módulos corporativos',
-    highlights: ['Faturamento (SIGAFAT)', 'Financeiro (SIGAFIN)', 'Estoque (SIGAEST)', 'Compras (SIGACOM)'],
+    highlights: ['Financeiro (SIGAFIN)', 'Faturamento (SIGAFAT)', 'Compras (SIGACOM)', 'Contábil (SIGACTB) & APSDU'],
   },
   {
     id: 'rest',
     number: '03',
     label: 'APIs REST & WEBSERVICES',
-    title: 'Integrações seguras entre o ERP e sistemas externos',
+    title: 'Criação, manutenção e melhoria de integrações',
     description:
-      'Construção e consumo de endpoints REST/JSON e Webservices SOAP/XML. Integrações com plataformas externas, hubs de marketplaces e automação de fluxos operacionais.',
+      'Criação, manutenção e melhoria de integrações seguras entre o ERP Protheus e sistemas externos via REST/JSON e Webservices SOAP/XML. Conexão com plataformas externas, automação de fluxos operacionais e resiliência transacional.',
     context: 'integração / contratos HTTP',
-    highlights: ['APIs RESTful', 'SOAP / XML', 'Webhooks', 'Marketplaces & E-commerce'],
+    highlights: ['Criação de APIs REST', 'Manutenção & Melhorias', 'Webservices SOAP', 'Webhooks & Payloads'],
   },
   {
     id: 'sql',
@@ -89,39 +89,39 @@ export const stackItems = [
     label: 'PO-UI / ANGULAR',
     title: 'Interfaces corporativas modernas e intuitivas',
     description:
-      'Desenvolvimento de portais, painéis operacionais e formulários web utilizando a biblioteca PO-UI da TOTVS sobre Angular. Experiências responsivas que simplificam a operação do usuário final.',
-    context: 'interface / portais corporativos',
-    highlights: ['Design System PO-UI', 'Angular & TypeScript', 'Tabelas Dinâmicas', 'Consumo de APIs REST'],
+      'Construção de aplicações com o design system corporativo da TOTVS sobre Angular. Telas responsivas integradas via REST ao Protheus para operações ágeis e dashboards.',
+    context: 'frontend / modernização',
+    highlights: ['Design System PO-UI', 'Angular', 'Componentes TOTVS', 'Consumo de REST'],
   },
   {
-    id: 'automation',
+    id: 'devops',
     number: '06',
-    label: 'JOBS & AUTOMAÇÕES',
-    title: 'Processamentos em background resilientes e observáveis',
+    label: 'DEVOPS & SUSTENTAÇÃO',
+    title: 'Controle de versão, compilação e deploy estruturado',
+    description:
+      'Gestão de repositórios Git, branches de sustentação/features, compilação controlada de pacotes RPO e esteiras de entrega contínua para manter a estabilidade dos ambientes.',
+    context: 'engenharia / governança',
+    highlights: ['Git & Versionamento', 'Gestão de RPO', 'Ambientes Dev/HML/Prod', 'TDS / VS Code'],
+  },
+  {
+    id: 'appserver',
+    number: '07',
+    label: 'APPSERVER & JOBS',
+    title: 'Processamento em segundo plano e alta disponibilidade',
     description:
       'Automação de rotinas agendadas no AppServer, disparos de alertas, integrações e sincronizações automáticas com tratamento seguro de exceções e rastreabilidade.',
-    context: 'automação / background processing',
-    highlights: ['Schedules Protheus', 'Tratamento de Exceções', 'Auditoria & Logs', 'Rotinas Batch'],
+    context: 'infra / rotinas em lote',
+    highlights: ['Jobs Agendados', 'Multi-thread / IPC', 'Tratamento de Logs', 'Processamento Noturno'],
   },
   {
-    id: 'linux',
-    number: '07',
-    label: 'LINUX & AMBIENTE',
-    title: 'Infraestrutura estável para aplicações corporativas',
-    description:
-      'Configuração e gerenciamento de servidores de aplicação Protheus (AppServer, DBAccess, Licenciamento) em ambientes Linux, pipelines de compilação automatizada e monitoramento de serviços.',
-    context: 'infraestrutura / servidores',
-    highlights: ['Servidores AppServer', 'DBAccess', 'Scripts Bash / Shell', 'Deploy Automatizado'],
-  },
-  {
-    id: 'architecture',
+    id: 'audit',
     number: '08',
-    label: 'ARQUITETURA & QUALIDADE',
-    title: 'Código limpo, manutenível e durável',
+    label: 'GOVERNANÇA & CÓDIGO LIMPO',
+    title: 'Rigor técnico, padronização e documentação viva',
     description:
-      'Adoção de boas práticas de engenharia de software, separação estrita de camadas de dados e regras de negócio, testes estruturados e documentação clara para facilitar a evolução do sistema.',
-    context: 'arquitetura / engenharia',
-    highlights: ['Separação de Camadas', 'Design Patterns', 'Documentação Técnica', 'Versionamento Git'],
+      'Revisão criteriosa de código, observância às melhores práticas de desenvolvimento TOTVS, refatoração de código legado e documentação clara de regras e customizações.',
+    context: 'qualidade / manutenibilidade',
+    highlights: ['Code Review', 'Clean Code ADVPL', 'Documentação Técnica', 'Refatoração Segura'],
   },
 ] as const;
 
@@ -130,7 +130,7 @@ export const provenResults = [
     metric: 'Pipeline Automatizado',
     title: 'Integração de ERP com API Externa',
     description:
-      'Pipeline de integração REST consumindo dados externos via GET, persistência em tabela temporária de alta velocidade, validação transacional e geração automática de Cliente (SA1), Pedido de Venda (SC5/SC6) e Faturamento (SF2/SD2) no Protheus.',
+      'Criação, manutenção e melhoria de integração REST: consumo de dados externos via GET, persistência em tabela temporária de alta performance, validação transacional e geração automática de Cliente (SA1), Pedido de Venda (SC5/SC6) e Faturamento (SF2/SD2) no Protheus.',
     tag: 'API REST / INTEGRAÇÃO',
   },
   {
@@ -144,14 +144,14 @@ export const provenResults = [
     metric: '100% Automático',
     title: 'Integrações de Marketplaces & E-commerce',
     description:
-      'Fluxo integrado de pedidos, sincronização de estoque e emissão no Protheus conectado a hubs e canais de venda externos, eliminando digitação manual e divergências de saldo.',
+      'Criação, manutenção e melhoria de integrações: fluxo contínuo de pedidos, conciliação de pagamentos e emissão no Protheus conectado a hubs e plataformas externas, eliminando digitação manual e inconsistências operacionais.',
     tag: 'E-COMMERCE / REST',
   },
   {
     metric: 'Alta Performance',
     title: 'Otimização de Consultas em SQL Server',
     description:
-      'Refatoração de queries críticas e criação de índices estratégicos sobre tabelas volumosas do ERP, reduzindo expressivamente o tempo de processamento em rotinas pesadas e fechamentos.',
+      'Refatoração de queries críticas e criação de índices estratégicos sobre tabelas volumosas do ERP (SIGAFIN/SIGAFAT/SIGACOM), reduzindo expressivamente o tempo de processamento em rotinas pesadas e fechamentos.',
     tag: 'SQL / DIAGNÓSTICO',
   },
 ] as const;

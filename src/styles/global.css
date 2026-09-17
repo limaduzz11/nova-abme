@@ -253,6 +253,10 @@ kbd {
   padding-block: clamp(2.5rem, 5vw, 4.5rem);
 }
 
+.section-shell + .section-shell {
+  border-top: 1px solid var(--line);
+}
+
 .section-top {
   display: flex;
   min-height: 2rem;

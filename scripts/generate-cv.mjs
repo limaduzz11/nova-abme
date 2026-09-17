@@ -158,7 +158,7 @@ const cvHtml = `<!DOCTYPE html>
   <div class="section">
     <div class="section-title">Resumo Profissional</div>
     <p class="summary">
-      Desenvolvedor de software especialista no ecossistema TOTVS Protheus, com experiência prática comprovada em customizações críticas em ADVPL/TL++, arquitetura e consumo de APIs REST/SOAP, automação de processamentos em lote (jobs e schedules no AppServer Linux) e administração de banco de dados SQL Server. Domínio técnico na sustentação de regras de negócio nos módulos operacionais (Faturamento, Financeiro, Estoque e Compras), integração resiliente de ponta a ponta entre ERP e plataformas externas, e interfaces corporativas com PO-UI/Angular. Foco estrito em estabilidade transacional, código limpo e impacto mensurável de negócio.
+      Desenvolvedor de software especialista no ecossistema TOTVS Protheus, com experiência prática comprovada em customizações críticas em ADVPL/TL++, criação, manutenção e melhoria de integrações REST/SOAP, automação de processamentos em lote (jobs e schedules no AppServer Linux) e administração de banco de dados SQL Server e APSDU. Domínio técnico na sustentação de regras de negócio nos módulos Financeiro (SIGAFIN), Compras (SIGACOM), Contabilidade (SIGACTB), Faturamento (SIGAFAT) e manutenção de base, integração resiliente de ponta a ponta entre ERP e plataformas externas, e interfaces corporativas com PO-UI/Angular. Foco estrito em estabilidade transacional, código limpo e impacto mensurável de negócio.
     </p>
   </div>
 
@@ -166,13 +166,13 @@ const cvHtml = `<!DOCTYPE html>
     <div class="section-title">Competências Técnicas</div>
     <div class="skills-grid">
       <div class="skill-item">
-        <strong>Linguagens & ERP:</strong> ADVPL, TL++, TOTVS Protheus (SIGAFAT, SIGAFIN, SIGAEST, SIGACOM), Pontos de Entrada (PE), MVC (FWFormModel / FWFormView), Gatilhos, Validações Transacionais.
+        <strong>Linguagens & ERP:</strong> ADVPL, TL++, TOTVS Protheus (SIGAFIN, SIGACOM, SIGACTB, SIGAFAT, APSDU), Pontos de Entrada (PE), MVC (FWFormModel / FWFormView), Gatilhos, Validações Transacionais.
       </div>
       <div class="skill-item">
-        <strong>Integrações & Comunicação:</strong> APIs REST (JSON), Webservices SOAP (XML), Webhooks, integração com plataformas externas, pipelines batch de ingestão e conciliação bancária (CNAB 240/400).
+        <strong>Integrações & Comunicação:</strong> Criação, manutenção e melhoria de integrações (APIs REST/JSON, Webservices SOAP/XML), Webhooks, integração com plataformas externas, pipelines batch de ingestão e conciliação bancária (CNAB 240/400).
       </div>
       <div class="skill-item">
-        <strong>Banco de Dados & Performance:</strong> Microsoft SQL Server, T-SQL Avançado, modelagem relacional, planos de execução, criação de índices estratégicos e diagnósticos via DBAccess/Profiler.
+        <strong>Banco de Dados & Performance:</strong> Microsoft SQL Server, APSDU, T-SQL Avançado, modelagem relacional, planos de execução, criação de índices estratégicos e diagnósticos via DBAccess/Profiler.
       </div>
       <div class="skill-item">
         <strong>Frontend, Automação & DevOps:</strong> PO-UI, Angular, TypeScript, Node.js, Flutter/Dart, Git, Linux, Docker, AppServer Jobs/Schedules e Model Context Protocol (MCP).
@@ -191,9 +191,9 @@ const cvHtml = `<!DOCTYPE html>
         <div class="job-date">São Paulo · Remoto / Presencial</div>
       </div>
       <ul class="job-bullets">
-        <li><strong>Pipeline de Integração ERP com APIs REST:</strong> Arquitetura e implementação de consumo automatizado de APIs externas via endpoints REST, persistência em tabelas temporárias indexadas e geração transacional em lote de Cliente (SA1), Pedido de Venda (SC5/SC6) e Faturamento (SF2/SD2), eliminando 100% da digitação manual de pedidos externos e zerando divergências de estoque.</li>
+        <li><strong>Criação, Manutenção e Melhoria de Integrações:</strong> Arquitetura e implementação de consumo automatizado de APIs externas via endpoints REST, persistência em tabelas temporárias indexadas e geração transacional em lote de Cliente (SA1), Pedido de Venda (SC5/SC6) e Faturamento (SF2/SD2), eliminando 100% da digitação manual de pedidos externos e prevenindo inconsistências operacionais.</li>
         <li><strong>Relatórios Analíticos de Alta Performance (.prw):</strong> Desenvolvimento de relatórios customizados em ADVPL puro com queries T-SQL estruturadas e filtros dinâmicos para conciliação financeira e análise de títulos, proporcionando tempo de resposta sub-segundo mesmo sobre bases com milhões de registros.</li>
-        <li><strong>Otimização de Banco de Dados & DBAccess:</strong> Diagnóstico e refatoração de consultas críticas em SQL Server com criação de índices estratégicos sobre tabelas volumosas do Protheus (SIGAFAT/SIGAEST), reduzindo o tempo de processamento em rotinas pesadas de fechamento em até 70%.</li>
+        <li><strong>Otimização de Banco de Dados & DBAccess:</strong> Diagnóstico e refatoração de consultas críticas em SQL Server com criação de índices estratégicos sobre tabelas volumosas do Protheus (SIGAFIN/SIGAFAT/SIGACOM/SIGACTB), reduzindo o tempo de processamento em rotinas pesadas de fechamento em até 70%.</li>
         <li><strong>Processamento em Background (Jobs & Schedules):</strong> Automação e sustentação de rotinas agendadas no AppServer em ambiente Linux, com controle defensivo de concorrência, integridade transacional e rastreabilidade por logs de auditoria.</li>
         <li><strong>Interfaces Web Corporativas (PO-UI & Angular):</strong> Criação de portais e formulários web modernos consumindo backends REST em ADVPL/TL++, simplificando a operação de equipes corporativas.</li>
       </ul>
@@ -207,7 +207,7 @@ const cvHtml = `<!DOCTYPE html>
         <div class="job-date">Projetos Fechados & Consultoria B2B</div>
       </div>
       <ul class="job-bullets">
-        <li>Estruturação e execução de demandas sob medida: pipelines de integração entre ERP e plataformas externas, desenvolvimento de rotinas customizadas em ADVPL e consultoria de estabilidade transacional.</li>
+        <li>Estruturação e execução de demandas sob medida: criação, manutenção e melhoria de integrações entre ERP e plataformas externas, desenvolvimento de relatórios analíticos em ADVPL puro (.prw) e diagnósticos de banco de dados SQL Server / APSDU.</li>
         <li>Diagnósticos de performance em banco de dados SQL Server e sustentação de processos corporativos.</li>
       </ul>
     </div>
