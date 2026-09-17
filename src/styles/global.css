@@ -1364,9 +1364,747 @@ html[data-audience='exploring'] [data-audience-focus~='exploring'] {
   }
 }
 
-@media (pointer: fine) {
-  .cursor-halo {
-    display: block;
+/* ==========================================================================
+   Header & Identidade Refinada
+   ========================================================================== */
+.brand__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.brand__role {
+  color: var(--quiet);
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+}
+
+.header-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.28rem 0.65rem;
+  border: 1px solid rgba(84, 84, 84, 0.6);
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--paper);
+  background: rgba(45, 45, 45, 0.6);
+}
+
+.status-indicator {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 8px rgba(74, 222, 128, 0.5);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header-cv-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.55rem 0.85rem;
+  border: 1px solid var(--paper);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.header-cv-link:hover,
+.header-cv-link:focus-visible {
+  background: var(--bright);
+  color: var(--ink);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Hero & Tags de Conversão
+   ========================================================================== */
+.hero-tag-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-bottom: 1.4rem;
+}
+
+.hero-tag-row .eyebrow {
+  margin-bottom: 0;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid rgba(84, 84, 84, 0.8);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--paper);
+  background: rgba(37, 37, 37, 0.8);
+}
+
+.status-badge__dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 6px rgba(74, 222, 128, 0.6);
+}
+
+.button-copy {
+  background: transparent;
+}
+
+.button-copy.is-copied {
+  background: var(--paper);
+  color: var(--ink);
+  border-color: var(--paper);
+}
+
+.copy-icon {
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   Fast Track & Painel de Audiência
+   ========================================================================== */
+.audience-panel {
+  margin-top: clamp(2.5rem, 5vw, 4.5rem);
+  border: 1px solid var(--line);
+  background: rgba(28, 28, 28, 0.6);
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+}
+
+.audience-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.audience-intro {
+  margin-top: 0.4rem;
+  color: var(--quiet);
+  font-size: 0.85rem;
+}
+
+.audience-card {
+  margin-top: 1.5rem;
+}
+
+.audience-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.audience-card__name {
+  margin-top: 0.4rem;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  color: var(--bright);
+  letter-spacing: -0.04em;
+}
+
+.audience-card__role {
+  margin-top: 0.25rem;
+  color: var(--quiet);
+  font-size: 0.95rem;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid var(--line);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--paper);
+}
+
+.status-pill--positive {
+  border-color: rgba(74, 222, 128, 0.4);
+  color: #86efac;
+}
+
+.audience-card__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+  padding-block: 1.25rem;
+  border-block: 1px solid rgba(84, 84, 84, 0.5);
+}
+
+.audience-card__col p {
+  margin-top: 0.4rem;
+  color: var(--paper);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.col-label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--quiet);
+}
+
+.audience-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  align-items: center;
+}
+
+/* ==========================================================================
+   Especialidades & Bloco de Resultados no Mundo Real
+   ========================================================================== */
+.stack-detail__highlights {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(84, 84, 84, 0.4);
+}
+
+.highlights-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--quiet);
+}
+
+.highlights-content {
+  margin-top: 0.35rem;
+  color: var(--paper);
+  font-size: 0.85rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.results-block {
+  margin-top: clamp(4rem, 8vw, 7rem);
+  border-top: 1px solid var(--line);
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.results-title {
+  font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+  color: var(--bright);
+  margin-top: 0.5rem;
+  letter-spacing: -0.04em;
+}
+
+.results-confidentiality {
+  max-width: 28rem;
+  color: var(--quiet);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1.25rem;
+}
+
+.result-card {
+  border: 1px solid var(--line);
+  padding: 1.5rem;
+  background: rgba(37, 37, 37, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: border-color 180ms ease, background-color 180ms ease;
+}
+
+.result-card:hover {
+  border-color: var(--paper);
+  background: rgba(207, 207, 207, 0.04);
+}
+
+.result-card__tag {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--quiet);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.result-card__metric {
+  margin-top: 0.75rem;
+  font-size: clamp(1.25rem, 2.5vw, 1.8rem);
+  font-weight: 800;
+  color: var(--bright);
+  letter-spacing: -0.04em;
+}
+
+.result-card__title {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--paper);
+}
+
+.result-card__description {
+  margin-top: 0.75rem;
+  color: var(--quiet);
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.results-cta {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(84, 84, 84, 0.4);
+  color: var(--quiet);
+  font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   Project Cards (Selected Work)
+   ========================================================================== */
+.project-card {
+  border-bottom: 1px solid var(--line);
+  padding-block: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  transition: background-color 200ms ease, padding 200ms var(--ease);
+}
+
+.project-card:hover {
+  background: rgba(207, 207, 207, 0.03);
+}
+
+.project-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.project-card__identity {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.project-card__number {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.8rem;
+  color: var(--quiet);
+  padding-top: 0.2rem;
+}
+
+.project-card__badge {
+  display: inline-block;
+  margin-bottom: 0.35rem;
+}
+
+.project-card__name {
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+
+.project-card__name a:hover {
+  color: var(--bright);
+  text-decoration: underline;
+}
+
+.project-card__subtitle {
+  margin-top: 0.25rem;
+  color: var(--quiet);
+  font-size: 0.95rem;
+}
+
+.project-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.project-card__year {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  color: var(--quiet);
+}
+
+.project-card__narrative {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1.25rem;
+  background: rgba(30, 30, 30, 0.5);
+  border: 1px solid rgba(84, 84, 84, 0.4);
+  padding: 1.25rem;
+}
+
+.narrative-item p {
+  margin-top: 0.35rem;
+  color: var(--paper);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.narrative-tag {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.4rem;
+  display: inline-block;
+}
+
+.narrative-tag--problem {
+  color: #f87171;
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  background: rgba(248, 113, 113, 0.08);
+}
+
+.narrative-tag--solution {
+  color: #4ade80;
+  border: 1px solid rgba(74, 222, 128, 0.3);
+  background: rgba(74, 222, 128, 0.08);
+}
+
+.project-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 0.5rem;
+}
+
+.project-card__stack {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  color: var(--quiet);
+}
+
+.stack-label {
+  font-weight: 700;
+  color: var(--paper);
+  margin-right: 0.35rem;
+}
+
+.project-card__link {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--paper);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.project-card__link:hover {
+  color: var(--bright);
+}
+
+/* ==========================================================================
+   VANTA Labz
+   ========================================================================== */
+.lab-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.lab-mark {
+  padding: 0.2rem 0.5rem;
+  border: 1px solid var(--line);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--bright);
+}
+
+.lab-desc {
+  max-width: 33rem;
+  margin-top: 1.5rem;
+  color: var(--quiet);
+  font-size: 1.05rem;
+  line-height: 1.45;
+}
+
+.vanta-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 1rem;
+  margin-block: 2rem;
+}
+
+.vanta-card {
+  border: 1px solid var(--line);
+  padding: 1.1rem;
+  background: rgba(30, 30, 30, 0.4);
+}
+
+.vanta-card__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.vanta-card__status {
+  color: #4ade80;
+}
+
+.vanta-card__name {
+  font-size: 1.1rem;
+  color: var(--bright);
+  letter-spacing: -0.03em;
+}
+
+.vanta-card__desc {
+  margin-top: 0.5rem;
+  color: var(--quiet);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.lab-actions {
+  margin-top: 1.5rem;
+}
+
+.terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 0.8rem;
+}
+
+.terminal-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--line);
+}
+
+.terminal-title {
+  margin-left: 0.4rem;
+  font-size: 0.65rem;
+  color: var(--quiet);
+}
+
+.terminal-tree {
+  margin-top: 0.8rem;
+}
+
+.terminal-tree li {
+  border: 0;
+  padding: 0.2rem 0;
+  display: flex;
+  gap: 0.5rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.tree-branch {
+  color: var(--quiet);
+}
+
+.tree-name {
+  color: var(--paper);
+}
+
+.term-cmd {
+  color: #4ade80;
+}
+
+/* ==========================================================================
+   Business Section (ELP Tecnologia)
+   ========================================================================== */
+.business-tag-pill {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.25rem 0.65rem;
+  border: 1px solid var(--line);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--quiet);
+}
+
+.business-distinction {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.distinction-card {
+  border: 1px solid var(--line);
+  padding: 1.25rem;
+  background: rgba(30, 30, 30, 0.4);
+}
+
+.distinction-card--highlight {
+  border-color: var(--paper);
+  background: rgba(45, 45, 45, 0.5);
+}
+
+.distinction-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bright);
+  margin-bottom: 0.5rem;
+}
+
+.distinction-card p {
+  color: var(--paper);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.distinction-card .button,
+.distinction-card .text-link {
+  margin-top: 1rem;
+}
+
+/* ==========================================================================
+   Connect Section Cards
+   ========================================================================== */
+.connect-card {
+  border: 1px solid var(--line);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 13rem;
+  background: rgba(30, 30, 30, 0.4);
+  transition: border-color 180ms ease, background-color 180ms ease;
+}
+
+.connect-card:hover {
+  border-color: var(--paper);
+  background: rgba(207, 207, 207, 0.04);
+}
+
+.connect-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.connect-card__number {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+  color: var(--quiet);
+}
+
+.connect-card__badge {
+  color: var(--quiet);
+}
+
+.connect-card__title {
+  margin-top: 1rem;
+  font-size: 1.3rem;
+  color: var(--bright);
+  letter-spacing: -0.03em;
+}
+
+.connect-card__detail {
+  margin-top: 0.35rem;
+  color: var(--quiet);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.connect-card__actions {
+  margin-top: 1.5rem;
+}
+
+.email-actions-group {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.connect-subtitle {
+  max-width: 38rem;
+  margin-top: 1.5rem;
+  color: var(--quiet);
+  font-size: 1.05rem;
+  line-height: 1.45;
+}
+
+.footer-role {
+  color: var(--quiet);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-top: 0.25rem;
+}
+
+.footer-aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.footer-tech-note {
+  color: var(--quiet);
+  font-size: 0.62rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 880px) {
+  .primary-nav {
+    display: none;
+  }
+
+  .header-actions {
+    margin-left: auto;
   }
 }
 
@@ -1385,6 +2123,10 @@ html[data-audience='exploring'] [data-audience-focus~='exploring'] {
 
 @media (max-width: 1050px) {
   .header-github {
+    display: none;
+  }
+
+  .header-status-pill {
     display: none;
   }
 
@@ -1419,6 +2161,10 @@ html[data-audience='exploring'] [data-audience-focus~='exploring'] {
   .connect-link {
     min-height: 8rem;
   }
+
+  .project-card__narrative {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 @media (max-width: 680px) {
@@ -1431,6 +2177,18 @@ html[data-audience='exploring'] [data-audience-focus~='exploring'] {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  .brand__role {
+    display: none;
+  }
+
+  .header-status-pill {
+    display: none;
+  }
+
+  .header-cv-link span:first-child {
+    display: none;
   }
 
   .primary-nav {
@@ -1447,6 +2205,12 @@ html[data-audience='exploring'] [data-audience-focus~='exploring'] {
 
   .hero {
     min-height: calc(100svh - 4rem);
+  }
+
+  .hero-tag-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
   }
 
   .section-top {
@@ -1488,6 +2252,33 @@ html[data-audience='exploring'] [data-audience-focus~='exploring'] {
   .work-row__arrow {
     grid-column: 3;
     grid-row: 1;
+  }
+
+  .project-card__header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .project-card__footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .audience-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .audience-card__top {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .results-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
   }
 
   .site-footer__inner {

@@ -21,20 +21,26 @@ test('static routes and metadata exist', async () => {
   assert.ok(await exists(join(dist, 'index.html')));
   assert.ok(await exists(join(dist, '404.html')));
   assert.match(indexHtml, /<html lang="pt-BR"/);
-  assert.match(indexHtml, /<title>Eduardo Paranhos — Desenvolvimento de Software<\/title>/);
+  assert.match(indexHtml, /<title>Eduardo Paranhos — Desenvolvedor ADVPL \/ TOTVS Protheus · APIs &amp; ERP<\/title>/);
   assert.match(indexHtml, /property="og:locale" content="pt_BR"/);
   assert.match(indexHtml, /application\/ld\+json/);
+  assert.match(indexHtml, /ProfilePage/);
+  assert.match(indexHtml, /TOTVS Protheus/);
   assert.match(indexHtml, /rel="canonical"/);
   assert.match(indexHtml, /property="og:image"[^>]+og-image\.png/);
+  assert.match(indexHtml, /href="[^"]*eduardo-paranhos-cv\.pdf"/);
+  assert.match(indexHtml, /href="https:\/\/wa\.me\/[^"]+"/);
   assert.match(notFoundHtml, /CAMINHO_<em>NÃO ENCONTRADO\.<\/em>/);
 });
 
 test('core navigation anchors resolve to rendered sections', () => {
   const ids = new Set([...indexHtml.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]));
   const fragments = [...indexHtml.matchAll(/href="(#[^"]+)"/g)].map((match) => match[1].slice(1));
+  assert.ok(ids.has('top'));
   assert.ok(ids.has('main-content'));
   assert.ok(ids.has('context'));
   assert.ok(ids.has('engineering'));
+  assert.ok(ids.has('results'));
   assert.ok(ids.has('work'));
   assert.ok(ids.has('lab'));
   assert.ok(ids.has('business'));

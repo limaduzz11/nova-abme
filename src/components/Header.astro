@@ -4,10 +4,18 @@ import { navItems, publicLinks } from '../data/site';
 
 <header class="site-header">
   <div class="site-header__inner">
-    <a class="brand" href="#top">
+    <a class="brand" href="#top" title="Ir para o início">
       <span class="brand__mark" aria-hidden="true">EP</span>
-      <span class="brand__name">NOVA ABME / EDUARDO</span>
+      <span class="brand__text">
+        <span class="brand__name">EDUARDO PARANHOS</span>
+        <span class="brand__role">TOTVS PROTHEUS & ADVPL</span>
+      </span>
     </a>
+
+    <span class="header-status-pill" aria-label="Status de disponibilidade">
+      <span class="status-indicator" aria-hidden="true"></span>
+      <span>Aberto a propostas</span>
+    </span>
 
     <nav class="primary-nav" aria-label="Navegação principal">
       {
@@ -19,28 +27,30 @@ import { navItems, publicLinks } from '../data/site';
       }
     </nav>
 
-    <a
-      class="header-github"
-      href={publicLinks.github}
-      target="_blank"
-      rel="noopener noreferrer"
-      data-cursor-target
-    >
-      <span class="header-github__label">GitHub</span>
-      <span aria-hidden="true">↗</span>
-    </a>
+    <div class="header-actions">
+      <a
+        class="header-cv-link"
+        href={publicLinks.cv}
+        download
+        data-cursor-target
+        title="Baixar Currículo em PDF"
+      >
+        <span>CV (PDF)</span>
+        <span aria-hidden="true">↓</span>
+      </a>
 
-    <button
-      class="command-trigger"
-      type="button"
-      data-command-open
-      aria-controls="command-palette"
-      aria-haspopup="dialog"
-      aria-keyshortcuts="Control+K"
-      data-cursor-target
-    >
-      <span class="command-trigger__label">Menu</span>
-      <kbd>Ctrl K</kbd>
-    </button>
+      <button
+        class="command-trigger"
+        type="button"
+        data-command-open
+        aria-controls="command-palette"
+        aria-haspopup="dialog"
+        aria-keyshortcuts="Control+K"
+        data-cursor-target
+      >
+        <span class="command-trigger__label">Menu</span>
+        <kbd>Ctrl K</kbd>
+      </button>
+    </div>
   </div>
 </header>

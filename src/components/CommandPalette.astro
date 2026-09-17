@@ -2,11 +2,17 @@
 import { publicLinks } from '../data/site';
 ---
 
-<dialog class="command-dialog" id="command-palette" aria-labelledby="command-title">
+<dialog
+  class="command-dialog"
+  id="command-palette"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="command-title"
+>
   <div class="command-dialog__header">
     <div>
-      <p class="eyebrow">NOVA ABME / EDUARDO</p>
-      <h2 id="command-title">NAVEGAR_</h2>
+      <p class="eyebrow">EDUARDO PARANHOS · NAVEGAÇÃO RÁPIDA</p>
+      <h2 id="command-title">COMANDOS_</h2>
     </div>
     <button class="icon-button" type="button" data-command-close aria-label="Fechar menu de navegação">
       <span aria-hidden="true">×</span>
@@ -14,39 +20,65 @@ import { publicLinks } from '../data/site';
   </div>
 
   <label class="command-search">
-    <span class="sr-only">Filtrar navegação</span>
+    <span class="sr-only">Filtrar comandos ou seções</span>
     <span aria-hidden="true">&gt;</span>
     <input
       type="search"
       data-command-search
-      placeholder="Digite um destino"
+      placeholder="Digite um comando, tecnologia ou destino..."
       autocomplete="off"
       spellcheck="false"
     />
   </label>
 
   <nav class="command-list" aria-label="Destinos do menu" data-command-list>
-    <a href="#engineering" data-command-item data-command-label="Experiência">Experiência <span>→</span></a>
-    <a href="#work" data-command-item data-command-label="Projetos selecionados">Projetos selecionados <span>→</span></a>
-    <a href="#lab" data-command-item data-command-label="Laboratório de código aberto">Laboratório de código aberto <span>→</span></a>
-    <a href="#business" data-command-item data-command-label="ELP Tecnologia">ELP Tecnologia <span>↗</span></a>
-    <a href="#connect" data-command-item data-command-label="Contato e links">Contato e links <span>→</span></a>
+    <a href="#top" data-command-item data-command-label="Início / Hero">Início / Topo <span>→</span></a>
+    <a href="#engineering" data-command-item data-command-label="Experiência ADVPL TOTVS Protheus">Experiência & Especialidades <span>→</span></a>
+    <a href="#results" data-command-item data-command-label="Resultados práticos métricas corporativo">Resultados no mundo real <span>→</span></a>
+    <a href="#work" data-command-item data-command-label="Projetos selecionados código aberto repositórios">Projetos selecionados <span>→</span></a>
+    <a href="#lab" data-command-item data-command-label="Laboratório VANTA Labz open source">VANTA Labz (Open Source) <span>→</span></a>
+    <a href="#business" data-command-item data-command-label="ELP Tecnologia consultoria ERP negócios">ELP Tecnologia (Consultoria) <span>→</span></a>
+    <a href="#connect" data-command-item data-command-label="Contato direto e-mail whatsapp">Contato direto <span>→</span></a>
+    
     <a
-      href={publicLinks.github}
+      href={publicLinks.cv}
+      download
+      data-command-item
+      data-command-label="Baixar currículo PDF CV"
+    >Baixar Currículo (PDF) <span>↓</span></a>
+
+    <a
+      href={publicLinks.whatsapp}
       target="_blank"
       rel="noopener noreferrer"
       data-command-item
-      data-command-label="GitHub"
-    >GitHub <span>↗</span></a>
+      data-command-label="WhatsApp direto mensagem"
+    >WhatsApp direto <span>↗</span></a>
+
     <a
       href={publicLinks.linkedin}
       target="_blank"
       rel="noopener noreferrer"
       data-command-item
-      data-command-label="LinkedIn"
+      data-command-label="LinkedIn perfil profissional"
     >LinkedIn <span>↗</span></a>
+
+    <a
+      href={publicLinks.github}
+      target="_blank"
+      rel="noopener noreferrer"
+      data-command-item
+      data-command-label="GitHub repositórios código"
+    >GitHub <span>↗</span></a>
+
+    <a
+      href={publicLinks.vcard}
+      download
+      data-command-item
+      data-command-label="Salvar contato vCard vcf"
+    >Salvar contato (vCard) <span>↓</span></a>
   </nav>
 
-  <p class="command-empty" data-command-empty hidden>Nenhum caminho encontrado.</p>
-  <p class="command-hint"><kbd>↑</kbd><kbd>↓</kbd> mover <kbd>↵</kbd> abrir <kbd>esc</kbd> fechar</p>
+  <p class="command-empty" data-command-empty hidden>Nenhum comando encontrado.</p>
+  <p class="command-hint"><kbd>↑</kbd><kbd>↓</kbd> navegar <kbd>↵</kbd> selecionar <kbd>esc</kbd> fechar</p>
 </dialog>

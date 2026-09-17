@@ -19,24 +19,46 @@ const configuredSite = import.meta.env.SITE || siteMeta.defaultUrl;
 const canonical = new URL(Astro.url.pathname, configuredSite).href;
 const socialImage = new URL(toPath('/og-image.png'), configuredSite).href;
 
-const personSchema = {
+const profilePageSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Person',
-  '@id': `${configuredSite}#person`,
-  name: siteMeta.name,
-  url: configuredSite,
-  jobTitle: 'Desenvolvedor de software',
-  sameAs: [publicLinks.github, publicLinks.linkedin, publicLinks.elp],
-  knowsAbout: [
-    'Sistemas ERP',
-    'TOTVS Protheus',
-    'ADVPL',
-    'TL++',
-    'SQL Server',
-    'APIs REST',
-    'Arquitetura de software',
-    'Código aberto',
-  ],
+  '@type': 'ProfilePage',
+  '@id': `${configuredSite}#profile`,
+  url: canonical,
+  name: title,
+  description: description,
+  mainEntity: {
+    '@type': 'Person',
+    '@id': `${configuredSite}#person`,
+    name: siteMeta.name,
+    alternateName: siteMeta.shortName,
+    url: configuredSite,
+    jobTitle: siteMeta.role,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'São Paulo',
+      addressRegion: 'SP',
+      addressCountry: 'BR',
+    },
+    sameAs: [publicLinks.github, publicLinks.linkedin, publicLinks.elp],
+    knowsAbout: [
+      'TOTVS Protheus',
+      'ADVPL',
+      'TL++',
+      'APIs REST',
+      'SOAP',
+      'SQL Server',
+      'T-SQL',
+      'PO-UI',
+      'Angular',
+      'Sistemas ERP',
+      'Faturamento (SIGAFAT)',
+      'Financeiro (SIGAFIN)',
+      'Estoque e Custos (SIGAEST)',
+      'Compras (SIGACOM)',
+      'Integração de Sistemas',
+      'Arquitetura de Software',
+    ],
+  },
 };
 ---
 
@@ -54,25 +76,25 @@ const personSchema = {
     <link rel="icon" href={toPath('/favicon.svg')} type="image/svg+xml" />
     <link rel="manifest" href={toPath('/site.webmanifest')} />
 
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content="profile" />
     <meta property="og:locale" content="pt_BR" />
-    <meta property="og:site_name" content={siteMeta.productName} />
+    <meta property="og:site_name" content={siteMeta.name} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={socialImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Eduardo Paranhos — Desenvolvimento de Software" />
+    <meta property="og:image:alt" content="Eduardo Paranhos — Desenvolvedor ADVPL / TOTVS Protheus" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImage} />
-    <meta name="twitter:image:alt" content="Eduardo Paranhos — Desenvolvimento de Software" />
+    <meta name="twitter:image:alt" content="Eduardo Paranhos — Desenvolvedor ADVPL / TOTVS Protheus" />
 
     <title>{title}</title>
-    <script type="application/ld+json" set:html={JSON.stringify(personSchema)}></script>
+    <script type="application/ld+json" set:html={JSON.stringify(profilePageSchema)}></script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Pular para o conteúdo</a>

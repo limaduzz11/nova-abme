@@ -1,23 +1,24 @@
 ---
-import { stackItems } from '../data/site';
+import { provenResults, publicLinks, stackItems } from '../data/site';
 ---
 
 <section class="section-shell engineering-section" id="engineering" data-section-index="03" aria-labelledby="engineering-title">
   <div class="section-top">
     <span class="section-code">02 / EXPERIÊNCIA</span>
-    <span class="section-status">8 ÁREAS DE ATUAÇÃO</span>
+    <span class="section-status">ESPECIALIZAÇÃO TÉCNICA · 8 PILARES</span>
   </div>
 
   <div class="section-heading section-heading--wide reveal">
-      <p class="eyebrow">O QUE EU FAÇO</p>
-      <h2 id="engineering-title">EXPERIÊNCIA PARA<br />RESOLVER PROBLEMAS.</h2>
-      <p>Uma visão prática das ferramentas e áreas que fazem parte do meu trabalho. Escolha uma para ver onde ela entra.</p>
+    <p class="eyebrow">DOMÍNIO TÉCNICO & ERP</p>
+    <h2 id="engineering-title">ENGENHARIA PARA<br />PROCESSOS REAIS.</h2>
+    <p>Do dicionário de dados à integração em nuvem: desenvolvimento com foco em segurança transacional, código limpo e sustentação de processos corporativos.</p>
   </div>
 
+  <!-- Tablist de Especialidades -->
   <div class="engineering-grid">
     <div class="stack-index reveal">
-      <p class="index-heading">ÁREAS DE EXPERIÊNCIA</p>
-      <div class="stack-list" role="tablist" aria-label="Áreas de experiência">
+      <p class="index-heading">ESPECIALIDADES DE ATUAÇÃO</p>
+      <div class="stack-list" role="tablist" aria-label="Especialidades técnicas">
         {
           stackItems.map((item, index) => (
             <button
@@ -33,6 +34,7 @@ import { stackItems } from '../data/site';
               data-description={item.description}
               data-context={item.context}
               data-label={item.label}
+              data-highlights={item.highlights.join(' · ')}
               data-cursor-target
             >
               <span>{item.number}</span>
@@ -49,8 +51,47 @@ import { stackItems } from '../data/site';
       <p class="stack-detail__code" data-stack-code>{stackItems[0].number} / {stackItems[0].label}</p>
       <h3 data-stack-title>{stackItems[0].title}</h3>
       <p data-stack-description>{stackItems[0].description}</p>
+      
+      <div class="stack-detail__highlights">
+        <span class="highlights-label">Tópicos & Módulos:</span>
+        <p class="highlights-content" data-stack-highlights>{stackItems[0].highlights.join(' · ')}</p>
+      </div>
+
       <span class="stack-detail__rule" aria-hidden="true"></span>
-      <p class="stack-detail__note">Tecnologia é meio. O contexto vem primeiro.</p>
+      <p class="stack-detail__note">Tecnologia é meio. A estabilidade do negócio vem em primeiro lugar.</p>
+    </div>
+  </div>
+
+  <!-- Bloco de Resultados no Mundo Real (Métricas Anonimizadas) -->
+  <div class="results-block reveal" id="results">
+    <div class="results-header">
+      <div>
+        <p class="eyebrow">RESULTADOS NO MUNDO REAL</p>
+        <h3 class="results-title">IMPACTO EM AMBIENTES DE PRODUÇÃO</h3>
+      </div>
+      <p class="results-confidentiality">
+        O trabalho corporativo permanece privado sob sigilo ético e NDA. Abaixo estão padrões de desafios resolvidos e entregues com sucesso.
+      </p>
+    </div>
+
+    <div class="results-grid">
+      {
+        provenResults.map((result) => (
+          <div class="result-card">
+            <span class="result-card__tag">{result.tag}</span>
+            <div class="result-card__metric">{result.metric}</div>
+            <h4 class="result-card__title">{result.title}</h4>
+            <p class="result-card__description">{result.description}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="results-cta">
+      <span>Quer avaliar se meu perfil atende à necessidade da sua equipe?</span>
+      <a class="text-link" href={publicLinks.cv} download data-cursor-target>
+        Baixar currículo completo (PDF) ↓
+      </a>
     </div>
   </div>
 </section>

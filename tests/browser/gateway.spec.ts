@@ -20,11 +20,12 @@ test('desktop keeps the main routes visible and captures a reference', async ({ 
   await page.setViewportSize({ width: 1440, height: 1000 });
   await gotoPage(page);
 
-  await expect(page).toHaveTitle('Eduardo Paranhos — Desenvolvimento de Software');
+  await expect(page).toHaveTitle('Eduardo Paranhos — Desenvolvedor ADVPL / TOTVS Protheus · APIs & ERP');
   await expect(page.locator('html')).toHaveAttribute('lang', 'pt-BR');
   await expect(page.locator('#hero-title')).toBeVisible();
   await expect(page.locator('#context')).toBeVisible();
   await expect(page.locator('#engineering')).toBeVisible();
+  await expect(page.locator('#results')).toBeVisible();
   await expect(page.locator('#work')).toBeVisible();
   await expect(page.locator('#connect')).toBeVisible();
   await expect(page.locator('.primary-nav')).toBeVisible();
@@ -70,24 +71,28 @@ test('audience and stack context are keyboard and session aware', async ({ page 
 
   const hiring = page.locator('[data-audience-option="hiring"]');
   await expect(hiring).toHaveAttribute('aria-pressed', 'true');
-  await hiring.click();
-  await expect(hiring).toHaveAttribute('aria-pressed', 'true');
-  await expect(page.locator('[data-audience-cta]')).toContainText('EXPERIÊNCIA E PROJETOS');
+  await expect(page.locator('[data-audience-card="hiring"]')).toBeVisible();
 
-  const businessRoute = page.locator('[data-context-option]').nth(2);
+  const software = page.locator('[data-audience-option="software"]');
+  await software.click();
+  await expect(software).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('[data-audience-card="software"]')).toBeVisible();
+  await expect(page.locator('[data-audience-card="hiring"]')).toBeHidden();
+
+  const businessRoute = page.locator('[data-context-option][data-context-id="business"]');
   await businessRoute.click();
-  await expect(page.locator('[data-context-detail-label]')).toContainText('ELP Tecnologia');
-  await expect(page.locator('[data-context-cta]')).toContainText('CONHECER A ELP');
+  await expect(page.locator('[data-context-detail-label]')).toContainText('ELP');
+  await expect(page.locator('[data-context-cta]')).toContainText('ELP');
 
   const firstStackItem = page.locator('[data-stack-option]').first();
   const secondStackItem = page.locator('[data-stack-option]').nth(1);
   await firstStackItem.focus();
   await page.keyboard.press('ArrowDown');
   await expect(secondStackItem).toHaveAttribute('aria-selected', 'true');
-  await expect(page.locator('[data-stack-title]')).toContainText('Sistemas corporativos');
+  await expect(page.locator('[data-stack-title]')).toContainText('módulos operacionais');
 
   await page.reload();
-  await expect(hiring).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('[data-audience-option="software"]')).toHaveAttribute('aria-pressed', 'true');
 });
 
 test('reduced motion exposes stable content without animation dependency', async ({ page }) => {

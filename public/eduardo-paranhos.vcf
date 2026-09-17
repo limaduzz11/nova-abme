@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Paranhos;Eduardo;de Lima;;
+FN:Eduardo de Lima Paranhos
+TITLE:Desenvolvedor ADVPL / TOTVS Protheus
+ORG:ELP Tecnologia
+EMAIL;TYPE=INTERNET,WORK:eduardodelimaparanhos@gmail.com
+URL:https://nova-abme.pages.dev
+URL;TYPE=LinkedIn:https://www.linkedin.com/in/eduardo-de-lima-paranhos-910930263/
+URL;TYPE=GitHub:https://github.com/limaduzz11
+ADR;TYPE=WORK:;;São Paulo;SP;;Brasil
+NOTE:Desenvolvedor especialista em TOTVS Protheus, ADVPL, TL++, APIs REST e SQL Server.
+END:VCARD

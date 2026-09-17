@@ -5,60 +5,97 @@ import { publicLinks, siteMeta } from '../data/site';
 <section class="hero section-shell" id="top" data-section-index="01" aria-labelledby="hero-title">
   <div class="section-top">
     <span class="section-code">00 / INÍCIO</span>
-    <span class="section-status">NOVA ABME / PERFIL 001</span>
+    <span class="section-status">PERFIL PROFISSIONAL · TOTVS PROTHEUS</span>
   </div>
 
   <div class="hero-grid">
     <div class="hero-copy reveal">
-      <p class="eyebrow">EDUARDO DE LIMA PARANHOS / DESENVOLVIMENTO DE SOFTWARE</p>
+      <div class="hero-tag-row">
+        <p class="eyebrow">EDUARDO DE LIMA PARANHOS · SOFTWARE DEVELOPER</p>
+        <span class="status-badge" role="status">
+          <span class="status-badge__dot" aria-hidden="true"></span>
+          <span>Aberto a propostas · Remoto / CLT ou PJ</span>
+        </span>
+      </div>
+
       <h1 id="hero-title">
         <span>SOFTWARE</span>
         <span>QUE FUNCIONA</span>
         <span>NO <em>MUNDO REAL.</em></span>
       </h1>
+
       <p class="hero-lede">
-        Desenvolvedor de software com experiência em ERP, integrações, automação e produtos digitais.
+        Desenvolvedor especialista em <strong>TOTVS Protheus</strong>, <strong>ADVPL / TL++</strong>, <strong>APIs REST</strong> e <strong>SQL Server</strong>. Criação de integrações de alta confiabilidade, regras de negócio em Faturamento, Financeiro e Estoque, e automação corporativa.
       </p>
 
-      <div class="hero-actions" aria-label="Caminhos principais">
-        <a class="button button-primary" href={publicLinks.linkedin} target="_blank" rel="noopener noreferrer" data-cursor-target>
-          Ver perfil no LinkedIn <span aria-hidden="true">↗</span>
+      <div class="hero-actions" aria-label="Caminhos principais de conversão">
+        <a class="button button-primary" href={publicLinks.cv} download data-cursor-target>
+          <span>Baixar Currículo (PDF)</span>
+          <span aria-hidden="true">↓</span>
         </a>
-        <a class="button" href="#work" data-cursor-target>
-          Ver projetos <span aria-hidden="true">→</span>
+
+        <a class="button" href={publicLinks.linkedin} target="_blank" rel="noopener noreferrer" data-cursor-target>
+          <span>LinkedIn</span>
+          <span aria-hidden="true">↗</span>
         </a>
-        <a class="button button-text" href="#connect" data-cursor-target>
-          Falar comigo <span aria-hidden="true">→</span>
+
+        <a class="button" href={publicLinks.whatsapp} target="_blank" rel="noopener noreferrer" data-cursor-target>
+          <span>WhatsApp</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+
+        <button
+          class="button button-copy"
+          type="button"
+          data-copy-email={publicLinks.emailRaw}
+          data-cursor-target
+          title="Clique para copiar o e-mail"
+        >
+          <span data-copy-label>Copiar E-mail</span>
+          <span class="copy-icon" aria-hidden="true">⧉</span>
+        </button>
+
+        <a class="button button-text" href="#work" data-cursor-target>
+          <span>Ver projetos</span>
+          <span aria-hidden="true">→</span>
         </a>
       </div>
     </div>
 
-    <aside class="hero-aside reveal" aria-label="Resumo do perfil">
+    <aside class="hero-aside reveal" aria-label="Resumo rápido do perfil para triagem técnica">
       <div class="hero-aside__top">
-        <span class="micro-label">EDP / 001</span>
+        <span class="micro-label">RESUMO TÉCNICO</span>
         <span class="signal-dot" aria-hidden="true"></span>
       </div>
-      <p class="hero-aside__title">Um resumo rápido da experiência, dos projetos e dos caminhos para falar comigo.</p>
+      <p class="hero-aside__title">Desenvolvimento focado em estabilidade de processos e dados no ERP.</p>
       <dl class="signal-list">
         <div>
-          <dt>Foco</dt>
-          <dd>Software e ERP</dd>
+          <dt>Especialidade</dt>
+          <dd>TOTVS Protheus · ADVPL / TL++</dd>
         </div>
         <div>
-          <dt>Experiência</dt>
-          <dd>Integrações e automação</dd>
+          <dt>Módulos</dt>
+          <dd>FAT · FIN · EST · COM</dd>
         </div>
         <div>
-          <dt>Contato</dt>
-          <dd>Direto e simples</dd>
+          <dt>Integrações</dt>
+          <dd>APIs REST · SOAP · Marketplaces</dd>
+        </div>
+        <div>
+          <dt>Banco</dt>
+          <dd>SQL Server & T-SQL</dd>
+        </div>
+        <div>
+          <dt>Atuação</dt>
+          <dd>São Paulo & Remoto (GMT-3)</dd>
         </div>
       </dl>
-      <p class="hero-aside__foot">NOVA ABME / {siteMeta.profileSlug}</p>
+      <p class="hero-aside__foot">São Paulo · Brasil · {siteMeta.year}</p>
     </aside>
   </div>
 
   <a class="scroll-cue" href="#context" data-cursor-target>
-    <span>Role para conhecer o trabalho</span>
+    <span>Role para explorar caminhos, experiência e projetos</span>
     <span aria-hidden="true">↓</span>
   </a>
 </section>

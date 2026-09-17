@@ -5,18 +5,22 @@ import { publicLinks, siteMeta } from '../data/site';
 <footer class="site-footer">
   <div class="site-footer__inner">
     <div>
-      <p class="footer-name">EDUARDO PARANHOS</p>
-      <p class="footer-meta">NOVA ABME / {siteMeta.profileSlug}</p>
+      <p class="footer-name">{siteMeta.name.toUpperCase()}</p>
+      <p class="footer-role">DESENVOLVEDOR ADVPL / TOTVS PROTHEUS</p>
+      <p class="footer-meta">SÃO PAULO · BRASIL · {siteMeta.year}</p>
     </div>
-    <div>
-      <p class="footer-meta">SÃO PAULO / BRASIL</p>
-      <p class="footer-meta">{siteMeta.year}</p>
-    </div>
-    <nav class="footer-links" aria-label="Navegação do rodapé">
-      <a href={publicLinks.github} target="_blank" rel="noopener noreferrer" data-cursor-target>GitHub ↗</a>
+
+    <nav class="footer-links" aria-label="Links rápidos do rodapé">
+      <a href={publicLinks.cv} download data-cursor-target>Currículo (PDF) ↓</a>
       <a href={publicLinks.linkedin} target="_blank" rel="noopener noreferrer" data-cursor-target>LinkedIn ↗</a>
+      <a href={publicLinks.github} target="_blank" rel="noopener noreferrer" data-cursor-target>GitHub ↗</a>
+      <a href={publicLinks.whatsapp} target="_blank" rel="noopener noreferrer" data-cursor-target>WhatsApp ↗</a>
       <a href={publicLinks.elp} target="_blank" rel="noopener noreferrer" data-cursor-target>ELP Tecnologia ↗</a>
     </nav>
-    <p class="footer-closing">FEITO PARA A WEB.<br />FEITO PARA DURAR.</p>
+
+    <div class="footer-aside">
+      <p class="footer-closing">SOFTWARE ROBUSTO.<br />FEITO PARA O MUNDO REAL.</p>
+      <p class="footer-tech-note">Astro Static · Zero cookies · Arquitetura offline-first</p>
+    </div>
   </div>
 </footer>

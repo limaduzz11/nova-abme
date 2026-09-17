@@ -40,7 +40,7 @@ const setContext = (option: HTMLAnchorElement): void => {
   });
 
   if (contextCopy) contextCopy.textContent = option.dataset.description ?? '';
-  if (contextLabel) contextLabel.textContent = `CAMINHO ATUAL / ${option.dataset.contextLabel ?? ''}`;
+  if (contextLabel) contextLabel.textContent = `CAMINHO / ${option.dataset.contextLabel ?? ''}`;
   if (contextCta) {
     contextCta.href = option.dataset.href ?? '#engineering';
     contextCta.textContent = option.dataset.cta ?? 'ABRIR CAMINHO →';
@@ -52,17 +52,22 @@ contextOptions.forEach((option) => {
 });
 if (contextOptions[0]) setContext(contextOptions[0]);
 
-// Visitor intent is deliberately session-scoped: it changes emphasis, never access.
+// Visitor intent is session-scoped: it updates the fast track card and emphasis without hiding anything.
 const audienceOptions = selectAll<HTMLButtonElement>('[data-audience-option]');
 const audienceNote = select<HTMLElement>('[data-audience-note]');
 const audienceCta = select<HTMLAnchorElement>('[data-audience-cta]');
+const audienceCards = selectAll<HTMLElement>('[data-audience-card]');
 
 const setAudience = (option: HTMLButtonElement, persist = true): void => {
-  const audience = option.dataset.audienceOption ?? 'exploring';
+  const audience = option.dataset.audienceOption ?? 'hiring';
   root.dataset.audience = audience;
 
   audienceOptions.forEach((current) => {
     current.setAttribute('aria-pressed', current === option ? 'true' : 'false');
+  });
+
+  audienceCards.forEach((card) => {
+    card.hidden = card.dataset.audienceCard !== audience;
   });
 
   if (audienceNote) audienceNote.textContent = option.dataset.note ?? '';
@@ -96,12 +101,13 @@ const initialAudience =
   audienceOptions.find((option) => option.dataset.audienceOption === storedAudience) ?? defaultAudience;
 if (initialAudience) setAudience(initialAudience, false);
 
-// Stack index: a small, accessible tablist replaces proficiency bars.
+// Stack index: an accessible tablist for technical specialities.
 const stackOptions = selectAll<HTMLButtonElement>('[data-stack-option]');
 const stackContext = select<HTMLElement>('[data-stack-context]');
 const stackCode = select<HTMLElement>('[data-stack-code]');
 const stackTitle = select<HTMLElement>('[data-stack-title]');
 const stackDescription = select<HTMLElement>('[data-stack-description]');
+const stackHighlights = select<HTMLElement>('[data-stack-highlights]');
 
 const setStack = (option: HTMLButtonElement, focus = false): void => {
   stackOptions.forEach((current) => {
@@ -114,6 +120,7 @@ const setStack = (option: HTMLButtonElement, focus = false): void => {
   if (stackCode) stackCode.textContent = `${option.dataset.number ?? ''} / ${option.dataset.label ?? ''}`;
   if (stackTitle) stackTitle.textContent = option.dataset.title ?? '';
   if (stackDescription) stackDescription.textContent = option.dataset.description ?? '';
+  if (stackHighlights) stackHighlights.textContent = option.dataset.highlights ?? '';
   if (focus) option.focus();
 };
 
@@ -134,22 +141,29 @@ stackOptions.forEach((option, index) => {
 });
 if (stackOptions[0]) setStack(stackOptions[0]);
 
-// Section index is informational only and follows the viewport.
-const currentSection = select<HTMLElement>('[data-current-section]');
-const indexedSections = selectAll<HTMLElement>('[data-section-index]');
-if (currentSection && 'IntersectionObserver' in window) {
-  const sectionObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          currentSection.textContent = `${entry.target.getAttribute('data-section-index')} / 07`;
-        }
-      });
-    },
-    { rootMargin: '-38% 0px -52% 0px', threshold: 0 },
-  );
-  indexedSections.forEach((section) => sectionObserver.observe(section));
-}
+// Email copy buttons: copies address with feedback, zero telemetry, zero backends.
+const copyButtons = selectAll<HTMLButtonElement>('[data-copy-email]');
+copyButtons.forEach((button) => {
+  button.addEventListener('click', async () => {
+    const email = button.dataset.copyEmail;
+    if (!email) return;
+    try {
+      if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+        await navigator.clipboard.writeText(email);
+      }
+      const label = button.querySelector<HTMLElement>('[data-copy-label]');
+      const originalText = label ? label.textContent : '';
+      if (label) label.textContent = 'Copiado! ✓';
+      button.classList.add('is-copied');
+      window.setTimeout(() => {
+        if (label && originalText) label.textContent = originalText;
+        button.classList.remove('is-copied');
+      }, 2000);
+    } catch {
+      // Graceful degradation when clipboard permission is restricted
+    }
+  });
+});
 
 // Fine-pointer cursor halo. The native cursor remains available at all times.
 const cursor = select<HTMLElement>('[data-cursor]');
@@ -181,7 +195,7 @@ if (cursor && window.matchMedia('(pointer: fine)').matches && !reducedMotion) {
   });
 }
 
-// Command palette: optional navigation accelerator with proper dialog focus handling.
+// Command palette: navigation accelerator with proper dialog focus handling.
 const dialog = select<HTMLDialogElement>('#command-palette');
 const openButtons = selectAll<HTMLButtonElement>('[data-command-open]');
 const closeButton = select<HTMLButtonElement>('[data-command-close]');

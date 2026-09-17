@@ -1,21 +1,172 @@
 ---
-import { audienceModes, contextRoutes } from '../data/site';
+import { audienceModes, contextRoutes, publicLinks } from '../data/site';
 ---
 
 <section class="section-shell context-section" id="context" data-section-index="02" aria-labelledby="context-title">
   <div class="section-top">
     <span class="section-code">01 / CAMINHOS</span>
-    <span class="section-status">ESCOLHA UM CAMINHO</span>
+    <span class="section-status">ROTEAMENTO DE INTERESSE</span>
   </div>
 
   <div class="section-heading reveal">
-      <p class="eyebrow">COMECE POR AQUI</p>
-      <h2 id="context-title">O QUE VOCÊ<br />PROCURA?</h2>
-      <p>Escolha um caminho e chegue rápido ao que faz sentido para você.</p>
+    <p class="eyebrow">NAVEGAÇÃO DIRETA</p>
+    <h2 id="context-title">ESCOLHA SEU<br />OBJETIVO.</h2>
+    <p>Acesse exatamente o que procura sem cliques desnecessários: triagem para recrutadores, soluções corporativas ou código aberto.</p>
   </div>
 
+  <!-- Seletor de Perfil do Visitante (Fast Track Interativo) -->
+  <div class="audience-panel reveal" aria-labelledby="audience-title">
+    <div class="audience-header">
+      <div>
+        <p class="eyebrow" id="audience-title">QUAL É O SEU PERFIL DE VISITA?</p>
+        <p class="audience-intro">Selecione para ajustar os destaques da página ao que você precisa avaliar.</p>
+      </div>
+
+      <div class="audience-switcher__options" role="group" aria-label="Objetivo da visita">
+        {
+          audienceModes.map((mode) => (
+            <button
+              type="button"
+              class="audience-option"
+              data-audience-option={mode.id}
+              data-note={mode.note}
+              data-cta={mode.cta}
+              data-href={mode.href}
+              aria-pressed={mode.id === 'hiring' ? 'true' : 'false'}
+              data-cursor-target
+            >
+              {mode.label}
+            </button>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Painel 1: Fast Track Recrutador -->
+    <div class="audience-card" data-audience-card="hiring">
+      <div class="audience-card__top">
+        <div>
+          <span class="micro-label">FAST TRACK · RECRUTAMENTO & ATS</span>
+          <h3 class="audience-card__name">Eduardo de Lima Paranhos</h3>
+          <p class="audience-card__role">Desenvolvedor ADVPL / TOTVS Protheus · APIs REST · SQL Server</p>
+        </div>
+        <span class="status-pill status-pill--positive">🟢 Aberto a propostas</span>
+      </div>
+
+      <div class="audience-card__grid">
+        <div class="audience-card__col">
+          <span class="col-label">Especialidades Técnicas</span>
+          <p>TOTVS Protheus, ADVPL, TL++, APIs RESTful, Webservices SOAP, SQL Server (T-SQL), PO-UI, Angular.</p>
+        </div>
+        <div class="audience-card__col">
+          <span class="col-label">Módulos do ERP</span>
+          <p>Faturamento (SIGAFAT), Financeiro (SIGAFIN), Estoque/Custos (SIGAEST), Compras (SIGACOM).</p>
+        </div>
+        <div class="audience-card__col">
+          <span class="col-label">Localização & Regime</span>
+          <p>São Paulo, SP · Disponível para CLT ou PJ · Remoto ou Híbrido (GMT-3).</p>
+        </div>
+      </div>
+
+      <div class="audience-card__actions">
+        <a class="button button-primary" href={publicLinks.cv} download data-cursor-target>
+          <span>Baixar Currículo em PDF</span>
+          <span aria-hidden="true">↓</span>
+        </a>
+        <a class="button" href={publicLinks.linkedin} target="_blank" rel="noopener noreferrer" data-cursor-target>
+          <span>Perfil no LinkedIn ↗</span>
+        </a>
+        <a class="button" href={publicLinks.whatsapp} target="_blank" rel="noopener noreferrer" data-cursor-target>
+          <span>WhatsApp ↗</span>
+        </a>
+        <a class="button button-text" href="#engineering" data-cursor-target>
+          <span>Ver stack detalhada →</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Painel 2: Consultoria & Negócios -->
+    <div class="audience-card" data-audience-card="software" hidden>
+      <div class="audience-card__top">
+        <div>
+          <span class="micro-label">PROJETOS CORPORATIVOS & CONSULTORIA</span>
+          <h3 class="audience-card__name">ELP Tecnologia</h3>
+          <p class="audience-card__role">Integrações de ERP, regras de negócio e automação de sistemas</p>
+        </div>
+        <span class="status-pill">Parcerias & Projetos PJ</span>
+      </div>
+
+      <div class="audience-card__grid">
+        <div class="audience-card__col">
+          <span class="col-label">Escopo de Atuação</span>
+          <p>Integrações de e-commerce e marketplaces com Protheus, conciliação bancária automatizada e rotinas customizadas.</p>
+        </div>
+        <div class="audience-card__col">
+          <span class="col-label">Modelo de Contratação</span>
+          <p>Prestação de serviços como pessoa jurídica (PJ), sprints dedicadas ou consultoria técnica pontual.</p>
+        </div>
+        <div class="audience-card__col">
+          <span class="col-label">Diferencial</span>
+          <p>Código limpo, arquitetura documentada e foco em estabilidade sem retrabalho operacional.</p>
+        </div>
+      </div>
+
+      <div class="audience-card__actions">
+        <a class="button button-primary" href={publicLinks.elp} target="_blank" rel="noopener noreferrer" data-cursor-target>
+          <span>Acessar ELP Tecnologia ↗</span>
+        </a>
+        <a class="button" href={publicLinks.whatsapp} target="_blank" rel="noopener noreferrer" data-cursor-target>
+          <span>Conversar sobre projeto ↗</span>
+        </a>
+        <a class="button button-text" href="#business" data-cursor-target>
+          <span>Saber mais sobre a consultoria →</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Painel 3: Código Aberto & Experimentos -->
+    <div class="audience-card" data-audience-card="exploring" hidden>
+      <div class="audience-card__top">
+        <div>
+          <span class="micro-label">CÓDIGO ABERTO & EXPERIMENTOS</span>
+          <h3 class="audience-card__name">Laboratório & Repositórios Públicos</h3>
+          <p class="audience-card__role">MCP Server para Protheus, padrões REST, componentes PO-UI e telemetria</p>
+        </div>
+        <span class="status-pill">Open Source</span>
+      </div>
+
+      <div class="audience-card__grid">
+        <div class="audience-card__col">
+          <span class="col-label">Ferramentas de IA & MCP</span>
+          <p>protheus-research: servidor de busca técnica estruturada no Protheus para ferramentas e agentes inteligentes.</p>
+        </div>
+        <div class="audience-card__col">
+          <span class="col-label">Arquitetura & Referência</span>
+          <p>protheus-rest-lab e protheus-po-ui-template como bibliotecas de código limpo e padrões reaproveitáveis.</p>
+        </div>
+        <div class="audience-card__col">
+          <span class="col-label">VANTA Labz</span>
+          <p>Iniciativas focadas em software offline-first, leitores de conteúdo e ferramentas utilitárias.</p>
+        </div>
+      </div>
+
+      <div class="audience-card__actions">
+        <a class="button button-primary" href="#work" data-cursor-target>
+          <span>Explorar Projetos Selecionados →</span>
+        </a>
+        <a class="button" href={publicLinks.github} target="_blank" rel="noopener noreferrer" data-cursor-target>
+          <span>Ver GitHub Completo ↗</span>
+        </a>
+        <a class="button button-text" href="#lab" data-cursor-target>
+          <span>Conhecer o VANTA Labz →</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Roteador tradicional em lista (preservado e refinado) -->
   <div class="router-layout">
-    <nav class="router-options reveal" aria-label="Caminhos do perfil">
+    <nav class="router-options reveal" aria-label="Seções do perfil">
       {
         contextRoutes.map((route, index) => (
           <a
@@ -39,39 +190,11 @@ import { audienceModes, contextRoutes } from '../data/site';
     </nav>
 
     <aside class="context-detail reveal" id="context-detail" aria-live="polite">
-      <p class="micro-label" data-context-detail-label>CAMINHO ATUAL / RECRUTAMENTO</p>
+      <p class="micro-label" data-context-detail-label>CAMINHO / RECRUTAMENTO & PERFIL</p>
       <p class="context-detail__copy" data-context-copy>{contextRoutes[0].description}</p>
       <a class="text-link" href={contextRoutes[0].href} data-context-cta data-cursor-target>
         {contextRoutes[0].cta}
       </a>
     </aside>
-  </div>
-
-  <div class="audience-switcher reveal" aria-labelledby="audience-title">
-    <div>
-      <p class="eyebrow" id="audience-title">QUAL É O SEU OBJETIVO?</p>
-      <p class="audience-switcher__note" data-audience-note>{audienceModes[2].note}</p>
-    </div>
-    <div class="audience-switcher__options" role="group" aria-label="Objetivo da visita">
-      {
-        audienceModes.map((mode) => (
-          <button
-            type="button"
-            class="audience-option"
-            data-audience-option={mode.id}
-            data-note={mode.note}
-            data-cta={mode.cta}
-            data-href={mode.href}
-             aria-pressed={mode.id === 'hiring' ? 'true' : 'false'}
-            data-cursor-target
-          >
-            {mode.label}
-          </button>
-        ))
-      }
-    </div>
-    <a class="audience-switcher__cta text-link" href="#lab" data-audience-cta data-cursor-target>
-      Ver projetos públicos →
-    </a>
   </div>
 </section>

@@ -1,42 +1,71 @@
 ---
-import { publicLinks } from '../data/site';
+import { contactChannels, publicLinks } from '../data/site';
 ---
 
 <section class="section-shell connect-section" id="connect" data-section-index="07" aria-labelledby="connect-title">
   <div class="section-top">
     <span class="section-code">06 / CONTATO</span>
-    <span class="section-status">CAMINHOS DIRETOS</span>
+    <span class="section-status">SEM ATRITO · CONVERSÃO DIRETA</span>
   </div>
 
   <div class="connect-heading reveal">
-      <p class="eyebrow">SEM FORMULÁRIO COMPLICADO</p>
-      <h2 id="connect-title">VAMOS<br /><em>CONVERSAR?</em></h2>
+    <p class="eyebrow">CONTATO DIRETO E IMEDIATO</p>
+    <h2 id="connect-title">VAMOS<br /><em>CONVERSAR?</em></h2>
+    <p class="connect-subtitle">
+      Sem formulários longos e sem barreiras: escolha o canal mais ágil para falar sobre vagas, consultorias ou trocar ideias sobre engenharia de software e ERP.
+    </p>
   </div>
 
   <div class="connect-grid">
-    <a class="connect-link reveal" href={publicLinks.github} target="_blank" rel="noopener noreferrer" data-audience-focus="hiring exploring" data-cursor-target>
-      <span class="connect-link__number">01</span>
-      <span>
-        <strong>GitHub</strong>
-        <small>Código, projetos e experimentos públicos</small>
-      </span>
-      <span aria-hidden="true">↗</span>
-    </a>
-    <a class="connect-link reveal" href={publicLinks.linkedin} target="_blank" rel="noopener noreferrer" data-audience-focus="hiring" data-cursor-target>
-      <span class="connect-link__number">02</span>
-      <span>
-        <strong>LinkedIn</strong>
-        <small>Experiência profissional e trajetória</small>
-      </span>
-      <span aria-hidden="true">↗</span>
-    </a>
-    <a class="connect-link reveal" href={publicLinks.contact} target="_blank" rel="noopener noreferrer" data-audience-focus="software" data-cursor-target>
-      <span class="connect-link__number">03</span>
-      <span>
-        <strong>Contact</strong>
-        <small>Fale comigo pela ELP Tecnologia</small>
-      </span>
-      <span aria-hidden="true">↗</span>
-    </a>
+    {
+      contactChannels.map((channel) => (
+        <div class="connect-card reveal">
+          <div class="connect-card__header">
+            <span class="connect-card__number">{channel.number}</span>
+            <span class="micro-label connect-card__badge">{channel.badge}</span>
+          </div>
+
+          <div class="connect-card__body">
+            <h3 class="connect-card__title">{channel.label}</h3>
+            <p class="connect-card__detail">{channel.detail}</p>
+          </div>
+
+          <div class="connect-card__actions">
+            {channel.id === 'email' ? (
+              <div class="email-actions-group">
+                <a
+                  class="button button-primary"
+                  href={channel.href}
+                  data-cursor-target
+                >
+                  <span>Enviar e-mail ↗</span>
+                </a>
+                <button
+                  class="button button-copy"
+                  type="button"
+                  data-copy-email={publicLinks.emailRaw}
+                  data-cursor-target
+                  title="Copiar endereço de e-mail"
+                >
+                  <span data-copy-label>Copiar</span>
+                  <span aria-hidden="true">⧉</span>
+                </button>
+              </div>
+            ) : (
+              <a
+                class:list={['button', { 'button-primary': channel.id === 'whatsapp' || channel.id === 'cv' }]}
+                href={channel.href}
+                target={channel.isExternal ? '_blank' : undefined}
+                rel={channel.isExternal ? 'noopener noreferrer' : undefined}
+                download={channel.download ? true : undefined}
+                data-cursor-target
+              >
+                <span>{channel.actionText}</span>
+              </a>
+            )}
+          </div>
+        </div>
+      ))
+    }
   </div>
 </section>
