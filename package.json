@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "description": "NOVA Abme — static engineering landing page and personal gateway.",
   "type": "module",
-  "private": false,
+  "private": true,
+  "license": "UNLICENSED",
   "engines": {
     "node": ">=22.12.0"
   },

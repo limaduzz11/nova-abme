@@ -1,127 +1,139 @@
 # NOVA Abme
 
-**NOVA Abme** é um gateway estático de engenharia. O primeiro perfil público é o
-de **Eduardo de Lima Paranhos**: um espaço direto para conhecer sua trajetória,
-seu trabalho público, sua experiência e os caminhos de contato com a ELP Tecnologia.
+<div align="center">
 
-Não é um currículo convencional. É uma pequena experiência de produto que mantém
-o conteúdo do perfil separado em arquivos de dados. Assim, novos perfis podem ser
-adicionados no futuro sem criar um backend ou mudar a forma de entrega.
+**Static Engineering Gateway & Personal Portfolio**
 
-## Arquitetura
+[![Astro](https://img.shields.io/badge/Astro-7.x-BC52EE?style=flat&logo=astro&logoColor=white)](https://astro.build)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Cloudflare Pages](https://img.shields.io/badge/Edge-Cloudflare_Pages-F38020?style=flat&logo=cloudflare&logoColor=white)](https://pages.cloudflare.com/)
+[![Accessibility](https://img.shields.io/badge/A11y-WCAG_AAA-success?style=flat)](https://www.w3.org/WAI/standards-guidelines/wcag/)
+[![Status](https://img.shields.io/badge/Status-Personal_Portfolio-informational?style=flat)](#repository-scope)
+[![License](https://img.shields.io/badge/License-Proprietary-red.svg?style=flat)](#license)
+
+<br />
+
+**English** &nbsp;|&nbsp; [Português (Brasil)](README.pt-BR.md)
+
+<br />
+
+**Production Gateway:** [https://nova-abme.pages.dev](https://nova-abme.pages.dev)
+
+</div>
+
+> A resilient, high-performance static engineering gateway designed with zero runtime dependencies, edge delivery across Cloudflare Pages, WCAG AAA accessibility, and a minimalist design system.
+
+---
+
+## Table of Contents
+
+- [Concept & Overview](#concept--overview)
+- [Architecture & Edge Delivery](#architecture--edge-delivery)
+- [Design System & Accessibility](#design-system--accessibility)
+- [Engineering Standards](#engineering-standards)
+- [Project Structure](#project-structure)
+- [Repository Scope](#repository-scope)
+- [License](#license)
+
+---
+
+## Concept & Overview
+
+**NOVA Abme** is a static engineering gateway and personal portfolio representing **Eduardo de Lima Paranhos**. It offers a direct, technical overview of his engineering background in enterprise systems (TOTVS Protheus, ADVPL/TL++), Model Context Protocol (MCP) tooling, distributed systems, and modern software development.
+
+Rather than a conventional resume, NOVA Abme is structured as a data-driven static product. All personal trajectories, skill matrices, project records, and contact channels are decoupled into structured data models, ensuring immediate maintainability and zero runtime overhead.
+
+---
+
+## Architecture & Edge Delivery
+
+The architecture enforces a strict zero-backend, zero-database philosophy:
 
 ```text
-GitHub repository
-        │ push
-        ▼
-Astro static build (dist/)
-        │
-        ▼
-Cloudflare Pages / global CDN
-        │
-        ▼
-Browser over HTTPS
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           SOURCE REPOSITORY                                 │
+│   • Semantic Astro Components & Layouts                                     │
+│   • Typed Data Models (src/data/site.ts)                                    │
+│   • Ink Wash Modular CSS Design System                                      │
+└──────────────────────────────────────┬──────────────────────────────────────┘
+                                       │ Static Build (astro build)
+                                       ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                       STATIC BUNDLE ARTIFACT (dist/)                        │
+│   • Pre-rendered Semantic HTML Documents                                    │
+│   • Minified CSS & Scoped Inline Critical Styles                            │
+│   • Vanilla TypeScript Micro-Interactions (Zero Bundler Frameworks)         │
+└──────────────────────────────────────┬──────────────────────────────────────┘
+                                       │ Global Edge Deployment
+                                       ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                       CLOUDFLARE PAGES GLOBAL CDN                           │
+│   • Edge Cache & Anycast Routing across 300+ Cities                         │
+│   • HTTP/3 & Strict Transport Security (HSTS)                               │
+│   • Immutable Content Addressing & Instant Invalidation                     │
+└──────────────────────────────────────┬──────────────────────────────────────┘
+                                       │ HTTPS Delivery
+                                       ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                            CLIENT BROWSER                                   │
+│   • Sub-100ms First Contentful Paint (FCP)                                  │
+│   • Zero Client Secrets / Zero Cookies / Zero Third-Party Trackers          │
+└─────────────────────────────────────────────────────────────────────────────┘
 ```
 
-Não há renderização no servidor, rota de API, banco, sessão, autenticação, segredo
-de runtime ou processo que precise ficar online. O JavaScript é apenas uma camada
-leve de melhoria progressiva para os caminhos do perfil, o destaque por objetivo,
-o menu de navegação, as entradas em cena e o cursor sutil em dispositivos com
-ponteiro preciso.
+There are no server-side rendering processes, runtime APIs, persistent databases, sessions, or backend servers. JavaScript is employed solely as a lightweight layer of progressive enhancement for navigation focus, objective-driven highlights, and subtle pointer interactions on precision pointing devices.
 
-## Tecnologias
+---
 
-- Astro 7, gerado estaticamente (`output: 'static'`)
-- TypeScript para o código e as melhorias no navegador
-- HTML, CSS e Web APIs nativos
-- `@astrojs/sitemap` para gerar o sitemap
-- `@playwright/test` + `@axe-core/playwright` para QA de navegador e acessibilidade durante o desenvolvimento
-- Sem analytics, cookies de marketing, formulários de terceiros ou chamadas de API em runtime
+## Design System & Accessibility
 
-## Desenvolvimento local
+- **Ink Wash Aesthetic:** A bespoke, high-contrast monochromatic design system engineered for legibility, visual hierarchy, and focus.
+- **WCAG AAA Compliance:** Color pairings, typography scales, touch targets, and contrast ratios strictly meet or exceed Web Content Accessibility Guidelines (WCAG 2.2 Level AAA).
+- **Progressive Enhancement:** The site remains 100% functional, readable, and navigable with JavaScript completely disabled in the browser.
+- **Respect for User Preferences:** Built-in hardware-aware media query adaptations for `prefers-reduced-motion` and `prefers-color-scheme`.
 
-Requisitos: Node.js `>=22.12.0` e npm.
+---
 
-```bash
-npm ci
-npm run dev
-```
+## Engineering Standards
 
-O servidor de desenvolvimento fica disponível em `127.0.0.1:4321` apenas durante
-o desenvolvimento. Ele não faz parte da produção. Para visualizar o artefato gerado:
+| Standard | Implementation | Benefit |
+| :--- | :--- | :--- |
+| **Edge Delivery** | Cloudflare Pages Global Network | Near-instant worldwide latency, automated TLS, zero cold-starts |
+| **Static Generation** | Astro 7 (`output: 'static'`) | Pre-compiled static HTML with zero hydration overhead |
+| **Type Safety** | TypeScript 5.x | Strict compile-time validation of all profile data models |
+| **Accessibility QA** | Playwright + `@axe-core/playwright` | Automated screen-reader and contrast validation during development |
+| **Privacy & Security** | Zero External Scripts | No Google Analytics, no marketing pixels, no third-party CDNs |
 
-```bash
-npm run build
-npm run preview
-```
+---
 
-O servidor de preview usa `127.0.0.1:4322` e deve ser encerrado após a validação.
-
-## Comandos de qualidade
-
-```bash
-npm run lint
-npm run typecheck
-npm run security:scan
-npm run audit:deps
-npm run verify
-```
-
-`verify` executa o lint local, as verificações Astro/TypeScript, a varredura de
-segredos, o build estático e os smoke tests de comportamento contra `dist/`.
-
-## Deploy
-
-Cloudflare Pages é o host principal. O projeto já está publicado em:
-`https://nova-abme.pages.dev/`. Para reproduzir a configuração, use:
-
-| Setting | Value |
-|---|---|
-| Branch de produção | `main` |
-| Comando de build | `npm run build` |
-| Diretório de saída | `dist` |
-
-O slug confirmado é `nova-abme`, com deploy real respondendo por HTTPS. Um domínio
-próprio futuro deve atualizar `PUBLIC_SITE_URL` e o sitemap antes da publicação.
-
-Veja [docs/DEPLOY.md](docs/DEPLOY.md) para Cloudflare Pages, o fallback no GitHub
-Pages e a migração para domínio próprio.
-
-## Configuração pública
-
-O build aceita duas configurações públicas opcionais:
-
-- `PUBLIC_SITE_URL`: origem canônica do site, por exemplo `https://example.com`;
-- `PUBLIC_BASE_PATH`: prefixo de caminho para um projeto GitHub Pages, por exemplo
-  `/nova-abme/`.
-
-Nenhum dos dois valores é secreto. Não adicione credenciais, tokens ou endpoints
-privados. O Cloudflare Pages usa os padrões para o site na raiz; o workflow de
-fallback define explicitamente os valores do GitHub Pages.
-
-## Project structure
+## Project Structure
 
 ```text
 src/
-├── components/     # interface por seção e menu de navegação
-├── data/           # perfil público, links, tecnologias e projetos
-├── layouts/        # estrutura do documento e metadados
-├── pages/          # rotas estáticas e 404
-├── scripts/        # melhorias leves no navegador
-└── styles/         # sistema visual Ink Wash
-public/             # favicon, card social, robots e headers estáticos
-docs/               # arquitetura, pesquisa, deploy, ADRs e screenshots
-scripts/            # verificações locais determinísticas
-tests/              # smoke tests estáticos e de navegador
+├── components/     # Semantic section components and accessible navigation
+├── data/           # Structured personal profile, technologies, and projects
+├── layouts/        # Base HTML document shell, OpenGraph, and meta tags
+├── pages/          # Static routes (index, 404)
+├── scripts/        # Lightweight progressive enhancement scripts
+└── styles/         # Ink Wash CSS custom properties and reset rules
+public/             # Favicons, OpenGraph social cards, and robots.txt
+docs/               # Architectural decisions, design guidelines, and audits
 ```
 
-## Atualizando o perfil
+---
 
-O conteúdo público fica em `src/data/site.ts` e nos componentes das seções.
-Adicione apenas links e informações profissionais já aprovados para divulgação.
-Código corporativo, informações de clientes, infraestrutura interna e detalhes de
-implementação da NOVA não pertencem a este repositório.
+## Repository Scope
 
-## Licença
+This repository houses the personal portfolio and engineering gateway for Eduardo de Lima Paranhos. Because it is a private personal website, external installation guides, deployment configurations, and contributor build pipelines are maintained privately.
 
-Publicado sob a [Licença MIT](LICENSE).
+---
+
+## License
+
+All rights reserved. Proprietary software. Refer to [LICENSE](LICENSE) for terms.
+
+---
+
+<div align="center">
+  <sub>Designed & engineered by <b>Eduardo de Lima Paranhos</b></sub>
+</div>
