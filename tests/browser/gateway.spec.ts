@@ -23,7 +23,6 @@ test('desktop keeps the main routes visible and captures a reference', async ({ 
   await expect(page).toHaveTitle('Eduardo Paranhos — Desenvolvedor ADVPL / TOTVS Protheus · APIs & ERP');
   await expect(page.locator('html')).toHaveAttribute('lang', 'pt-BR');
   await expect(page.locator('#hero-title')).toBeVisible();
-  await expect(page.locator('#context')).toBeVisible();
   await expect(page.locator('#engineering')).toBeVisible();
   await expect(page.locator('#results')).toBeVisible();
   await expect(page.locator('#work')).toBeVisible();
@@ -66,23 +65,8 @@ test('command palette supports shortcut, filtering and escape focus return', asy
   await expect(trigger).toBeFocused();
 });
 
-test('audience and stack context are keyboard and session aware', async ({ page }) => {
+test('stack tabs are keyboard navigable and interactive', async ({ page }) => {
   await gotoPage(page);
-
-  const hiring = page.locator('[data-audience-option="hiring"]');
-  await expect(hiring).toHaveAttribute('aria-pressed', 'true');
-  await expect(page.locator('[data-audience-card="hiring"]')).toBeVisible();
-
-  const software = page.locator('[data-audience-option="software"]');
-  await software.click();
-  await expect(software).toHaveAttribute('aria-pressed', 'true');
-  await expect(page.locator('[data-audience-card="software"]')).toBeVisible();
-  await expect(page.locator('[data-audience-card="hiring"]')).toBeHidden();
-
-  const businessRoute = page.locator('[data-context-option][data-context-id="business"]');
-  await businessRoute.click();
-  await expect(page.locator('[data-context-detail-label]')).toContainText('ELP');
-  await expect(page.locator('[data-context-cta]')).toContainText('ELP');
 
   const firstStackItem = page.locator('[data-stack-option]').first();
   const secondStackItem = page.locator('[data-stack-option]').nth(1);
@@ -90,9 +74,6 @@ test('audience and stack context are keyboard and session aware', async ({ page 
   await page.keyboard.press('ArrowDown');
   await expect(secondStackItem).toHaveAttribute('aria-selected', 'true');
   await expect(page.locator('[data-stack-title]')).toContainText('módulos operacionais');
-
-  await page.reload();
-  await expect(page.locator('[data-audience-option="software"]')).toHaveAttribute('aria-pressed', 'true');
 });
 
 test('reduced motion exposes stable content without animation dependency', async ({ page }) => {

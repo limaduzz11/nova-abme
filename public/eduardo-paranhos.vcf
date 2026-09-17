@@ -4,7 +4,9 @@ N:Paranhos;Eduardo;de Lima;;
 FN:Eduardo de Lima Paranhos
 TITLE:Desenvolvedor ADVPL / TOTVS Protheus
 ORG:ELP Tecnologia
-EMAIL;TYPE=INTERNET,WORK:eduardodelimaparanhos@gmail.com
+TEL;TYPE=CELL,VOICE,PREF:+55 11 94466-5292
+EMAIL;TYPE=INTERNET,HOME:contatoeduardoparanhos@gmail.com
+EMAIL;TYPE=INTERNET,WORK:contato@elptecnologia.com.br
 URL:https://nova-abme.pages.dev
 URL;TYPE=LinkedIn:https://www.linkedin.com/in/eduardo-de-lima-paranhos-910930263/
 URL;TYPE=GitHub:https://github.com/limaduzz11

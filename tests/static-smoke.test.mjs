@@ -38,7 +38,6 @@ test('core navigation anchors resolve to rendered sections', () => {
   const fragments = [...indexHtml.matchAll(/href="(#[^"]+)"/g)].map((match) => match[1].slice(1));
   assert.ok(ids.has('top'));
   assert.ok(ids.has('main-content'));
-  assert.ok(ids.has('context'));
   assert.ok(ids.has('engineering'));
   assert.ok(ids.has('results'));
   assert.ok(ids.has('work'));

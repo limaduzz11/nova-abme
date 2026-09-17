@@ -1,19 +1,19 @@
 export const siteMeta = {
-  productName: 'Eduardo Paranhos',
-  systemName: 'NOVA Abme',
+  productName: 'NOVA Abme',
   profileSlug: 'eduardodelimaparanhos',
   name: 'Eduardo de Lima Paranhos',
   shortName: 'Eduardo Paranhos',
   role: 'Desenvolvedor ADVPL / TOTVS Protheus',
   title: 'Eduardo Paranhos — Desenvolvedor ADVPL / TOTVS Protheus · APIs & ERP',
   description:
-    'Desenvolvedor especializado em TOTVS Protheus, ADVPL/TL++, APIs REST e SQL Server. Experiência em Faturamento, Financeiro, Estoque, Custos e integrações corporativas. São Paulo, remoto.',
+    'Desenvolvimento de software com foco em TOTVS Protheus, ADVPL/TL++, APIs REST, SQL Server e automação de processos. São Paulo, remoto.',
   defaultUrl: 'https://nova-abme.pages.dev',
   year: 2026,
-  availability: '🟢 Aberto a propostas · CLT ou PJ · Remoto & São Paulo',
-  location: 'São Paulo, Brasil · Remoto / Híbrido (GMT-3)',
-  email: 'eduardodelimaparanhos@gmail.com',
-  whatsappUrl: 'https://wa.me/5511999999999?text=Ol%C3%A1%20Eduardo%2C%20vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar',
+  location: 'São Paulo, Brasil · Remoto & Híbrido (GMT-3)',
+  email: 'contatoeduardoparanhos@gmail.com',
+  elpEmail: 'contato@elptecnologia.com.br',
+  phone: '+55 11 94466-5292',
+  whatsappUrl: 'https://wa.me/5511944665292?text=Ol%C3%A1%20Eduardo%2C%20vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar',
   cvPath: '/cv/eduardo-paranhos-cv.pdf',
   vcardPath: '/eduardo-paranhos.vcf',
 } as const;
@@ -22,10 +22,13 @@ export const publicLinks = {
   github: 'https://github.com/limaduzz11',
   linkedin: 'https://www.linkedin.com/in/eduardo-de-lima-paranhos-910930263/',
   elp: 'https://elptecnologia.com.br/',
+  elpEmail: 'mailto:contato@elptecnologia.com.br?subject=Demanda%20Corporativa%20-%20ELP%20Tecnologia',
+  elpEmailRaw: 'contato@elptecnologia.com.br',
   contact: 'https://elptecnologia.com.br/contato/',
-  email: 'mailto:eduardodelimaparanhos@gmail.com?subject=Oportunidade%20ADVPL%20%2F%20TOTVS%20Protheus',
-  emailRaw: 'eduardodelimaparanhos@gmail.com',
-  whatsapp: 'https://wa.me/5511999999999?text=Ol%C3%A1%20Eduardo%2C%20vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar',
+  email: 'mailto:contatoeduardoparanhos@gmail.com?subject=Oportunidade%20ADVPL%20%2F%20TOTVS%20Protheus',
+  emailRaw: 'contatoeduardoparanhos@gmail.com',
+  phoneRaw: '+55 11 94466-5292',
+  whatsapp: 'https://wa.me/5511944665292?text=Ol%C3%A1%20Eduardo%2C%20vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar',
   cv: '/cv/eduardo-paranhos-cv.pdf',
   vcard: '/eduardo-paranhos.vcf',
 } as const;
@@ -37,81 +40,6 @@ export const navItems = [
   { label: 'Open Source', href: '#lab' },
   { label: 'Consultoria', href: '#business' },
   { label: 'Contato', href: '#connect' },
-] as const;
-
-export const contextRoutes = [
-  {
-    id: 'recruitment',
-    number: '01',
-    label: 'Recrutamento & Perfil',
-    description:
-      'Resumo direto para recrutadores e gestores: especialista em TOTVS Protheus (ADVPL/TL++), APIs REST, SQL Server, módulos corporativos e download imediato do currículo.',
-    cta: 'VER EXPERIÊNCIA E RESUMO →',
-    href: '#engineering',
-  },
-  {
-    id: 'results',
-    number: '02',
-    label: 'Resultados Práticos',
-    description:
-      'Casos reais anonimizados: integrações de marketplaces sem digitação manual, automação de conciliação bancária e otimização de consultas pesadas em SQL Server.',
-    cta: 'VER RESULTADOS REAIS →',
-    href: '#results',
-  },
-  {
-    id: 'projects',
-    number: '03',
-    label: 'Projetos Selecionados',
-    description:
-      'Repositórios públicos com problema e solução bem definidos: MCP Server para pesquisa em Protheus, padrões de arquitetura REST, template PO-UI e painel de telemetria.',
-    cta: 'VER PROJETOS PÚBLICOS →',
-    href: '#work',
-  },
-  {
-    id: 'business',
-    number: '04',
-    label: 'Consultoria & ELP',
-    description:
-      'Caminho corporativo para contratação de desenvolvimento sob demanda, integrações de sistemas de negócio e consultoria em ERP.',
-    cta: 'CONHECER A ELP TECNOLOGIA →',
-    href: '#business',
-  },
-  {
-    id: 'connect',
-    number: '05',
-    label: 'Contato Imediato',
-    description:
-      'Canais sem intermediários: WhatsApp, e-mail direto com botão de copiar, LinkedIn, GitHub e arquivos de contato prontos para download.',
-    cta: 'FALAR COMIGO AGORA →',
-    href: '#connect',
-  },
-] as const;
-
-export const audienceModes = [
-  {
-    id: 'hiring',
-    label: 'Sou recrutador(a)',
-    note: 'Visão executiva imediata: Desenvolvedor Protheus / ADVPL, stack técnica, módulos do ERP, histórico profissional e currículo para download.',
-    cta: 'BAIXAR CURRÍCULO (PDF) ↓',
-    href: '/cv/eduardo-paranhos-cv.pdf',
-    download: true,
-  },
-  {
-    id: 'software',
-    label: 'Preciso de software / consultoria',
-    note: 'Desenvolvimento sob medida para empresas: integrações REST/SOAP, automação de regras comerciais e sustentação de ERP via ELP Tecnologia.',
-    cta: 'CONHECER A ELP TECNOLOGIA →',
-    href: '#business',
-    download: false,
-  },
-  {
-    id: 'exploring',
-    label: 'Estou conhecendo',
-    note: 'Navegue pelos repositórios públicos, experimentos no ecossistema TOTVS e iniciativas do laboratório de código aberto VANTA Labz.',
-    cta: 'VER PROJETOS PÚBLICOS →',
-    href: '#work',
-    download: false,
-  },
 ] as const;
 
 export const stackItems = [
@@ -141,7 +69,7 @@ export const stackItems = [
     label: 'APIs REST & WEBSERVICES',
     title: 'Integrações seguras entre o ERP e sistemas externos',
     description:
-      'Construção e consumo de endpoints REST/JSON e Webservices SOAP/XML. Integrações com plataformas de e-commerce, hubs de marketplaces (Shopee, Anymarket, Mercado Livre) e emissão de notas fiscais.',
+      'Construção e consumo de endpoints REST/JSON e Webservices SOAP/XML. Integrações com plataformas externas, hubs de marketplaces e automação de fluxos operacionais.',
     context: 'integração / contratos HTTP',
     highlights: ['APIs RESTful', 'SOAP / XML', 'Webhooks', 'Marketplaces & E-commerce'],
   },
@@ -171,9 +99,9 @@ export const stackItems = [
     label: 'JOBS & AUTOMAÇÕES',
     title: 'Processamentos em background resilientes e observáveis',
     description:
-      'Automação de conciliação bancária (arquivos CNAB 240/400), rotinas de fechamento, rotinas agendadas no AppServer e disparos de alertas com tratamento seguro de exceções e rastreabilidade.',
+      'Automação de rotinas agendadas no AppServer, disparos de alertas, integrações e sincronizações automáticas com tratamento seguro de exceções e rastreabilidade.',
     context: 'automação / background processing',
-    highlights: ['Conciliação CNAB', 'Schedules Protheus', 'Tratamento de Exceções', 'Auditoria & Logs'],
+    highlights: ['Schedules Protheus', 'Tratamento de Exceções', 'Auditoria & Logs', 'Rotinas Batch'],
   },
   {
     id: 'linux',
@@ -199,104 +127,122 @@ export const stackItems = [
 
 export const provenResults = [
   {
+    metric: 'Pipeline Automatizado',
+    title: 'Integração de ERP com API Externa',
+    description:
+      'Pipeline de integração REST consumindo dados externos via GET, persistência em tabela temporária de alta velocidade, validação transacional e geração automática de Cliente (SA1), Pedido de Venda (SC5/SC6) e Faturamento (SF2/SD2) no Protheus.',
+    tag: 'API REST / INTEGRAÇÃO',
+  },
+  {
+    metric: 'ADVPL Nativo (.prw)',
+    title: 'Relatórios Customizados de Alta Performance',
+    description:
+      'Desenvolvimento de relatórios analíticos em ADVPL puro (`.prw`), consolidação financeira de títulos, extratos de movimentações e análise gerencial com filtros dinâmicos e consultas diretas ao banco de dados do ERP.',
+    tag: 'ADVPL / FINANCEIRO',
+  },
+  {
     metric: '100% Automático',
     title: 'Integrações de Marketplaces & E-commerce',
     description:
-      'Fluxo integrado de pedidos, baixa de estoque e faturamento no Protheus integrado a hubs (Anymarket) e marketplaces, eliminando digitação manual e divergências de estoque.',
+      'Fluxo integrado de pedidos, sincronização de estoque e emissão no Protheus conectado a hubs e canais de venda externos, eliminando digitação manual e divergências de saldo.',
     tag: 'E-COMMERCE / REST',
-  },
-  {
-    metric: 'Zero Digitação',
-    title: 'Conciliação Bancária & Retorno CNAB',
-    description:
-      'Automatização da leitura de arquivos de retorno bancário e baixa de títulos no módulo Financeiro (SIGAFIN), acelerando expressivamente a rotina diária de conciliação.',
-    tag: 'FINANCEIRO / JOBS',
   },
   {
     metric: 'Alta Performance',
     title: 'Otimização de Consultas em SQL Server',
     description:
-      'Refatoração de queries críticas e criação de índices estratégicos sobre tabelas volumosas do ERP, reduzindo o tempo de processamento de relatórios e rotinas mensais.',
+      'Refatoração de queries críticas e criação de índices estratégicos sobre tabelas volumosas do ERP, reduzindo expressivamente o tempo de processamento em rotinas pesadas e fechamentos.',
     tag: 'SQL / DIAGNÓSTICO',
-  },
-  {
-    metric: 'Aderência Fiscal',
-    title: 'Customizações em Faturamento & Compras',
-    description:
-      'Pontos de entrada, validações fiscais e rotinas de aprovação em MVC respeitando a legislação tributária e regras comerciais da operação.',
-    tag: 'FATURAMENTO / COMPRAS',
   },
 ] as const;
 
 export const projects = [
   {
     number: '01',
+    name: 'nova-hub',
+    badge: 'PLATAFORMA & OPERAÇÕES',
+    title: 'Painel Central Multiplataforma, Telemetria & Integrações',
+    description:
+      'Painel de telemetria e orquestração de serviços com 3 módulos integrados: NEXUS (integração corporativa com plataforma de tickets/chamados), ARCADIA (consumo de dados via IGDB API) e CORTEX (motor de contexto e núcleo da arquitetura de Engineering AI Harness).',
+    modules: [
+      { name: 'NEXUS', role: 'Integração com plataforma corporativa de tickets e chamados' },
+      { name: 'ARCADIA', role: 'Consumo estruturado e catálogo de dados via IGDB API' },
+      { name: 'CORTEX', role: 'Motor de contextos e core da arquitetura de Engineering AI Harness' },
+    ],
+    stack: 'Flutter · Dart · Linux · REST · Architecture',
+    status: 'DESTAQUE / PRODUTO',
+    year: '2026',
+    href: 'https://github.com/limaduzz11/nova-hub',
+  },
+  {
+    number: '02',
     name: 'protheus-research',
     badge: 'MCP SERVER / AI',
-    title: 'Pesquisa Técnica Estruturada no Protheus',
-    problem: 'Documentação e regras do ecossistema TOTVS são dispersas e de difícil indexação para agentes e desenvolvedores.',
-    solution: 'Servidor Model Context Protocol em TypeScript que permite consultas estruturadas de sintaxe ADVPL, rotinas e regras de ERP.',
+    title: 'Pesquisa Técnica Estruturada no Ecossistema Protheus',
+    description:
+      'Servidor Model Context Protocol (MCP) em TypeScript que indexa sintaxe ADVPL, rotinas, tabelas e regras do Protheus, permitindo consultas técnicas estruturadas por agentes de IA e desenvolvedores.',
+    modules: [],
     stack: 'TypeScript · Node.js · MCP · TOTVS',
     status: 'CÓDIGO ABERTO',
     year: '2026',
     href: 'https://github.com/limaduzz11/protheus-research',
   },
   {
-    number: '02',
+    number: '03',
     name: 'protheus-rest-lab',
     badge: 'ARQUITETURA / BACKEND',
     title: 'Laboratório de Padrões para APIs REST no Protheus',
-    problem: 'Falta de uniformidade em serialização JSON, paginação, cabeçalhos HTTP e tratamento de falhas em ADVPL.',
-    solution: 'Padrões de referência testados com endpoints seguros, autenticação estruturada e boas práticas de integração HTTP.',
+    description:
+      'Implementação de referência para construção de endpoints REST seguros e padronizados no Protheus: paginação, controle de status HTTP, serialização JSON e tratamento consistente de exceções.',
+    modules: [],
     stack: 'ADVPL / TL++ · REST · JSON · ERP',
     status: 'CÓDIGO ABERTO',
     year: '2026',
     href: 'https://github.com/limaduzz11/protheus-rest-lab',
   },
   {
-    number: '03',
+    number: '04',
     name: 'protheus-po-ui-template',
     badge: 'PORTAL / PO-UI',
-    title: 'Template de Interface Corporativa em Angular e PO-UI',
-    problem: 'Interfaces nativas de ERP muitas vezes não atendem a requisitos modernos de usabilidade e mobilidade para operadores.',
-    solution: 'Base completa em Angular com componentes PO-UI pronta para integração via REST com o Protheus.',
+    title: 'Template de Portal Corporativo em Angular e PO-UI',
+    description:
+      'Base de aplicação corporativa completa utilizando o design system PO-UI sobre Angular, pronta para integração via REST com backends do Protheus para telas de consulta e operação rápida.',
+    modules: [],
     stack: 'Angular · PO-UI · TypeScript · REST',
     status: 'CÓDIGO ABERTO',
     year: '2026',
     href: 'https://github.com/limaduzz11/protheus-po-ui-template',
-  },
-  {
-    number: '04',
-    name: 'nova-hub',
-    badge: 'TELEMETRIA / FLUTTER',
-    title: 'Painel Multiplataforma de Telemetria e Infraestrutura',
-    problem: 'Acompanhamento unificado de nós locais, serviços corporativos e telemetria de sistema sem stacks pesadas.',
-    solution: 'Aplicação multiplataforma reativa em Flutter com monitoramento de status, telemetria e visualização em tempo real.',
-    stack: 'Flutter · Dart · Material 3 · Linux',
-    status: 'CÓDIGO ABERTO',
-    year: '2026',
-    href: 'https://github.com/limaduzz11/nova-hub',
   },
 ] as const;
 
 export const vantaProjects = [
   {
     name: 'VANTA Reader',
+    badge: 'EM EVOLUÇÃO',
     role: 'LEITOR OFFLINE-FIRST',
-    description: 'Leitor e organizador de conteúdo focado em autonomia de armazenamento local, leitura fluida e zero distrações.',
-    status: 'EM EVOLUÇÃO',
+    description:
+      'Leitor e organizador de conteúdo focado em autonomia de armazenamento local, leitura fluida e zero distrações.',
+  },
+  {
+    name: 'XNOVA Runtime',
+    badge: 'ATIVO / RUNTIME',
+    role: 'ORQUESTRAÇÃO LOCAL',
+    description:
+      'Runtime de execução e orquestração leve de processos, agentes e tarefas locais dentro do ecossistema VANTA Labz.',
   },
   {
     name: 'VANTA Feed',
-    role: 'AGREGADOR DE CONTEÚDO',
-    description: 'Organizador de feeds e fontes de informação técnica com foco em privacidade e simplicidade.',
-    status: 'LABORATÓRIO',
+    badge: 'CONCEITO EM LABORATÓRIO',
+    role: 'AGREGADOR TÉCNICO',
+    description:
+      'Conceito de organizador de feeds e fontes de informação técnica com prioridade estrita para privacidade e leitura limpa.',
   },
   {
     name: 'VANTA Scan & Doc Toolkit',
-    role: 'PROCESSAMENTO DE DOCUMENTOS',
-    description: 'Utilitários para tratamento, digitalização e extração estruturada de documentos e relatórios locais.',
-    status: 'LABORATÓRIO',
+    badge: 'CONCEITO EM LABORATÓRIO',
+    role: 'PROCESSAMENTO LOCAL',
+    description:
+      'Conceito de utilitários locais para digitalização, tratamento e extração estruturada de documentos e relatórios.',
   },
 ] as const;
 
@@ -318,11 +264,11 @@ export const contactChannels: readonly ContactChannel[] = [
     id: 'whatsapp',
     number: '01',
     label: 'WhatsApp Direto',
-    detail: 'Conversa rápida sobre oportunidades ou projetos',
+    detail: '+55 11 94466-5292 · Conversa rápida sobre vagas e projetos',
     actionText: 'Conversar no WhatsApp ↗',
     href: publicLinks.whatsapp,
     isExternal: true,
-    badge: 'RESPOSTA RÁPIDA',
+    badge: 'MENSAGEM',
   },
   {
     id: 'email',
@@ -339,18 +285,18 @@ export const contactChannels: readonly ContactChannel[] = [
     id: 'cv',
     number: '03',
     label: 'Currículo Consolidado (PDF)',
-    detail: 'Documento completo para recrutadores e ATS',
+    detail: 'Documento técnico completo para recrutamento e triagem ATS',
     actionText: 'Baixar currículo (PDF) ↓',
     href: publicLinks.cv,
     isExternal: false,
     download: true,
-    badge: 'CURRÍCULO',
+    badge: 'DOCUMENTO',
   },
   {
     id: 'linkedin',
     number: '04',
     label: 'LinkedIn',
-    detail: 'Trajetória profissional, conexões e recomendações',
+    detail: 'Trajetória profissional, conexões e recomendações corporativas',
     actionText: 'Ver perfil no LinkedIn ↗',
     href: publicLinks.linkedin,
     isExternal: true,
@@ -360,8 +306,8 @@ export const contactChannels: readonly ContactChannel[] = [
     id: 'github',
     number: '05',
     label: 'GitHub',
-    detail: 'Código-fonte, laboratórios e projetos públicos',
-    actionText: 'Ver perfil no GitHub ↗',
+    detail: 'Código-fonte público, arquiteturas e projetos de referência',
+    actionText: 'Ver repositórios no GitHub ↗',
     href: publicLinks.github,
     isExternal: true,
     badge: 'CÓDIGO',
@@ -370,30 +316,17 @@ export const contactChannels: readonly ContactChannel[] = [
     id: 'vcard',
     number: '06',
     label: 'Salvar Contato (vCard)',
-    detail: 'Adicione meu contato ao celular em 1 toque',
+    detail: 'Adicione meu contato profissional ao celular em um único toque',
     actionText: 'Salvar contato (.vcf) ↓',
     href: publicLinks.vcard,
     isExternal: false,
     download: true,
-    badge: '1-TOQUE',
-  },
-  {
-    id: 'elp',
-    number: '07',
-    label: 'ELP Tecnologia',
-    detail: 'Demandas empresariais, consultoria e projetos PJ',
-    actionText: 'Acessar elptecnologia.com.br ↗',
-    href: publicLinks.elp,
-    isExternal: true,
-    badge: 'CONSULTORIA',
+    badge: 'VCARD',
   },
 ] as const;
 
-export const workDirectories = ['código-aberto/', 'sistemas/', 'experimentos/', 'engenharia/'] as const;
-
 /**
- * Keeps internal links correct for both Cloudflare Pages (/) and the optional
- * GitHub Pages fallback (/aboutme/).
+ * Keeps internal links correct for both Cloudflare Pages (/) and fallback environments.
  */
 export function toPath(path: string): string {
   if (!path.startsWith('/')) return path;

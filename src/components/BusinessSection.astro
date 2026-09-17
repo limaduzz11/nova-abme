@@ -2,39 +2,59 @@
 import { publicLinks } from '../data/site';
 ---
 
-<section class="section-shell business-section" id="business" data-section-index="06" aria-labelledby="business-title">
+<section class="section-shell business-section" id="business" data-section-index="05" aria-labelledby="business-title">
   <div class="section-top">
-    <span class="section-code">05 / NEGÓCIOS & CONSULTORIA</span>
-    <span class="section-status">ELP TECNOLOGIA · BRAÇO PJ</span>
+    <span class="section-code">04 / ATUAÇÃO & CONSULTORIA</span>
+    <span class="section-status">MODALIDADES DE CONTRATAÇÃO</span>
   </div>
 
-  <div class="business-layout">
-    <div class="business-title reveal">
-      <p class="eyebrow">CONTRATAÇÃO PJ & PARCERIAS EMPRESARIAIS</p>
-      <h2 id="business-title">ELP<br /><span>TECNOLOGIA</span></h2>
-      <div class="business-tag-pill">CONSULTORIA & INTEGRAÇÕES</div>
+  <div class="section-heading reveal">
+    <p class="eyebrow">MODELOS DE ENGAJAMENTO</p>
+    <h2 id="business-title">COMO PODEMOS<br /><em>TRABALHAR JUNTOS.</em></h2>
+    <p>
+      Flexibilidade estruturada para atender tanto demandas de alocação técnica em times de engenharia quanto projetos fechados de consultoria e integração de ERP.
+    </p>
+  </div>
+
+  <div class="engagement-grid reveal">
+    <div class="engagement-card">
+      <div class="engagement-card__header">
+        <span class="micro-label engagement-card__badge">CLT OU PJ INDIVIDUAL</span>
+        <span class="engagement-card__type">ALOCAÇÃO EM TIMES</span>
+      </div>
+      <h3 class="engagement-card__title">Desenvolvedor Especialista Protheus</h3>
+      <p class="engagement-card__desc">
+        Atuação dedicada em squads de tecnologia e engenharia. Domínio de ADVPL/TL++, frameworks MVC do Protheus, APIs REST, Webservices e sustentação de processos críticos nos módulos de Faturamento (SIGAFAT), Financeiro (SIGAFIN) e Estoque (SIGAEST).
+      </p>
+      <div class="engagement-card__footer">
+        <a class="button" href="#connect" data-cursor-target>
+          <span>Ir para canais de contato</span>
+          <span aria-hidden="true">↓</span>
+        </a>
+      </div>
     </div>
 
-    <div class="business-copy reveal">
-      <div class="business-distinction">
-        <div class="distinction-card">
-          <span class="distinction-label">Contratação Profissional (CLT / PJ Individual)</span>
-          <p>Para vagas dedicadas em times de engenharia, atuo como Desenvolvedor ADVPL / Protheus diretamente com você.</p>
-          <a class="text-link" href="#connect" data-cursor-target>Ir para canais de contato direto →</a>
-        </div>
-
-        <div class="distinction-card distinction-card--highlight">
-          <span class="distinction-label">Projetos Fechados & Consultoria B2B</span>
-          <p>A <strong>ELP Tecnologia</strong> é o veículo empresarial para demandas sob medida de integrações de ERP, rotinas customizadas e consultoria técnica corporativa.</p>
+    <div class="engagement-card engagement-card--featured">
+      <div class="engagement-card__header">
+        <span class="micro-label engagement-card__badge">PJ CORPORATIVO (B2B)</span>
+        <span class="engagement-card__type">PROJETOS & CONSULTORIA</span>
+      </div>
+      <h3 class="engagement-card__title">ELP Tecnologia</h3>
+      <p class="engagement-card__desc">
+        Veículo empresarial para contratação sob escopo definido: desenvolvimento de pipelines de integração entre ERP e plataformas externas, relatórios analíticos customizados em ADVPL puro (.prw) e diagnósticos de banco de dados SQL Server.
+      </p>
+      <div class="engagement-card__footer">
+        <div class="engagement-actions">
           <a class="button button-primary" href={publicLinks.elp} target="_blank" rel="noopener noreferrer" data-cursor-target>
-            <span>Conhecer a ELP Tecnologia ↗</span>
+            <span>Conhecer a ELP Tecnologia</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+          <a class="button" href={publicLinks.elpEmail} data-cursor-target title="Enviar e-mail para contato@elptecnologia.com.br">
+            <span>E-mail B2B</span>
+            <span aria-hidden="true">↗</span>
           </a>
         </div>
       </div>
-
-      <p class="business-copy__aside">
-        O mesmo rigor de engenharia: entender a raiz do problema de negócio, projetar a integração correta e entregar estabilidade técnica comprovada.
-      </p>
     </div>
   </div>
 </section>

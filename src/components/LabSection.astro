@@ -1,71 +1,46 @@
 ---
-import { publicLinks, vantaProjects, workDirectories } from '../data/site';
+import { publicLinks, vantaProjects } from '../data/site';
 ---
 
-<section class="section-shell lab-section" id="lab" data-section-index="05" aria-labelledby="lab-title">
+<section class="section-shell lab-section" id="lab" data-section-index="04" aria-labelledby="lab-title">
   <div class="section-top">
-    <span class="section-code">04 / LABORATÓRIO & OPEN SOURCE</span>
+    <span class="section-code">03 / OPEN SOURCE & LABORATÓRIO</span>
     <span class="section-status">SELO VANTA LABZ</span>
   </div>
 
   <div class="lab-layout">
-    <div class="lab-copy reveal">
+    <div class="lab-header reveal">
       <div class="lab-badge-row">
         <span class="lab-mark" aria-hidden="true">VANTA LABZ</span>
-        <span class="micro-label">CÓDIGO ABERTO & OFFLINE-FIRST</span>
+        <span class="micro-label">CÓDIGO ABERTO & AUTONOMIA LOCAL</span>
       </div>
 
-      <h2 id="lab-title">FERRAMENTAS QUE<br /><em>AMPLIAM A</em><br />AUTONOMIA.</h2>
+      <h2 id="lab-title">FERRAMENTAS QUE<br /><em>AMPLIAM A</em> AUTONOMIA.</h2>
       <p class="lab-desc">
-        VANTA Labz é o selo dedicado a projetos pessoais, ferramentas de produtividade e experimentos de código aberto voltados para privacidade e controle local.
+        VANTA Labz é o selo dedicado a projetos pessoais, ferramentas de produtividade e utilitários de código aberto desenvolvidos com princípios offline-first, foco em privacidade e controle local de dados.
       </p>
-
-      <div class="vanta-cards-grid">
-        {
-          vantaProjects.map((item) => (
-            <div class="vanta-card">
-              <div class="vanta-card__header">
-                <span class="micro-label vanta-card__status">{item.status}</span>
-                <span class="micro-label">{item.role}</span>
-              </div>
-              <h3 class="vanta-card__name">{item.name}</h3>
-              <p class="vanta-card__desc">{item.description}</p>
-            </div>
-          ))
-        }
-      </div>
-
-      <div class="lab-actions">
-        <a class="button button-primary" href={publicLinks.github} target="_blank" rel="noopener noreferrer" data-cursor-target>
-          <span>Ver organização no GitHub</span>
-          <span aria-hidden="true">↗</span>
-        </a>
-      </div>
     </div>
 
-    <div class="lab-directory reveal" aria-label="Terminal de diretórios de código aberto">
-      <div class="terminal-bar">
-        <span class="terminal-dot"></span>
-        <span class="terminal-dot"></span>
-        <span class="terminal-dot"></span>
-        <span class="terminal-title">~/eduardo/vanta-labz</span>
-      </div>
-      <p class="terminal-line"><span aria-hidden="true">➜</span> <span class="term-cmd">tree -L 1 ./open-source</span></p>
-      <ul class="terminal-tree">
-        {
-          workDirectories.map((directory) => (
-            <li>
-              <span class="tree-branch" aria-hidden="true">├──</span>
-              <span class="tree-name">{directory}</span>
-            </li>
-          ))
-        }
-        <li>
-          <span class="tree-branch" aria-hidden="true">└──</span>
-          <span class="tree-name">vanta-core/</span>
-        </li>
-      </ul>
-      <p class="terminal-line terminal-line--muted">open-source repositories → github.com/limaduzz11</p>
+    <div class="vanta-cards-grid reveal">
+      {
+        vantaProjects.map((item) => (
+          <div class="vanta-card">
+            <div class="vanta-card__header">
+              <span class="micro-label vanta-card__badge">{item.badge}</span>
+              <span class="micro-label vanta-card__role">{item.role}</span>
+            </div>
+            <h3 class="vanta-card__name">{item.name}</h3>
+            <p class="vanta-card__desc">{item.description}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="lab-actions reveal">
+      <a class="button button-primary" href={publicLinks.github} target="_blank" rel="noopener noreferrer" data-cursor-target>
+        <span>Ver ecossistema no GitHub</span>
+        <span aria-hidden="true">↗</span>
+      </a>
     </div>
   </div>
 </section>
