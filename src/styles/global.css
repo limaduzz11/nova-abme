@@ -2139,7 +2139,6 @@ html[data-audience='exploring'] [data-audience-focus~='exploring'] {
 }
 
 @media (min-width: 860px) {
-  .hero-grid,
   .router-layout {
     grid-template-columns: minmax(0, 1.3fr) minmax(17rem, 0.7fr);
   }
