@@ -3,8 +3,9 @@
 ## Primary: Cloudflare Pages
 
 Cloudflare Pages is the production host because the site is a static artifact
-and the provider connects directly to GitHub. The current deployment is
-`https://nova-abme.pages.dev/`. No Cloudflare token is stored in this repository.
+and the provider connects directly to GitHub. The custom production domain is
+`https://portfolioeduardo.elptecnologia.com.br/` (backed by Cloudflare Pages).
+No Cloudflare token is stored in this repository.
 
 1. Create or select a Cloudflare Pages project.
 2. Connect only the intended GitHub repository through the official GitHub
@@ -12,12 +13,12 @@ and the provider connects directly to GitHub. The current deployment is
 3. Set the production branch to `main`.
 4. Set the build command to `npm run build`.
 5. Set the output directory to `dist`.
-6. Deploy and confirm the assigned `*.pages.dev` URL over HTTPS.
+6. Deploy and confirm the assigned URL over HTTPS.
 7. Enable pull-request preview deployments.
 8. Test headers, canonical metadata, all primary routes and the 404 response.
 
-The confirmed project slug is `nova-abme`, serving
-`https://nova-abme.pages.dev/`. If the slug or custom domain changes, update the
+The confirmed project slug is `nova-abme`, with custom domain
+`https://portfolioeduardo.elptecnologia.com.br/`.
 public canonical origin and sitemap and repeat the production checks.
 
 ### Zero-cost posture
