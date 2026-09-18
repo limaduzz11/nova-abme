@@ -7,7 +7,7 @@ export const siteMeta = {
   title: 'Eduardo Paranhos — Desenvolvedor ADVPL / TOTVS Protheus · APIs & ERP',
   description:
     'Desenvolvimento de software com foco em TOTVS Protheus, ADVPL/TL++, APIs REST, SQL Server e automação de processos. São Paulo, remoto.',
-  defaultUrl: 'https://nova-abme.pages.dev',
+  defaultUrl: 'https://portfolioeduardo.elptecnologia.com.br',
   year: 2026,
   location: 'São Paulo, Brasil · Remoto & Híbrido (GMT-3)',
   email: 'contatoeduardoparanhos@gmail.com',

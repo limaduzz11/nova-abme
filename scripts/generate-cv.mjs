@@ -151,7 +151,7 @@ const cvHtml = `<!DOCTYPE html>
       <span><strong>E-mail:</strong> contatoeduardoparanhos@gmail.com</span>
       <span><strong>LinkedIn:</strong> linkedin.com/in/eduardo-de-lima-paranhos-910930263</span>
       <span><strong>GitHub:</strong> github.com/limaduzz11</span>
-      <span><strong>Portfólio:</strong> nova-abme.pages.dev</span>
+      <span><strong>Portfólio:</strong> portfolioeduardo.elptecnologia.com.br</span>
     </div>
   </div>
 

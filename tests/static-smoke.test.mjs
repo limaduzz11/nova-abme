@@ -61,7 +61,7 @@ test('security headers and privacy contract are present', () => {
   assert.match(headers, /Content-Security-Policy:/);
   assert.match(headers, /connect-src 'self'/);
   assert.doesNotMatch(headers, /unsafe-(?:inline|eval)/);
-  assert.match(robots, /Sitemap: https:\/\/nova-abme\.pages\.dev\//);
+  assert.match(robots, /Sitemap: https:\/\/portfolioeduardo\.elptecnologia\.com\.br\//);
   assert.doesNotMatch(indexHtml, /google-analytics|googletagmanager|hotjar|facebook\.net/i);
 });
 

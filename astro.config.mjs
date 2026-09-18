@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-const site = process.env.PUBLIC_SITE_URL || 'https://nova-abme.pages.dev';
+const site = process.env.PUBLIC_SITE_URL || 'https://portfolioeduardo.elptecnologia.com.br';
 const base = process.env.PUBLIC_BASE_PATH || '/';
 
 export default defineConfig({

@@ -17,7 +17,7 @@
 
 <br />
 
-**Gateway em Produção:** [https://nova-abme.pages.dev](https://nova-abme.pages.dev)
+**Gateway em Produção:** [https://portfolioeduardo.elptecnologia.com.br](https://portfolioeduardo.elptecnologia.com.br)
 
 </div>
 
