@@ -170,7 +170,7 @@ export const projects = [
       { name: 'CORTEX', role: 'Motor de contextos e core da arquitetura de Engineering AI Harness' },
     ],
     stack: 'Flutter · Dart · Linux · REST · Architecture',
-    status: 'DESTAQUE / PRODUTO',
+    status: 'CÓDIGO ABERTO',
     year: '2026',
     href: 'https://github.com/limaduzz11/nova-hub',
   },
@@ -225,22 +225,22 @@ export const vantaProjects = [
   },
   {
     name: 'XNOVA Runtime',
-    badge: 'ATIVO / RUNTIME',
-    role: 'ORQUESTRAÇÃO LOCAL',
+    badge: 'EM DESENVOLVIMENTO',
+    role: '',
     description:
-      'Runtime de execução e orquestração leve de processos, agentes e tarefas locais dentro do ecossistema VANTA Labz.',
+      'Runtime em C/C++ e UWP voltado para Xbox Series em Dev Mode, permitindo a execução de binários (.exe) de Windows diretamente no console.',
   },
   {
     name: 'VANTA Feed',
     badge: 'CONCEITO EM LABORATÓRIO',
-    role: 'AGREGADOR TÉCNICO',
+    role: '',
     description:
       'Conceito de organizador de feeds e fontes de informação técnica com prioridade estrita para privacidade e leitura limpa.',
   },
   {
     name: 'VANTA Scan & Doc Toolkit',
     badge: 'CONCEITO EM LABORATÓRIO',
-    role: 'PROCESSAMENTO LOCAL',
+    role: '',
     description:
       'Conceito de utilitários locais para digitalização, tratamento e extração estruturada de documentos e relatórios.',
   },

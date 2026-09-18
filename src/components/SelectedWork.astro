@@ -17,16 +17,11 @@ import { projects, publicLinks } from '../data/site';
   <div class="work-list">
     {
       projects.map((project) => (
-        <article
-          class:list={[
-            'project-card',
-            'reveal',
-            { 'project-card--featured': project.number === '01' },
-          ]}
-        >
-          <div class="project-card__header">
-            <div class="project-card__identity">
-              <span class="project-card__number">{project.number}</span>
+        <article class="project-card reveal">
+          <span class="project-card__number">{project.number}</span>
+
+          <div class="project-card__main">
+            <div class="project-card__header">
               <div>
                 <div class="project-card__badges">
                   <span class="micro-label project-card__badge">{project.badge}</span>
@@ -39,50 +34,50 @@ import { projects, publicLinks } from '../data/site';
                 </h3>
                 <p class="project-card__subtitle">{project.title}</p>
               </div>
-            </div>
 
-            <div class="project-card__meta">
-              <span class="project-card__year">{project.year}</span>
-            </div>
-          </div>
-
-          <div class="project-card__body">
-            <p class="project-card__description">{project.description}</p>
-
-            {project.modules && project.modules.length > 0 && (
-              <div class="project-modules">
-                <p class="project-modules__heading">Módulos Integrados do Hub</p>
-                <div class="project-modules__grid">
-                  {project.modules.map((module) => (
-                    <div class="project-module-card">
-                      <div class="project-module-card__header">
-                        <span class="module-tag">MÓDULO</span>
-                        <strong class="module-title">{module.name}</strong>
-                      </div>
-                      <p class="module-role">{module.role}</p>
-                    </div>
-                  ))}
-                </div>
+              <div class="project-card__meta">
+                <span class="project-card__year">{project.year}</span>
               </div>
-            )}
-          </div>
-
-          <div class="project-card__footer">
-            <div class="project-card__stack">
-              <span class="stack-label">Stack:</span>
-              <span>{project.stack}</span>
             </div>
 
-            <a
-              class="project-card__link"
-              href={project.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-cursor-target
-            >
-              <span>Ver no GitHub</span>
-              <span aria-hidden="true">↗</span>
-            </a>
+            <div class="project-card__body">
+              <p class="project-card__description">{project.description}</p>
+
+              {project.modules && project.modules.length > 0 && (
+                <div class="project-modules">
+                  <p class="project-modules__heading">Módulos Integrados do Hub</p>
+                  <div class="project-modules__grid">
+                    {project.modules.map((module) => (
+                      <div class="project-module-card">
+                        <div class="project-module-card__header">
+                          <span class="module-tag">MÓDULO</span>
+                          <strong class="module-title">{module.name}</strong>
+                        </div>
+                        <p class="module-role">{module.role}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div class="project-card__footer">
+              <div class="project-card__stack">
+                <span class="stack-label">Stack:</span>
+                <span>{project.stack}</span>
+              </div>
+
+              <a
+                class="project-card__link"
+                href={project.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cursor-target
+              >
+                <span>Ver no GitHub</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
           </div>
         </article>
       ))

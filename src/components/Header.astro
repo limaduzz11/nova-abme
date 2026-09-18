@@ -1,5 +1,5 @@
 ---
-import { navItems, publicLinks } from '../data/site';
+import { navItems } from '../data/site';
 ---
 
 <header class="site-header">
@@ -24,17 +24,6 @@ import { navItems, publicLinks } from '../data/site';
     </nav>
 
     <div class="header-actions">
-      <a
-        class="header-cv-link"
-        href={publicLinks.cv}
-        download
-        data-cursor-target
-        title="Baixar Currículo em PDF"
-      >
-        <span>CV (PDF)</span>
-        <span aria-hidden="true">↓</span>
-      </a>
-
       <button
         class="command-trigger"
         type="button"

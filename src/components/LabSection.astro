@@ -23,7 +23,7 @@ import { publicLinks, vantaProjects } from '../data/site';
           <div class="vanta-card">
             <div class="vanta-card__header">
               <span class="micro-label vanta-card__badge">{item.badge}</span>
-              <span class="micro-label vanta-card__role">{item.role}</span>
+              {item.role && <span class="micro-label vanta-card__role">{item.role}</span>}
             </div>
             <h3 class="vanta-card__name">{item.name}</h3>
             <p class="vanta-card__desc">{item.description}</p>

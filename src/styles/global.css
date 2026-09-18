@@ -1589,15 +1589,31 @@ html[data-audience='exploring'] [data-audience-focus~='exploring'] {
    ========================================================================== */
 .project-card {
   border-bottom: 1px solid var(--line);
-  padding-block: 2rem;
-  display: flex;
-  flex-direction: column;
+  padding-block: 1.75rem;
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
   gap: 1.25rem;
-  transition: background-color 200ms ease, padding 200ms var(--ease);
+  align-items: start;
+  transition: background-color 200ms ease;
 }
 
 .project-card:hover {
-  background: rgba(207, 207, 207, 0.03);
+  background: rgba(207, 207, 207, 0.02);
+}
+
+.project-card__number {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--quiet);
+  padding-top: 0.2rem;
+}
+
+.project-card__main {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
 }
 
 .project-card__header {
@@ -1608,33 +1624,32 @@ html[data-audience='exploring'] [data-audience-focus~='exploring'] {
   gap: 1rem;
 }
 
-.project-card__identity {
+.project-card__badges {
   display: flex;
-  gap: 1.25rem;
-  align-items: flex-start;
-}
-
-.project-card__number {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 0.8rem;
-  color: var(--quiet);
-  padding-top: 0.2rem;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.35rem;
+  flex-wrap: wrap;
 }
 
 .project-card__badge {
   display: inline-block;
-  margin-bottom: 0.35rem;
+}
+
+.status-pill--subtle {
+  border-color: rgba(84, 84, 84, 0.5);
+  color: var(--quiet);
+  font-size: 0.62rem;
 }
 
 .project-card__name {
-  font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
   letter-spacing: -0.03em;
   line-height: 1.15;
 }
 
 .project-card__name a:hover {
   color: var(--bright);
-  text-decoration: underline;
 }
 
 .project-card__subtitle {
@@ -1653,26 +1668,6 @@ html[data-audience='exploring'] [data-audience-focus~='exploring'] {
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 0.75rem;
   color: var(--quiet);
-}
-
-.project-card--featured {
-  border-left: 2px solid var(--paper);
-  padding-left: clamp(1rem, 2vw, 1.5rem);
-  background: rgba(207, 207, 207, 0.02);
-}
-
-.project-card__badges {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.35rem;
-  flex-wrap: wrap;
-}
-
-.status-pill--subtle {
-  border-color: rgba(84, 84, 84, 0.5);
-  color: var(--quiet);
-  font-size: 0.62rem;
 }
 
 .project-card__description {
@@ -2199,6 +2194,11 @@ html[data-audience='exploring'] [data-audience-focus~='exploring'] {
   .work-row__arrow {
     grid-column: 3;
     grid-row: 1;
+  }
+
+  .project-card {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.5rem;
   }
 
   .project-card__header {
