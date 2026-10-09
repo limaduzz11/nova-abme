@@ -1,0 +1,32 @@
+---
+import TechIcon from './TechIcon.astro';
+import { content, type Lang } from '../data/i18n';
+import { techStackItems } from '../data/site';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = content[lang].techstack;
+---
+
+<section class="section-shell techstack-section" id="stack" aria-labelledby="stack-title">
+  <div class="techstack-head reveal">
+    <h2 id="stack-title">{t.headingA} <em>{t.headingB}</em></h2>
+    <p>{t.subtitle}</p>
+  </div>
+
+  <ul class="techstack-grid reveal">
+    {
+      techStackItems.map((item) => (
+        <li class="tech-item">
+          <span class="tech-orb">
+            <TechIcon id={item.icon} size={26} />
+          </span>
+          <span class="tech-name">{item.name}</span>
+        </li>
+      ))
+    }
+  </ul>
+</section>

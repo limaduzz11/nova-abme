@@ -1,0 +1,26 @@
+---
+import BusinessSection from '../../components/BusinessSection.astro';
+import ConnectSection from '../../components/ConnectSection.astro';
+import EngineeringIndex from '../../components/EngineeringIndex.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import Hero from '../../components/Hero.astro';
+import LabSection from '../../components/LabSection.astro';
+import SelectedWork from '../../components/SelectedWork.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const lang = 'es' as const;
+---
+
+<BaseLayout lang={lang}>
+  <Header lang={lang} />
+  <main id="main-content">
+    <Hero lang={lang} />
+    <EngineeringIndex lang={lang} />
+    <SelectedWork lang={lang} />
+    <LabSection lang={lang} />
+    <BusinessSection lang={lang} />
+    <ConnectSection lang={lang} />
+  </main>
+  <Footer lang={lang} />
+</BaseLayout>

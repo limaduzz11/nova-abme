@@ -1,29 +1,36 @@
 ---
-import { navItems } from '../data/site';
+import LangSwitch from './LangSwitch.astro';
+import { content, type Lang } from '../data/i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = content[lang];
 ---
 
 <header class="site-header">
   <div class="site-header__inner">
-    <a class="brand" href="#top" title="Ir para o início">
+    <a class="brand" href="#top" title="Eduardo Paranhos">
       <span class="brand__mark" aria-hidden="true">EP</span>
       <span class="brand__text">
         <span class="brand__name">EDUARDO PARANHOS</span>
-        <span class="brand__role">TOTVS PROTHEUS & ADVPL</span>
+        <span class="brand__role">TOTVS PROTHEUS &amp; ADVPL</span>
       </span>
     </a>
 
-
-    <nav class="primary-nav" aria-label="Navegação principal">
+    <nav class="primary-nav" aria-label={t.navLabel}>
       {
-        navItems.map((item) => (
-          <a href={item.href} data-cursor-target>
-            {item.label}
-          </a>
+        t.nav.map((item) => (
+          <a href={item.href}>{item.label}</a>
         ))
       }
     </nav>
 
     <div class="header-actions">
+      <LangSwitch lang={lang} />
+
       <button
         class="command-trigger"
         type="button"
@@ -31,10 +38,10 @@ import { navItems } from '../data/site';
         aria-controls="command-palette"
         aria-haspopup="dialog"
         aria-keyshortcuts="Control+K"
-        data-cursor-target
+        aria-label={t.command.menuLabel}
       >
         <span class="command-trigger__label">Menu</span>
-        <kbd>Ctrl K</kbd>
+        <kbd aria-hidden="true">Ctrl K</kbd>
       </button>
     </div>
   </div>

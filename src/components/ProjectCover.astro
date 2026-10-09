@@ -1,0 +1,174 @@
+---
+/**
+ * Capas "blueprint" dos projetos — ilustrações vetoriais originais,
+ * coerentes com a identidade. Não são screenshots dos sistemas.
+ */
+interface Props {
+  id: 'hub' | 'research' | 'rest-lab' | 'po-ui';
+  label: string;
+}
+
+const { id, label } = Astro.props;
+---
+
+<div class="project-cover" role="img" aria-label={`${label} — capa ilustrativa`}>
+  {id === 'hub' && (
+    <svg viewBox="0 0 640 400" aria-hidden="true">
+      <rect class="cv-bg" width="640" height="400" />
+      <g class="cv-grid">
+        <path d="M80 0v400M160 0v400M240 0v400M320 0v400M400 0v400M480 0v400M560 0v400" />
+        <path d="M0 80h640M0 160h640M0 240h640M0 320h640" />
+      </g>
+      <rect class="cv-panel" x="48" y="48" width="544" height="304" />
+      <path class="cv-topbar" d="M48 88h544" />
+      <circle class="cv-dot-a" cx="72" cy="68" r="4" />
+      <circle class="cv-dot" cx="90" cy="68" r="4" />
+      <circle class="cv-dot" cx="108" cy="68" r="4" />
+      <text class="cv-label" x="132" y="72">NOVA HUB · OPERATIONS</text>
+      <g class="cv-tile">
+        <rect x="72" y="112" width="110" height="64" />
+        <rect x="198" y="112" width="110" height="64" />
+        <rect x="324" y="112" width="110" height="64" />
+        <rect x="450" y="112" width="118" height="64" />
+      </g>
+      <g class="cv-mono">
+        <text x="84" y="138">CPU</text>
+        <text x="210" y="138">MEM</text>
+        <text x="336" y="138">NET</text>
+        <text x="462" y="138">UNITS</text>
+      </g>
+      <path class="cv-spark" d="M84 162l14-10 12 6 14-14 12 8 14-4 12 10 14-16 12 6" />
+      <path class="cv-bar" d="M210 164v-18M226 164v-26M242 164v-12M258 164v-30M274 164v-20M290 164v-8" />
+      <path class="cv-bar-dim" d="M336 164v-14M352 164v-22M368 164v-10M384 164v-26M400 164v-16M416 164v-6" />
+      <g class="cv-tile">
+        <rect x="462" y="150" width="26" height="14" />
+        <rect x="494" y="150" width="26" height="14" />
+        <rect x="526" y="150" width="26" height="14" />
+      </g>
+      <rect class="cv-term" x="72" y="196" width="496" height="132" />
+      <g class="cv-mono">
+        <text x="88" y="224" class="cv-prompt">user@host</text>
+        <text x="152" y="224">:~$ systemctl status appserver</text>
+        <text x="88" y="250" class="cv-dim">● appserver.service — active (running)</text>
+        <text x="88" y="276" class="cv-dim">● scheduler · 4 jobs armed · tailscale: online</text>
+        <text x="88" y="302" class="cv-amber">$ ssh node-01 -- attach pty</text>
+      </g>
+      <path class="cv-cursor" d="M244 306h12v4h-12z" />
+      <text class="cv-footer" x="48" y="382">TELEMETRY · PTY TERMINAL · ORCHESTRATION — PRIVATE MESH</text>
+    </svg>
+  )}
+
+  {id === 'research' && (
+    <svg viewBox="0 0 640 400" aria-hidden="true">
+      <rect class="cv-bg" width="640" height="400" />
+      <g class="cv-grid">
+        <path d="M80 0v400M160 0v400M240 0v400M320 0v400M400 0v400M480 0v400M560 0v400" />
+        <path d="M0 80h640M0 160h640M0 240h640M0 320h640" />
+      </g>
+      <rect class="cv-panel" x="48" y="48" width="544" height="304" />
+      <path class="cv-topbar" d="M48 88h544" />
+      <text class="cv-label" x="72" y="72">PROTHEUS-RESEARCH · MCP SERVER</text>
+      <g class="cv-mono">
+        <text x="72" y="126" class="cv-prompt">&gt;</text>
+        <text x="88" y="126">query: entry point faturamento</text>
+        <path class="cv-cursor" d="M300 120h11v10h-11z" />
+      </g>
+      <g class="cv-tile">
+        <rect x="72" y="148" width="496" height="44" />
+        <rect x="72" y="204" width="496" height="44" />
+        <rect x="72" y="260" width="496" height="44" />
+      </g>
+      <g class="cv-mono">
+        <text x="88" y="175" class="cv-dim">index/advpl/syntax</text>
+        <text x="268" y="175">MFU085 · Faturamento</text>
+        <text x="468" y="175" class="cv-amber">found</text>
+        <text x="88" y="231" class="cv-dim">index/tables/sf2-sd2</text>
+        <text x="268" y="231">SF2 · SD2 · relationships</text>
+        <text x="470" y="231" class="cv-amber">found</text>
+        <text x="88" y="287" class="cv-dim">index/rules/business</text>
+        <text x="268" y="287">invoice hooks · validations</text>
+        <text x="470" y="287" class="cv-amber">found</text>
+      </g>
+      <text class="cv-footer" x="48" y="382">MCP / STDIO · LOCAL INDEX · NO PRODUCTION ACCESS</text>
+    </svg>
+  )}
+
+  {id === 'rest-lab' && (
+    <svg viewBox="0 0 640 400" aria-hidden="true">
+      <rect class="cv-bg" width="640" height="400" />
+      <g class="cv-grid">
+        <path d="M80 0v400M160 0v400M240 0v400M320 0v400M400 0v400M480 0v400M560 0v400" />
+        <path d="M0 80h640M0 160h640M0 240h640M0 320h640" />
+      </g>
+      <rect class="cv-panel" x="48" y="48" width="544" height="304" />
+      <path class="cv-topbar" d="M48 88h544" />
+      <text class="cv-label" x="72" y="72">PROTHEUS-REST-LAB · WSRESTFUL</text>
+      <g class="cv-mono">
+        <text x="72" y="128" class="cv-amber">GET</text>
+        <text x="130" y="128">/api/produtos?page=1</text>
+        <text x="470" y="128" class="cv-dim">200 OK</text>
+        <path class="cv-row" d="M72 142h496" />
+        <text x="72" y="176" class="cv-amber">POST</text>
+        <text x="130" y="176">/api/produtos</text>
+        <text x="470" y="176" class="cv-dim">201 Created</text>
+        <path class="cv-row" d="M72 190h496" />
+        <text x="72" y="224" class="cv-amber">PUT</text>
+        <text x="130" y="224">/api/produtos/:id</text>
+        <text x="470" y="224" class="cv-dim">200 OK</text>
+        <path class="cv-row" d="M72 238h496" />
+        <text x="72" y="272" class="cv-amber">DELETE</text>
+        <text x="130" y="272">/api/produtos?id=…</text>
+        <text x="470" y="272" class="cv-dim">204 No Content</text>
+        <path class="cv-row" d="M72 286h496" />
+        <text x="72" y="322" class="cv-dim">&#123; "status": "ok", "items": 25, "page": 1 &#125;</text>
+      </g>
+      <text class="cv-footer" x="48" y="382">PAGINATION · HTTP STATUS · JSON ENVELOPE · EXCEPTION HANDLING</text>
+    </svg>
+  )}
+
+  {id === 'po-ui' && (
+    <svg viewBox="0 0 640 400" aria-hidden="true">
+      <rect class="cv-bg" width="640" height="400" />
+      <g class="cv-grid">
+        <path d="M80 0v400M160 0v400M240 0v400M320 0v400M400 0v400M480 0v400M560 0v400" />
+        <path d="M0 80h640M0 160h640M0 240h640M0 320h640" />
+      </g>
+      <rect class="cv-panel" x="48" y="48" width="544" height="304" />
+      <rect class="cv-topbar-full" x="48" y="48" width="544" height="44" />
+      <text class="cv-label" x="72" y="75">PO-UI · ANGULAR PORTAL</text>
+      <rect class="cv-side" x="48" y="92" width="120" height="260" />
+      <g class="cv-mono">
+        <text x="64" y="122" class="cv-amber">▸ dashboard</text>
+        <text x="64" y="152" class="cv-dim">▸ pedidos</text>
+        <text x="64" y="182" class="cv-dim">▸ clientes</text>
+        <text x="64" y="212" class="cv-dim">▸ produtos</text>
+      </g>
+      <g class="cv-tile">
+        <rect x="188" y="112" width="120" height="56" />
+        <rect x="320" y="112" width="120" height="56" />
+        <rect x="452" y="112" width="120" height="56" />
+      </g>
+      <g class="cv-mono">
+        <text x="200" y="134">ORDERS</text>
+        <text x="332" y="134">REVENUE</text>
+        <text x="464" y="134">ITEMS</text>
+        <path class="cv-row" d="M200 146h60" />
+        <path class="cv-row" d="M332 146h60" />
+        <path class="cv-row" d="M464 146h60" />
+      </g>
+      <g class="cv-tile">
+        <rect x="188" y="188" width="384" height="148" />
+      </g>
+      <g class="cv-mono">
+        <text x="204" y="216" class="cv-dim">id · cliente · status · total</text>
+        <path class="cv-row" d="M204 228h352" />
+        <text x="204" y="254">#1042 · ACME Ltda · BILLED · R$ 4.210</text>
+        <path class="cv-row" d="M204 266h352" />
+        <text x="204" y="292">#1041 · Norte Sul · OPEN · R$ 1.980</text>
+        <path class="cv-row" d="M204 304h352" />
+        <text x="204" y="328" class="cv-amber">REST /JSON · PO-TABLE · PO-BUTTON</text>
+      </g>
+      <text class="cv-footer" x="48" y="382">TOTVS DESIGN SYSTEM · REST-READY · RESPONSIVE SCREENS</text>
+    </svg>
+  )}
+</div>

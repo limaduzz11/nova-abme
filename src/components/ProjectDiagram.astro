@@ -1,7 +1,8 @@
 ---
 /**
  * Diagramas de arquitetura "blueprint" — SVG inline por projeto.
- * Fonte de verdade: READMEs dos repositórios vinculados. Sem dados internos.
+ * Labels em inglês técnico (padrão de engenharia, neutro entre idiomas);
+ * legenda traduzida via prop `caption`.
  */
 interface Props {
   id: 'hub' | 'research' | 'rest-lab' | 'po-ui';
@@ -12,10 +13,10 @@ const { id, caption } = Astro.props;
 ---
 
 <figure class="project-diagram">
-  <div class="project-diagram__viewport" tabindex="0" role="region" aria-label={`Diagrama de arquitetura — ${caption}`}>
+  <div class="project-diagram__viewport" tabindex="0" role="region" aria-label={`${caption}`}>
   {
     id === 'hub' && (
-      <svg viewBox="0 0 760 180" role="img" aria-label="Arquitetura do NOVA HUB: navegador, serviços Express com terminal PTY e sistema Linux, conectados em malha privada Tailscale.">
+      <svg viewBox="0 0 760 180" role="img" aria-label="NOVA HUB architecture: browser, Express services with PTY terminal and Linux system over a private Tailscale mesh.">
         <defs>
           <marker id="dg-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
             <path d="M0,0 L8,4 L0,8 z" fill="currentColor" />
@@ -28,8 +29,8 @@ const { id, caption } = Astro.props;
         </g>
         <g class="dg-title">
           <text x="30" y="48">BROWSER</text>
-          <text x="284" y="48">HOST · SERVIÇOS</text>
-          <text x="578" y="48">SISTEMA</text>
+          <text x="284" y="48">HOST · SERVICES</text>
+          <text x="578" y="48">SYSTEM</text>
         </g>
         <g class="dg-item">
           <text x="30" y="70">Vanilla JS (ES6)</text>
@@ -37,10 +38,10 @@ const { id, caption } = Astro.props;
           <text x="30" y="106">CSS "Midnight Navy"</text>
           <text x="284" y="70">Express 5 API · REST</text>
           <text x="284" y="88">node-pty + ws (terminal)</text>
-          <text x="284" y="106">Sessão + guard CSRF</text>
+          <text x="284" y="106">Session + CSRF guard</text>
           <text x="578" y="70">Linux · systemd</text>
-          <text x="578" y="88">sensores de hardware</text>
-          <text x="578" y="106">OpenSSH (chave)</text>
+          <text x="578" y="88">hardware sensors</text>
+          <text x="578" y="106">OpenSSH (key)</text>
         </g>
         <g class="dg-edge">
           <path d="M196 52 H270" />
@@ -52,34 +53,34 @@ const { id, caption } = Astro.props;
           <text x="206" y="46">HTTP/REST</text>
           <text x="206" y="82">WebSocket (PTY)</text>
           <text x="504" y="46">forkpty</text>
-          <text x="504" y="82">sinais</text>
+          <text x="504" y="82">signals</text>
         </g>
         <path class="dg-mesh" d="M106 150 H654" />
-        <text class="dg-mesh-label" x="380" y="168" text-anchor="middle">MALHA PRIVADA TAILSCALE · SEM EXPOSIÇÃO PÚBLICA</text>
+        <text class="dg-mesh-label" x="380" y="168" text-anchor="middle">PRIVATE TAILSCALE MESH · NO PUBLIC EXPOSURE</text>
       </svg>
     )
   }
 
   {
     id === 'research' && (
-      <svg viewBox="0 0 760 132" role="img" aria-label="Arquitetura do protheus-research: cliente MCP consulta o servidor TypeScript que indexa conhecimento do ecossistema Protheus.">
+      <svg viewBox="0 0 760 132" role="img" aria-label="protheus-research architecture: MCP client queries a TypeScript server indexing Protheus ecosystem knowledge.">
         <g class="dg-box">
           <rect x="16" y="22" width="200" height="80" />
           <rect x="280" y="22" width="200" height="80" />
           <rect x="544" y="22" width="200" height="80" />
         </g>
         <g class="dg-title">
-          <text x="30" y="44">AGENTE / DEV</text>
+          <text x="30" y="44">AGENT / DEV</text>
           <text x="294" y="44">MCP SERVER (TS)</text>
-          <text x="558" y="44">BASE INDEXADA</text>
+          <text x="558" y="44">INDEXED BASE</text>
         </g>
         <g class="dg-item">
-          <text x="30" y="66">cliente MCP</text>
-          <text x="30" y="84">consultas técnicas</text>
-          <text x="294" y="66">ferramentas de consulta</text>
-          <text x="294" y="84">diagnóstico de erros</text>
-          <text x="558" y="66">sintaxe ADVPL/TL++</text>
-          <text x="558" y="84">rotinas · tabelas · regras</text>
+          <text x="30" y="66">MCP client</text>
+          <text x="30" y="84">technical queries</text>
+          <text x="294" y="66">query tools</text>
+          <text x="294" y="84">error diagnostics</text>
+          <text x="558" y="66">ADVPL/TL++ syntax</text>
+          <text x="558" y="84">routines · tables · rules</text>
         </g>
         <g class="dg-edge">
           <path d="M216 62 H280" />
@@ -87,7 +88,7 @@ const { id, caption } = Astro.props;
         </g>
         <g class="dg-label">
           <text x="224" y="56">MCP / stdio</text>
-          <text x="488" y="56">índice local</text>
+          <text x="488" y="56">local index</text>
         </g>
       </svg>
     )
@@ -95,24 +96,24 @@ const { id, caption } = Astro.props;
 
   {
     id === 'rest-lab' && (
-      <svg viewBox="0 0 760 154" role="img" aria-label="Arquitetura do protheus-rest-lab: cliente consome WSRESTFUL em ADVPL que responde com envelope JSON e status HTTP, persistindo no banco do Protheus.">
+      <svg viewBox="0 0 760 154" role="img" aria-label="protheus-rest-lab architecture: HTTP client consumes WSRESTFUL in ADVPL that replies with a JSON envelope and HTTP status, persisting to the ERP database.">
         <g class="dg-box">
           <rect x="16" y="26" width="190" height="84" />
           <rect x="274" y="26" width="230" height="84" />
           <rect x="572" y="26" width="172" height="84" />
         </g>
         <g class="dg-title">
-          <text x="30" y="48">CLIENTE</text>
+          <text x="30" y="48">CLIENT</text>
           <text x="288" y="48">PROTHEUS · REST</text>
-          <text x="586" y="48">DADOS</text>
+          <text x="586" y="48">DATA</text>
         </g>
         <g class="dg-item">
           <text x="30" y="70">HTTP + JSON</text>
           <text x="30" y="88">GET/POST/PUT/DELETE</text>
           <text x="288" y="70">WSRESTFUL + WSMETHOD</text>
-          <text x="288" y="88">envelope + status HTTP</text>
-          <text x="586" y="70">tabelas do ERP</text>
-          <text x="586" y="88">persistência</text>
+          <text x="288" y="88">envelope + HTTP status</text>
+          <text x="586" y="70">ERP tables</text>
+          <text x="586" y="88">persistence</text>
         </g>
         <g class="dg-edge">
           <path d="M206 52 H274" />
@@ -124,31 +125,31 @@ const { id, caption } = Astro.props;
           <text x="216" y="100">response</text>
           <text x="514" y="63">DBAccess</text>
         </g>
-        <text class="dg-mesh-label" x="380" y="142" text-anchor="middle">PAGINAÇÃO · CÓDIGOS HTTP · TRATAMENTO DE EXCEÇÕES</text>
+        <text class="dg-mesh-label" x="380" y="142" text-anchor="middle">PAGINATION · HTTP STATUS · EXCEPTION HANDLING</text>
       </svg>
     )
   }
 
   {
     id === 'po-ui' && (
-      <svg viewBox="0 0 760 132" role="img" aria-label="Arquitetura do protheus-po-ui-template: portal Angular com PO-UI consome APIs REST do Protheus para telas de consulta e operação.">
+      <svg viewBox="0 0 760 132" role="img" aria-label="protheus-po-ui-template architecture: Angular portal with PO-UI consuming Protheus REST APIs for query and operation screens.">
         <g class="dg-box">
           <rect x="16" y="22" width="220" height="80" />
           <rect x="310" y="22" width="190" height="80" />
           <rect x="574" y="22" width="170" height="80" />
         </g>
         <g class="dg-title">
-          <text x="30" y="44">PORTAL ANGULAR</text>
+          <text x="30" y="44">ANGULAR PORTAL</text>
           <text x="324" y="44">REST API</text>
           <text x="588" y="44">PROTHEUS</text>
         </g>
         <g class="dg-item">
-          <text x="30" y="66">design system PO-UI</text>
-          <text x="30" y="84">telas + componentes TOTVS</text>
-          <text x="324" y="66">consumo HTTP/JSON</text>
-          <text x="324" y="84">contratos tipados</text>
-          <text x="588" y="66">rotinas ADVPL</text>
-          <text x="588" y="84">consultas e operação</text>
+          <text x="30" y="66">PO-UI design system</text>
+          <text x="30" y="84">TOTVS screens + components</text>
+          <text x="324" y="66">HTTP/JSON consumption</text>
+          <text x="324" y="84">typed contracts</text>
+          <text x="588" y="66">ADVPL routines</text>
+          <text x="588" y="84">queries and operation</text>
         </g>
         <g class="dg-edge">
           <path d="M236 62 H310" />

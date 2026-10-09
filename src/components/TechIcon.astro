@@ -1,0 +1,30 @@
+---
+/**
+ * Ícone de tecnologia (Simple Icons CC0 + geometrias próprias).
+ * Renderiza SVG inline monocromático que herda currentColor.
+ */
+import { techIcons } from '../data/icons';
+
+interface Props {
+  id: string;
+  size?: number;
+  class?: string;
+}
+
+const { id, size = 22, class: className } = Astro.props;
+const icon = techIcons[id];
+---
+
+{icon && (
+  <svg
+    class={className}
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <path d={icon.d} />
+  </svg>
+)}

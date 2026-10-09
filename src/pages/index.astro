@@ -8,17 +8,19 @@ import Hero from '../components/Hero.astro';
 import LabSection from '../components/LabSection.astro';
 import SelectedWork from '../components/SelectedWork.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const lang = 'pt' as const;
 ---
 
-<BaseLayout>
-  <Header />
+<BaseLayout lang={lang}>
+  <Header lang={lang} />
   <main id="main-content">
-    <Hero />
-    <EngineeringIndex />
-    <SelectedWork />
-    <LabSection />
-    <BusinessSection />
-    <ConnectSection />
+    <Hero lang={lang} />
+    <EngineeringIndex lang={lang} />
+    <SelectedWork lang={lang} />
+    <LabSection lang={lang} />
+    <BusinessSection lang={lang} />
+    <ConnectSection lang={lang} />
   </main>
-  <Footer />
+  <Footer lang={lang} />
 </BaseLayout>

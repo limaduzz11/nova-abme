@@ -1,61 +1,54 @@
 ---
-import { publicLinks } from '../data/site';
+import { content, type Lang } from '../data/i18n';
+import { publicLinks, whatsappLink } from '../data/site';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = content[lang].hero;
 ---
 
 <section class="hero section-shell" id="top" aria-labelledby="hero-title">
   <div class="hero-grid">
     <div class="hero-copy reveal">
-      <div class="hero-tag-row">
-        <p class="eyebrow">EDUARDO DE LIMA PARANHOS · DESENVOLVEDOR DE SOFTWARE</p>
-      </div>
+      <p class="eyebrow">{t.eyebrow}</p>
 
       <h1 id="hero-title">
-        <span>SOFTWARE</span>
-        <span>QUE FUNCIONA</span>
-        <span>NO <em>MUNDO REAL.</em></span>
+        <span>{content[lang].heroTitle[0]}</span>
+        <span>{content[lang].heroTitle[1]}</span>
+        <span><em>{content[lang].heroTitle[2]}</em></span>
       </h1>
 
-      <p class="hero-lede">
-        Desenvolvedor de Software | <strong>TOTVS Protheus</strong>. <strong>ADVPL / TL++</strong>, <strong>APIs REST &amp; SOAP</strong> e <strong>SQL Server</strong> em rotinas de Financeiro (SIGAFIN), Faturamento (SIGAFAT), Compras (SIGACOM), Contabilidade (SIGACTB) e Estoque (SIGAEST). Atuação em produção desde 2021.
-      </p>
+      <p class="hero-lede">{t.lede}</p>
 
-      <div class="hero-actions" role="group" aria-label="Caminhos principais de conversão">
-        <a class="button button-primary" href={publicLinks.cv} download data-cursor-target>
-          <span>Baixar Currículo (PDF)</span>
+      <div class="hero-actions" role="group" aria-label={t.actionsLabel}>
+        <a class="button button-primary" href={publicLinks.cv} download>
+          <span>{t.ctaCv}</span>
           <span aria-hidden="true">↓</span>
         </a>
 
-        <a class="button" href={publicLinks.linkedin} target="_blank" rel="noopener noreferrer" data-cursor-target>
-          <span>LinkedIn</span>
+        <a class="button" href={publicLinks.linkedin} target="_blank" rel="noopener noreferrer">
+          <span>{t.ctaLinkedin}</span>
           <span aria-hidden="true">↗</span>
         </a>
 
-        <a class="button" href={publicLinks.whatsapp} target="_blank" rel="noopener noreferrer" data-cursor-target>
-          <span>WhatsApp</span>
+        <a class="button" href={whatsappLink(lang)} target="_blank" rel="noopener noreferrer">
+          <span>{t.ctaWhatsapp}</span>
           <span aria-hidden="true">↗</span>
-        </a>
-
-        <button
-          class="button button-copy"
-          type="button"
-          data-copy-email={publicLinks.emailRaw}
-          data-cursor-target
-          title="Clique para copiar o e-mail"
-        >
-          <span data-copy-label>Copiar E-mail</span>
-          <span class="copy-icon" aria-hidden="true">⧉</span>
-        </button>
-
-        <a class="button button-text" href="#work" data-cursor-target>
-          <span>Ver projetos</span>
-          <span aria-hidden="true">→</span>
         </a>
       </div>
+
+      <a class="hero-projects" href="#work">
+        <span>{t.projectsLink}</span>
+        <span aria-hidden="true">→</span>
+      </a>
     </div>
   </div>
 
-  <a class="scroll-cue" href="#engineering" data-cursor-target>
-    <span>Role para explorar experiência, projetos e código</span>
+  <a class="scroll-cue" href="#engineering">
+    <span>{t.scroll}</span>
     <span aria-hidden="true">↓</span>
   </a>
 </section>

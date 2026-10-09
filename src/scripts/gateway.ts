@@ -91,36 +91,6 @@ copyButtons.forEach((button) => {
   });
 });
 
-// Fine-pointer cursor halo. The native cursor remains available at all times.
-const cursor = select<HTMLElement>('[data-cursor]');
-if (cursor && window.matchMedia('(pointer: fine)').matches && !reducedMotion) {
-  let frame = 0;
-  let x = 0;
-  let y = 0;
-  let hasPosition = false;
-
-  window.addEventListener(
-    'pointermove',
-    (event) => {
-      x = event.clientX;
-      y = event.clientY;
-      hasPosition = true;
-      if (frame) return;
-      frame = window.requestAnimationFrame(() => {
-        cursor.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-        cursor.classList.toggle('is-positioned', hasPosition);
-        frame = 0;
-      });
-    },
-    { passive: true },
-  );
-
-  selectAll<HTMLElement>('[data-cursor-target]').forEach((target) => {
-    target.addEventListener('pointerenter', () => cursor.classList.add('is-hovering'));
-    target.addEventListener('pointerleave', () => cursor.classList.remove('is-hovering'));
-  });
-}
-
 // Command palette: navigation accelerator with proper dialog focus handling.
 const dialog = select<HTMLDialogElement>('#command-palette');
 const openButtons = selectAll<HTMLButtonElement>('[data-command-open]');
@@ -209,6 +179,122 @@ if (dialog) {
       else openPalette();
     }
   });
+}
+
+// Projects carousel: horizontal track with counter, progress and dots.
+const workTrack = select<HTMLElement>('[data-work-track]');
+if (workTrack) {
+  const cards = selectAll<HTMLElement>('[data-work-card]');
+  const dots = selectAll<HTMLButtonElement>('[data-work-dot]');
+  const currentLabel = select<HTMLElement>('[data-work-current]');
+  const fill = select<HTMLElement>('[data-work-fill]');
+  const prev = select<HTMLButtonElement>('[data-work-prev]');
+  const next = select<HTMLButtonElement>('[data-work-next]');
+  let activeIndex = 0;
+
+  const setActive = (index: number): void => {
+    const clamped = Math.max(0, Math.min(index, cards.length - 1));
+    activeIndex = clamped;
+    dots.forEach((dot, i) => {
+      dot.setAttribute('aria-current', i === clamped ? 'true' : 'false');
+    });
+    if (currentLabel) currentLabel.textContent = String(clamped + 1).padStart(2, '0');
+    if (fill) fill.style.transform = `scaleX(${(clamped + 1) / Math.max(cards.length, 1)})`;
+  };
+
+  let scrollLockUntil = 0;
+
+  const scrollToCard = (index: number): void => {
+    const clamped = Math.max(0, Math.min(index, cards.length - 1));
+    cards[clamped]?.scrollIntoView({
+      behavior: reducedMotion ? 'auto' : 'smooth',
+      inline: 'start',
+      block: 'nearest',
+    });
+    setActive(clamped);
+    // Ignora recalculos durante a animacao programatica de scroll.
+    scrollLockUntil = Date.now() + (reducedMotion ? 60 : 700);
+  };
+
+  const onTrackScroll = (): void => {
+    if (Date.now() < scrollLockUntil) return;
+    const trackRect = workTrack.getBoundingClientRect();
+    let best = 0;
+    let bestDistance = Number.POSITIVE_INFINITY;
+    cards.forEach((card, index) => {
+      const distance = Math.abs(card.getBoundingClientRect().left - trackRect.left);
+      if (distance < bestDistance) {
+        bestDistance = distance;
+        best = index;
+      }
+    });
+    setActive(best);
+  };
+
+  workTrack.addEventListener('scroll', onTrackScroll, { passive: true });
+  prev?.addEventListener('click', () => scrollToCard(activeIndex - 1));
+  next?.addEventListener('click', () => scrollToCard(activeIndex + 1));
+  dots.forEach((dot, index) => dot.addEventListener('click', () => scrollToCard(index)));
+
+  // Keep the active card in view when focus moves through its links (keyboard users).
+  workTrack.addEventListener('focusin', (event) => {
+    const card = (event.target as HTMLElement | null)?.closest<HTMLElement>('[data-work-card]');
+    if (!card) return;
+    const index = cards.indexOf(card);
+    if (index >= 0 && index !== activeIndex) setActive(index);
+  });
+
+  setActive(0);
+}
+
+// Language switch: wipe transition between locales (disabled for reduced motion).
+const wipe = select<HTMLElement>('[data-lang-wipe]');
+const wipeCode = select<HTMLElement>('[data-lang-wipe-code]');
+if (wipe && wipeCode) {
+  selectAll<HTMLAnchorElement>('[data-lang-option]').forEach((option) => {
+    option.addEventListener('click', (event) => {
+      const target = option.dataset.langTarget ?? '';
+      if (option.getAttribute('aria-current') === 'true') {
+        event.preventDefault();
+        return;
+      }
+      if (reducedMotion) return; // navegação direta
+      event.preventDefault();
+      wipeCode.textContent = target.toUpperCase();
+      try {
+        sessionStorage.setItem('nova-lang-wipe', target.toUpperCase());
+      } catch {
+        /* storage indisponível: transição apenas visual */
+      }
+      wipe.classList.add('lang-wipe--cover');
+      window.setTimeout(() => {
+        window.location.href = option.href;
+      }, 440);
+    });
+  });
+
+  let pendingWipe: string | null = null;
+  try {
+    pendingWipe = sessionStorage.getItem('nova-lang-wipe');
+  } catch {
+    pendingWipe = null;
+  }
+  if (pendingWipe) {
+    try {
+      sessionStorage.removeItem('nova-lang-wipe');
+    } catch {
+      /* ignora */
+    }
+    wipeCode.textContent = pendingWipe;
+    wipe.classList.add('lang-wipe--reveal');
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => wipe.classList.add('lang-wipe--done'));
+    });
+    window.setTimeout(() => {
+      wipe.classList.remove('lang-wipe--reveal', 'lang-wipe--done');
+      wipeCode.textContent = '';
+    }, 700);
+  }
 }
 
 root.dataset.gatewayReady = 'true';

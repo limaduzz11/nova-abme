@@ -13,6 +13,8 @@ async function exists(path) {
 }
 
 const indexHtml = await readFile(join(dist, 'index.html'), 'utf8');
+const enHtml = await readFile(join(dist, 'en', 'index.html'), 'utf8');
+const esHtml = await readFile(join(dist, 'es', 'index.html'), 'utf8');
 const notFoundHtml = await readFile(join(dist, '404.html'), 'utf8');
 const headers = await readFile(join(dist, '_headers'), 'utf8');
 const robots = await readFile(join(dist, 'robots.txt'), 'utf8');
@@ -33,6 +35,29 @@ test('static routes and metadata exist', async () => {
   assert.match(notFoundHtml, /CAMINHO_<em>NÃO ENCONTRADO\.<\/em>/);
 });
 
+test('localized pages exist with hreflang and canonical', () => {
+  assert.match(enHtml, /<html lang="en"/);
+  assert.match(esHtml, /<html lang="es"/);
+  assert.match(enHtml, /<title>[^<]*Software Developer[^<]*<\/title>/);
+  assert.match(esHtml, /<title>[^<]*Desarrollador de Software[^<]*<\/title>/);
+  // canonical e hreflang completos na página PT
+  assert.match(indexHtml, /rel="canonical" href="https:\/\/portfolioeduardo\.elptecnologia\.com\.br\/"/);
+  assert.match(indexHtml, /hreflang="pt-BR" href="https:\/\/portfolioeduardo\.elptecnologia\.com\.br\/"/);
+  assert.match(indexHtml, /hreflang="en" href="https:\/\/portfolioeduardo\.elptecnologia\.com\.br\/en\/"/);
+  assert.match(indexHtml, /hreflang="es" href="https:\/\/portfolioeduardo\.elptecnologia\.com\.br\/es\/"/);
+  assert.match(indexHtml, /hreflang="x-default"/);
+  // canonical próprio das páginas traduzidas
+  assert.match(enHtml, /rel="canonical" href="https:\/\/portfolioeduardo\.elptecnologia\.com\.br\/en\/"/);
+  assert.match(esHtml, /rel="canonical" href="https:\/\/portfolioeduardo\.elptecnologia\.com\.br\/es\/"/);
+  // projetos + tech stack presentes nas três páginas
+  for (const html of [indexHtml, enHtml, esHtml]) {
+    assert.match(html, /NOVA HUB WEB/);
+    assert.match(html, /protheus-rest-lab/);
+    assert.match(html, /data-work-track/);
+    assert.match(html, /id="stack"/);
+  }
+});
+
 test('core navigation anchors resolve to rendered sections', () => {
   const ids = new Set([...indexHtml.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]));
   const fragments = [...indexHtml.matchAll(/href="(#[^"]+)"/g)].map((match) => match[1].slice(1));
@@ -42,6 +67,7 @@ test('core navigation anchors resolve to rendered sections', () => {
   assert.ok(ids.has('trajectory'));
   assert.ok(ids.has('results'));
   assert.ok(ids.has('work'));
+  assert.ok(ids.has('stack'));
   assert.ok(ids.has('lab'));
   assert.ok(ids.has('business'));
   assert.ok(ids.has('connect'));

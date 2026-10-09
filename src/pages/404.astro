@@ -1,14 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { toPath } from '../data/site';
+import { content } from '../data/i18n';
+
+const t = content.pt.notFound;
+const [titleA, titleB] = t.title.split('\n');
 ---
 
-<BaseLayout title="404 — Caminho não encontrado" description="O caminho solicitado não existe neste portfólio." noindex>
+<BaseLayout lang="pt" noindex>
   <main class="not-found" id="main-content">
     <p class="not-found__code">404</p>
-    <p class="eyebrow">EDUARDO PARANHOS · PORTFÓLIO</p>
-    <h1>CAMINHO_<em>NÃO ENCONTRADO.</em></h1>
-    <p>Esse endereço não leva a uma página do perfil de Eduardo Paranhos.</p>
-    <a class="button button-primary" href={toPath('/')}>Voltar ao início <span aria-hidden="true">→</span></a>
+    <p class="eyebrow">{t.eyebrow}</p>
+    <h1>{titleA}<em>{titleB}</em></h1>
+    <p>{t.text}</p>
+    <a class="button button-primary" href="/">{t.cta} <span aria-hidden="true">→</span></a>
   </main>
 </BaseLayout>

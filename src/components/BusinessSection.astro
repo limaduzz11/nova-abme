@@ -1,49 +1,46 @@
 ---
+import { content, type Lang } from '../data/i18n';
 import { publicLinks } from '../data/site';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = content[lang].business;
 ---
 
 <section class="section-shell business-section" id="business" aria-labelledby="business-title">
 
   <div class="section-heading reveal">
-    <p class="eyebrow">MODELOS DE ENGAJAMENTO</p>
-    <h2 id="business-title">COMO PODEMOS<br /><em>TRABALHAR JUNTOS.</em></h2>
+    <h2 id="business-title" set:html={t.title.replace('\n', '<br />')} />
   </div>
 
   <div class="engagement-grid reveal">
     <div class="engagement-card">
-      <div class="engagement-card__header">
-        <span class="micro-label engagement-card__badge">CLT OU PJ INDIVIDUAL</span>
-        <span class="engagement-card__type">ALOCAÇÃO EM TIMES</span>
-      </div>
-      <h3 class="engagement-card__title">Desenvolvedor de Software | TOTVS Protheus</h3>
-      <p class="engagement-card__desc">
-        Atuação dedicada em squads de tecnologia e engenharia. ADVPL/TL++ com frameworks MVC do Protheus, integrações REST e SOAP, e sustentação de processos nos módulos Financeiro (SIGAFIN), Compras (SIGACOM), Contábil (SIGACTB), Faturamento (SIGAFAT), Estoque (SIGAEST) e rotinas no APSDU.
-      </p>
+      <h3 class="engagement-card__title">{t.cards.role.title}</h3>
+      <p class="engagement-card__desc">{t.cards.role.description}</p>
       <div class="engagement-card__footer">
-        <a class="button" href="#connect" data-cursor-target>
-          <span>Ir para canais de contato</span>
+        <span class="engagement-card__note">{t.cards.role.note}</span>
+        <a class="button" href="#connect">
+          <span>{t.cards.role.cta}</span>
           <span aria-hidden="true">↓</span>
         </a>
       </div>
     </div>
 
     <div class="engagement-card engagement-card--featured">
-      <div class="engagement-card__header">
-        <span class="micro-label engagement-card__badge">PJ CORPORATIVO (B2B)</span>
-        <span class="engagement-card__type">PROJETOS & CONSULTORIA</span>
-      </div>
-      <h3 class="engagement-card__title">ELP Tecnologia</h3>
-      <p class="engagement-card__desc">
-        Veículo empresarial para contratação sob escopo definido: criação, manutenção e melhoria de integrações entre ERP e plataformas externas, relatórios analíticos customizados em ADVPL puro (.prw) e diagnósticos de banco de dados SQL Server / APSDU.
-      </p>
+      <h3 class="engagement-card__title">{t.cards.elp.title}</h3>
+      <p class="engagement-card__desc">{t.cards.elp.description}</p>
       <div class="engagement-card__footer">
+        <span class="engagement-card__note">{t.cards.elp.note}</span>
         <div class="engagement-actions">
-          <a class="button button-primary" href={publicLinks.elp} target="_blank" rel="noopener noreferrer" data-cursor-target>
-            <span>Conhecer a ELP Tecnologia</span>
+          <a class="button button-primary" href={publicLinks.elp} target="_blank" rel="noopener noreferrer">
+            <span>{t.cards.elp.cta}</span>
             <span aria-hidden="true">↗</span>
           </a>
-          <a class="button" href={publicLinks.elpEmail} data-cursor-target title="Enviar e-mail para contato@elptecnologia.com.br">
-            <span>E-mail B2B</span>
+          <a class="button" href={publicLinks.elpEmail} title={publicLinks.elpEmailRaw}>
+            <span>{t.cards.elp.ctaEmail}</span>
             <span aria-hidden="true">↗</span>
           </a>
         </div>

@@ -1,0 +1,29 @@
+---
+import { content, langHtml, langLabels, langPaths, type Lang } from '../data/i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = content[lang].langSwitch;
+const languages: Lang[] = ['pt', 'en', 'es'];
+---
+
+<div class="lang-switch" role="group" aria-label={t.ariaLabel} data-lang-switch>
+  {
+    languages.map((code) => (
+      <a
+        class="lang-switch__btn"
+        href={langPaths[code]}
+        hreflang={langHtml[code]}
+        lang={langHtml[code]}
+        aria-current={code === lang ? 'true' : undefined}
+        data-lang-option
+        data-lang-target={code}
+      >
+        {langLabels[code]}
+      </a>
+    ))
+  }
+</div>

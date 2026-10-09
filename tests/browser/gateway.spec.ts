@@ -97,8 +97,40 @@ test('responsive layout stays inside the viewport matrix', async ({ page }) => {
   }
 });
 
+test('projects carousel exposes counter, dots and arrow navigation', async ({ page }) => {
+  await gotoPage(page);
+  const current = page.locator('[data-work-current]');
+  await expect(current).toHaveText('01');
+
+  await page.locator('[data-work-next]').click();
+  await expect(current).toHaveText('02', { timeout: 5000 });
+
+  const secondDot = page.locator('[data-work-dot]').nth(1);
+  await expect(secondDot).toHaveAttribute('aria-current', 'true');
+
+  await page.locator('[data-work-prev]').click();
+  await expect(current).toHaveText('01', { timeout: 5000 });
+});
+
+test('language switch navigates to the localized page', async ({ page }) => {
+  await gotoPage(page);
+  await page.locator('[data-lang-option][data-lang-target="en"]').click();
+  await page.waitForURL('**/en/', { timeout: 10_000 });
+  await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+  await expect(page).toHaveTitle(/Software Developer/);
+  await expect(page.locator('#hero-title')).toBeVisible();
+});
+
 test('page has no automated accessibility violations', async ({ page }) => {
   await gotoPage(page);
+  await revealWholePage(page);
+  const results = await new AxeBuilder({ page }).analyze();
+  expect(results.violations).toEqual([]);
+});
+
+test('localized page has no automated accessibility violations', async ({ page }) => {
+  await page.goto('/en/');
+  await expect(page.locator('html')).toHaveAttribute('data-gateway-ready', 'true');
   await revealWholePage(page);
   const results = await new AxeBuilder({ page }).analyze();
   expect(results.violations).toEqual([]);

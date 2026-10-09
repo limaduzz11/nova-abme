@@ -1,5 +1,15 @@
 ---
-import { publicLinks } from '../data/site';
+import { content, type Lang } from '../data/i18n';
+import { publicLinks, whatsappLink } from '../data/site';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = content[lang].command;
+const nav = content[lang].nav;
+const channels = content[lang].connect.channels;
 ---
 
 <dialog
@@ -11,75 +21,52 @@ import { publicLinks } from '../data/site';
 >
   <div class="command-dialog__header">
     <div>
-      <p class="eyebrow">EDUARDO PARANHOS · NAVEGAÇÃO RÁPIDA</p>
-      <h2 id="command-title">COMANDOS_</h2>
+      <p class="eyebrow">{t.eyebrow}</p>
+      <h2 id="command-title">{t.title}</h2>
     </div>
-    <button class="icon-button" type="button" data-command-close aria-label="Fechar menu de navegação">
+    <button class="icon-button" type="button" data-command-close aria-label={t.closeLabel}>
       <span aria-hidden="true">×</span>
     </button>
   </div>
 
   <label class="command-search">
-    <span class="sr-only">Filtrar comandos ou seções</span>
+    <span class="sr-only">{t.search}</span>
     <span aria-hidden="true">&gt;</span>
     <input
       type="search"
       data-command-search
-      placeholder="Digite um comando, tecnologia ou destino..."
+      placeholder={t.search}
       autocomplete="off"
       spellcheck="false"
     />
   </label>
 
-  <nav class="command-list" aria-label="Destinos do menu" data-command-list>
-    <a href="#top" data-command-item data-command-label="Início / Hero">Início / Topo <span>→</span></a>
-    <a href="#engineering" data-command-item data-command-label="Experiência ADVPL TOTVS Protheus">Experiência & Especialidades <span>→</span></a>
-    <a href="#trajectory" data-command-item data-command-label="Trajetória profissional experiência timeline carreira">Trajetória profissional <span>→</span></a>
-    <a href="#results" data-command-item data-command-label="Resultados práticos métricas corporativo">Resultados no mundo real <span>→</span></a>
-    <a href="#work" data-command-item data-command-label="Projetos selecionados código aberto repositórios">Projetos selecionados <span>→</span></a>
-    <a href="#lab" data-command-item data-command-label="Laboratório VANTA Labz open source">VANTA Labz (Open Source) <span>→</span></a>
-    <a href="#business" data-command-item data-command-label="ELP Tecnologia consultoria ERP negócios">ELP Tecnologia (Consultoria) <span>→</span></a>
-    <a href="#connect" data-command-item data-command-label="Contato direto e-mail whatsapp">Contato direto <span>→</span></a>
-    
-    <a
-      href={publicLinks.cv}
-      download
-      data-command-item
-      data-command-label="Baixar currículo PDF CV"
-    >Baixar Currículo (PDF) <span>↓</span></a>
-
-    <a
-      href={publicLinks.whatsapp}
-      target="_blank"
-      rel="noopener noreferrer"
-      data-command-item
-      data-command-label="WhatsApp direto mensagem"
-    >WhatsApp direto <span>↗</span></a>
-
-    <a
-      href={publicLinks.linkedin}
-      target="_blank"
-      rel="noopener noreferrer"
-      data-command-item
-      data-command-label="LinkedIn perfil profissional"
-    >LinkedIn <span>↗</span></a>
-
-    <a
-      href={publicLinks.github}
-      target="_blank"
-      rel="noopener noreferrer"
-      data-command-item
-      data-command-label="GitHub repositórios código"
-    >GitHub <span>↗</span></a>
-
-    <a
-      href={publicLinks.vcard}
-      download
-      data-command-item
-      data-command-label="Salvar contato vCard vcf"
-    >Salvar contato (vCard) <span>↓</span></a>
+  <nav class="command-list" aria-label={t.title} data-command-list>
+    <a href="#top" data-command-item data-command-label={t.home}>{t.home} <span>→</span></a>
+    {
+      nav.map((item) => (
+        <a href={item.href} data-command-item data-command-label={item.label}>
+          {item.label} <span>→</span>
+        </a>
+      ))
+    }
+    <a href={publicLinks.cv} download data-command-item data-command-label={channels.cv.label}>
+      {channels.cv.label} <span>↓</span>
+    </a>
+    <a href={whatsappLink(lang)} target="_blank" rel="noopener noreferrer" data-command-item data-command-label={channels.whatsapp.label}>
+      {channels.whatsapp.label} <span>↗</span>
+    </a>
+    <a href={publicLinks.linkedin} target="_blank" rel="noopener noreferrer" data-command-item data-command-label={channels.linkedin.label}>
+      {channels.linkedin.label} <span>↗</span>
+    </a>
+    <a href={publicLinks.github} target="_blank" rel="noopener noreferrer" data-command-item data-command-label={channels.github.label}>
+      {channels.github.label} <span>↗</span>
+    </a>
+    <a href={publicLinks.vcard} download data-command-item data-command-label={channels.vcard.label}>
+      {channels.vcard.label} <span>↓</span>
+    </a>
   </nav>
 
-  <p class="command-empty" data-command-empty hidden>Nenhum comando encontrado.</p>
-  <p class="command-hint"><kbd>↑</kbd><kbd>↓</kbd> navegar <kbd>↵</kbd> selecionar <kbd>esc</kbd> fechar</p>
+  <p class="command-empty" data-command-empty hidden>{t.empty}</p>
+  <p class="command-hint" aria-hidden="true"><kbd>↑</kbd><kbd>↓</kbd><kbd>↵</kbd><kbd>esc</kbd></p>
 </dialog>

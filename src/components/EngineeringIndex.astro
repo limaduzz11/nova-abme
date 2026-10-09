@@ -1,21 +1,31 @@
 ---
-import { careerTimeline, education, provenResults, publicLinks, stackItems } from '../data/site';
+import TechStack from './TechStack.astro';
+import { content, type Lang } from '../data/i18n';
+import { publicLinks } from '../data/site';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = content[lang].engineering;
+const tr = content[lang].trajectory;
 ---
 
 <section class="section-shell engineering-section" id="engineering" aria-labelledby="engineering-title">
   <div class="section-heading section-heading--wide reveal">
-    <p class="eyebrow">EXPERIÊNCIA & ESPECIALIDADES</p>
-    <h2 id="engineering-title">ENGENHARIA PARA<br />PROCESSOS REAIS.</h2>
-    <p>Do dicionário de dados à integração em nuvem: desenvolvimento com foco em segurança transacional, código limpo e sustentação de processos corporativos.</p>
+    <p class="eyebrow">{t.eyebrow}</p>
+    <h2 id="engineering-title" set:html={t.title.replace('\n', '<br />')} />
+    <p>{t.intro}</p>
   </div>
 
   <!-- Tablist de Especialidades -->
   <div class="engineering-grid">
     <div class="stack-index reveal">
-      <p class="index-heading">ESPECIALIDADES DE ATUAÇÃO</p>
-      <div class="stack-list" role="tablist" aria-label="Especialidades técnicas">
+      <p class="index-heading">{t.stackHeading}</p>
+      <div class="stack-list" role="tablist" aria-label={t.stackHeading}>
         {
-          stackItems.map((item, index) => (
+          t.stack.map((item, index) => (
             <button
               type="button"
               role="tab"
@@ -23,14 +33,13 @@ import { careerTimeline, education, provenResults, publicLinks, stackItems } fro
               aria-selected={index === 0 ? 'true' : 'false'}
               aria-controls="stack-detail"
               data-stack-option
-              data-stack-id={item.id}
+              data-stack-id={item.number}
               data-number={item.number}
               data-title={item.title}
               data-description={item.description}
               data-context={item.context}
               data-label={item.label}
               data-highlights={item.highlights.join(' · ')}
-              data-cursor-target
             >
               <span>{item.number}</span>
               <strong>{item.label}</strong>
@@ -42,36 +51,37 @@ import { careerTimeline, education, provenResults, publicLinks, stackItems } fro
     </div>
 
     <div class="stack-detail reveal" id="stack-detail" role="tabpanel" aria-live="polite">
-      <p class="micro-label" data-stack-context>{stackItems[0].context}</p>
-      <p class="stack-detail__code" data-stack-code>{stackItems[0].number} / {stackItems[0].label}</p>
-      <h3 data-stack-title>{stackItems[0].title}</h3>
-      <p data-stack-description>{stackItems[0].description}</p>
-      
+      <p class="micro-label" data-stack-context>{t.stack[0].context}</p>
+      <p class="stack-detail__code" data-stack-code>{t.stack[0].number} / {t.stack[0].label}</p>
+      <h3 data-stack-title>{t.stack[0].title}</h3>
+      <p data-stack-description>{t.stack[0].description}</p>
+
       <div class="stack-detail__highlights">
-        <span class="highlights-label">Tópicos & Módulos:</span>
-        <p class="highlights-content" data-stack-highlights>{stackItems[0].highlights.join(' · ')}</p>
+        <span class="highlights-label">{t.topicsLabel}</span>
+        <p class="highlights-content" data-stack-highlights>{t.stack[0].highlights.join(' · ')}</p>
       </div>
-
-
     </div>
   </div>
+
+  <!-- Minhas Tecnologias (stack & ferramentas) -->
+  <TechStack lang={lang} />
 
   <!-- Trajetória Profissional (dados verificáveis do CV) -->
   <div class="trajectory-block reveal" id="trajectory">
     <div class="trajectory-header">
       <div>
-        <p class="eyebrow">TRAJETÓRIA PROFISSIONAL</p>
-        <h3 class="trajectory-title">EXPERIÊNCIA EM PRODUÇÃO.</h3>
+        <p class="eyebrow">{tr.eyebrow}</p>
+        <h3 class="trajectory-title">{tr.title}</h3>
       </div>
       <p class="trajectory-education">
-        <strong>{education.degree}</strong><br />
-        {education.institution} · {education.period}
+        <strong>{tr.degree}</strong><br />
+        {tr.education}
       </p>
     </div>
 
     <ol class="trajectory-list">
       {
-        careerTimeline.map((item) => (
+        tr.items.map((item) => (
           <li class:list={['trajectory-item', { 'is-current': item.current }]}>
             <p class="trajectory-period">{item.period}</p>
             <div class="trajectory-body">
@@ -90,23 +100,20 @@ import { careerTimeline, education, provenResults, publicLinks, stackItems } fro
     </ol>
   </div>
 
-  <!-- Bloco de Resultados no Mundo Real (Métricas Anonimizadas) -->
+  <!-- Bloco de Resultados no Mundo Real -->
   <div class="results-block reveal" id="results">
     <div class="results-header">
       <div>
-        <p class="eyebrow">RESULTADOS NO MUNDO REAL</p>
-        <h3 class="results-title">IMPACTO EM AMBIENTES DE PRODUÇÃO</h3>
+        <p class="eyebrow">{t.results.eyebrow}</p>
+        <h3 class="results-title">{t.results.title}</h3>
       </div>
-      <p class="results-confidentiality">
-        O trabalho corporativo permanece privado sob sigilo ético e NDA. Abaixo estão padrões de desafios resolvidos e entregues com sucesso.
-      </p>
+      <p class="results-confidentiality">{t.results.note}</p>
     </div>
 
     <div class="results-grid">
       {
-        provenResults.map((result) => (
+        t.results.items.map((result) => (
           <div class="result-card">
-            <span class="result-card__tag">{result.tag}</span>
             <div class="result-card__metric">{result.metric}</div>
             <h4 class="result-card__title">{result.title}</h4>
             <p class="result-card__description">{result.description}</p>
@@ -116,9 +123,9 @@ import { careerTimeline, education, provenResults, publicLinks, stackItems } fro
     </div>
 
     <div class="results-cta">
-      <span>Quer avaliar se meu perfil atende à necessidade da sua equipe?</span>
-      <a class="text-link" href={publicLinks.cv} download data-cursor-target>
-        Baixar currículo completo (PDF) ↓
+      <span>{t.results.ctaQuestion}</span>
+      <a class="text-link" href={publicLinks.cv} download>
+        {t.results.ctaLink} ↓
       </a>
     </div>
   </div>

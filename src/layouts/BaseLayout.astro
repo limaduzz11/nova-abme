@@ -1,38 +1,48 @@
 ---
 import CommandPalette from '../components/CommandPalette.astro';
+import { content, langHtml, langPaths, type Lang } from '../data/i18n';
 import { publicLinks, siteMeta, toPath } from '../data/site';
 import '../styles/global.css';
 
 interface Props {
+  lang: Lang;
+  noindex?: boolean;
   title?: string;
   description?: string;
-  noindex?: boolean;
 }
 
-const {
-  title = siteMeta.title,
-  description = siteMeta.description,
-  noindex = false,
-} = Astro.props;
+const { lang, noindex = false } = Astro.props;
+const t = content[lang];
+const pageTitle = Astro.props.title ?? t.meta.title;
+const pageDescription = Astro.props.description ?? t.meta.description;
+const htmlLang = langHtml[lang];
 
 const configuredSite = import.meta.env.SITE || siteMeta.defaultUrl;
 const canonical = new URL(Astro.url.pathname, configuredSite).href;
 const socialImage = new URL(toPath('/og-image.png'), configuredSite).href;
+
+const languages: Lang[] = ['pt', 'en', 'es'];
+const alternates = languages.map((code) => ({
+  code,
+  hreflang: langHtml[code],
+  href: new URL(langPaths[code], configuredSite).href,
+}));
 
 const profilePageSchema = {
   '@context': 'https://schema.org',
   '@type': 'ProfilePage',
   '@id': `${configuredSite}#profile`,
   url: canonical,
-  name: title,
-  description: description,
+  name: t.meta.title,
+  description: t.meta.description,
+  inLanguage: htmlLang,
   mainEntity: {
     '@type': 'Person',
     '@id': `${configuredSite}#person`,
     name: siteMeta.name,
     alternateName: siteMeta.shortName,
     url: configuredSite,
-    jobTitle: siteMeta.role,
+    jobTitle: t.business.cards.role.title,
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'São Paulo',
@@ -64,7 +74,7 @@ const profilePageSchema = {
 ---
 
 <!doctype html>
-<html lang="pt-BR" class="no-js">
+<html lang={htmlLang} class="no-js">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -72,8 +82,14 @@ const profilePageSchema = {
     <meta name="color-scheme" content="dark" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="robots" content={noindex ? 'noindex,nofollow' : 'index,follow'} />
-    <meta name="description" content={description} />
+    <meta name="description" content={pageDescription} />
     <link rel="canonical" href={canonical} />
+    {
+      alternates.map((alt) => (
+        <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+      ))
+    }
+    <link rel="alternate" hreflang="x-default" href={alternates[0].href} />
     <link rel="icon" href={toPath('/favicon.svg')} type="image/svg+xml" />
     <link rel="manifest" href={toPath('/site.webmanifest')} />
     <link
@@ -85,30 +101,33 @@ const profilePageSchema = {
     />
 
     <meta property="og:type" content="profile" />
-    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:locale" content={htmlLang === 'pt-BR' ? 'pt_BR' : htmlLang} />
     <meta property="og:site_name" content={siteMeta.name} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={socialImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Eduardo Paranhos — Desenvolvedor ADVPL / TOTVS Protheus" />
+    <meta property="og:image:alt" content="Eduardo Paranhos — Software Developer | TOTVS Protheus" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
     <meta name="twitter:image" content={socialImage} />
-    <meta name="twitter:image:alt" content="Eduardo Paranhos — Desenvolvedor ADVPL / TOTVS Protheus" />
 
-    <title>{title}</title>
+    <title>{pageTitle}</title>
     <script type="application/ld+json" set:html={JSON.stringify(profilePageSchema)}></script>
   </head>
   <body>
-    <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
-    <div class="cursor-halo" data-cursor aria-hidden="true"></div>
+    <a class="skip-link" href="#main-content">
+      {lang === 'pt' ? 'Pular para o conteúdo' : lang === 'en' ? 'Skip to content' : 'Saltar al contenido'}
+    </a>
     <slot />
-    <CommandPalette />
+    <CommandPalette lang={lang} />
+    <div class="lang-wipe" data-lang-wipe aria-hidden="true">
+      <span class="lang-wipe__code" data-lang-wipe-code></span>
+    </div>
     <script src="../scripts/gateway.ts"></script>
   </body>
 </html>

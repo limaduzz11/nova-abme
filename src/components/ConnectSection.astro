@@ -1,64 +1,60 @@
 ---
-import { contactChannels, publicLinks } from '../data/site';
+import { content, type Lang } from '../data/i18n';
+import { contactChannels, publicLinks, whatsappLink } from '../data/site';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = content[lang].connect;
 ---
 
 <section class="section-shell connect-section" id="connect" aria-labelledby="connect-title">
-
-  <div class="section-heading reveal">
-    <p class="eyebrow">COMUNICAÇÃO DIRETA</p>
-    <h2 id="connect-title">VAMOS<br /><em>CONVERSAR?</em></h2>
+  <div class="section-heading section-heading--split reveal">
+    <div>
+      <h2 id="connect-title" set:html={t.title.replace('\n', '<br />')} />
+    </div>
+    <p>
+      {t.introBefore}
+      <a class="inline-link" href={publicLinks.elp} target="_blank" rel="noopener noreferrer">ELP Tecnologia</a>{t.introAfter}
+    </p>
   </div>
 
-  <div class="connect-grid">
+  <ul class="connect-list reveal">
     {
-      contactChannels.map((channel) => (
-        <div class="connect-card reveal">
-          <div class="connect-card__header">
-            <span class="connect-card__number">{channel.number}</span>
-            <span class="micro-label connect-card__badge">{channel.badge}</span>
-          </div>
-
-          <div class="connect-card__body">
-            <h3 class="connect-card__title">{channel.label}</h3>
-            <p class="connect-card__detail">{channel.detail}</p>
-          </div>
-
-          <div class="connect-card__actions">
-            {channel.id === 'email' ? (
-              <div class="email-actions-group">
-                <a
-                  class="button button-primary"
-                  href={channel.href}
-                  data-cursor-target
-                >
-                  <span>Enviar e-mail ↗</span>
-                </a>
+      contactChannels.map((channel) => {
+        const txt = t.channels[channel.id];
+        const href = channel.id === 'whatsapp' ? whatsappLink(lang) : channel.href;
+        return (
+          <li class:list={['connect-row', { 'connect-row--primary': channel.primary }]}>
+            <span class="connect-row__label">{txt.label}</span>
+            <span class="connect-row__detail">{txt.detail}</span>
+            <span class="connect-row__actions">
+              {channel.copyable && (
                 <button
-                  class="button button-copy"
+                  class="connect-row__copy"
                   type="button"
                   data-copy-email={publicLinks.emailRaw}
-                  data-cursor-target
-                  title="Copiar endereço de e-mail"
+                  title={txt.label}
                 >
-                  <span data-copy-label>Copiar</span>
-                  <span aria-hidden="true">⧉</span>
+                  <span data-copy-label>{t.copy}</span>
                 </button>
-              </div>
-            ) : (
+              )}
               <a
-                class:list={['button', { 'button-primary': channel.id === 'whatsapp' || channel.id === 'cv' }]}
-                href={channel.href}
+                class="connect-row__action"
+                href={href}
                 target={channel.isExternal ? '_blank' : undefined}
                 rel={channel.isExternal ? 'noopener noreferrer' : undefined}
                 download={channel.download ? true : undefined}
-                data-cursor-target
               >
-                <span>{channel.actionText}</span>
+                {txt.action}
+                <span aria-hidden="true">{channel.isExternal ? '↗' : '↓'}</span>
               </a>
-            )}
-          </div>
-        </div>
-      ))
+            </span>
+          </li>
+        );
+      })
     }
-  </div>
+  </ul>
 </section>
