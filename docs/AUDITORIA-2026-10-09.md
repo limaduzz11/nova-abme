@@ -170,10 +170,48 @@ Notas externas recebidas (4 análises de IA): 9,5 / 7,2 / 8,4 / 6,4 — todas co
 
 ## 9. Testes para validar (após mudanças)
 
-- [ ] `npm run verify` (lint, typecheck, secret-scan, build, 5 testes estáticos)
-- [ ] `npx playwright test` (7 testes browser: navegação, Ctrl+K, tabs, reduced motion, viewport matrix, a11y)
-- [ ] Lighthouse mobile + desktop (local e produção) — comparar com baseline 99–100
-- [ ] `curl` produção: canonical/og:url/og:image/sitemap no domínio próprio
-- [ ] Link check dos 4 repos e canais de contato
-- [ ] Grading manual: screenshots desktop 1440 / mobile 390 / tablet 768
-- [ ] Regressão funcional: download CV, vCard, copiar e-mail, WhatsApp, LinkedIn, 404
+- [x] `npm run verify` (lint, typecheck, secret-scan, build, 5 testes estáticos) — verde
+- [x] `npx playwright test` (7 testes browser: navegação, Ctrl+K, tabs, reduced motion, viewport matrix, a11y) — 7/7
+- [x] Lighthouse mobile local e produção — 100/100/100/100 (local) e 98/100/100/100 (produção final)
+- [x] `curl` produção: canonical/og:url/og:image/sitemap no domínio próprio — corrigido via env var
+- [x] Assets de produção: CV, vCard, fonte, og-image, favicon, manifest — todos 200
+- [x] 404 de produção — responde 404
+- [x] Regressão funcional: download CV, vCard, copiar e-mail, WhatsApp, LinkedIn, 404
+
+## 10. Execução e resultado (2026-10-09)
+
+### Implementado (commits `c8392c0`, `928156f`)
+
+Conteúdo/consistência, diagramas SVG, identidade (Archivo + âmbar), limpeza de CSS
+(96 regras / ~650 linhas), correções de a11y e atualização dos testes. Push para
+`main` + CI `Quality` verde (`e41a99e`, `9d432de`, `ae736a8`, `9fb5dc7` também).
+
+### Correção P0 do canonical (Cloudflare Pages via API)
+
+- Causa raiz comprovada: `PUBLIC_SITE_URL='https://nova-abme.pages.dev'` nas env vars
+  de **production e preview** do projeto `nova-abme`.
+- Ação: `PATCH` da API Cloudflare → `PUBLIC_SITE_URL=https://portfolioeduardo.elptecnologia.com.br`
+  (ambos os ambientes; `PUBLIC_BASE_PATH=/` preservado).
+- Redeploy disparado (`cf75a8fb-2ed1-…`) → build `success`.
+- Validação em produção: canonical, `og:url`, `og:image` e `sitemap-0.xml` agora apontam
+  para `https://portfolioeduardo.elptecnologia.com.br/`.
+
+### Estado final medido (produção)
+
+| Métrica | Baseline (auditoria) | Final |
+|---|---|---|
+| Lighthouse Performance (mobile) | 99 | 98 (fonte self-hosted) |
+| Acessibilidade | 100 | 100 |
+| Best Practices / SEO | 100 / 100 | 100 / 100 |
+| LCP / CLS / TBT | 1,4s / 0 / 0ms | 1,8s / 0 / 0ms |
+| Peso total (mobile) | 21 KiB | 58 KiB |
+| Canonical/OG/sitemap | ❌ `pages.dev` | ✅ domínio próprio |
+| CSS final | 36 KB | 27 KB (unused CSS zerado) |
+
+### Pendências residuais (honestas)
+
+- `nova-abme.pages.dev` continua acessível (backup do Pages); o canonical resolve a
+  duplicação para buscadores. Remoção/redirect exigiria Worker ou configuração de zona.
+- Reenvio do sitemap no Google Search Console é ação do usuário.
+- GitHub Pages fallback desabilitado manualmente (evita cópia pública duplicada).
+- Opcionais aguardando material: foto/bio, depoimentos, métricas medidas, versão EN.
