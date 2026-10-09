@@ -126,7 +126,6 @@ export const techStackItems: readonly TechStackItem[] = [
   { id: 'typescript', icon: 'typescript', name: 'TypeScript', level: 'basic' },
   { id: 'nodejs', icon: 'nodedotjs', name: 'Node.js', level: 'basic' },
   { id: 'flutter', icon: 'flutter', name: 'Flutter', level: 'basic' },
-  { id: 'dart', icon: 'dart', name: 'Dart', level: 'basic' },
   { id: 'docker', icon: 'docker', name: 'Docker', level: 'basic' },
   { id: 'python', icon: 'python', name: 'Python', level: 'basic' },
   { id: 'cpp', icon: 'cpp', name: 'C++', level: 'basic' },

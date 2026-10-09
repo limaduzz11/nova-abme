@@ -112,6 +112,7 @@ test('projects carousel exposes counter, dots and arrow navigation', async ({ pa
 
 test('tech stack reveals level and usage detail on interaction', async ({ page }) => {
   await gotoPage(page);
+  await revealWholePage(page);
   const firstTech = page.locator('[data-tech-button]').first();
   const detail = page.locator('[data-tech-detail]');
 

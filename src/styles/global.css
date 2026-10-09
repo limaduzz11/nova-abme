@@ -4,7 +4,7 @@
   --paper: #cfcfcf;
   --muted: #7d7d7d;
   --line: #545454;
-  --quiet: #a7a7a7;
+  --quiet: #969696;
   --bright: #e4e4e4;
   --accent: #e8b44a;
   --accent-soft: rgba(232, 180, 74, 0.35);
@@ -277,17 +277,17 @@ kbd {
 
 .hero {
   display: flex;
-  min-height: min(44rem, calc(100svh - 4.5rem));
+  min-height: min(30rem, calc(76svh - 4.5rem));
   flex-direction: column;
   justify-content: center;
-  padding-top: clamp(2rem, 4.5vw, 3.5rem);
-  padding-bottom: clamp(1.8rem, 3.5vw, 2.75rem);
+  padding-top: clamp(1.25rem, 2.5vw, 2rem);
+  padding-bottom: clamp(1rem, 2vw, 1.5rem);
 }
 
 .hero-grid {
   display: grid;
   margin-block: auto;
-  padding-block: clamp(1rem, 2vw, 2rem);
+  padding-block: clamp(0.5rem, 1vw, 1rem);
   gap: 1.5rem;
   grid-template-columns: minmax(0, 1fr);
   align-items: start;
@@ -823,6 +823,7 @@ html[data-audience='exploring'] [data-audience-focus~='exploring'] {
 
 .header-actions {
   display: flex;
+  margin-left: auto;
   align-items: center;
   gap: 0.5rem;
 }

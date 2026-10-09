@@ -95,7 +95,6 @@ export interface SiteContent {
     headingA: string;
     headingB: string;
     subtitle: string;
-    hint: string;
     levels: { advanced: string; intermediate: string; basic: string };
     usesLabel: string;
     uses: Record<string, readonly string[]>;
@@ -350,7 +349,6 @@ export const content: Record<Lang, SiteContent> = {
       headingA: 'MINHAS',
       headingB: 'TECNOLOGIAS',
       subtitle: 'Stack & ferramentas',
-      hint: 'Passe o mouse para ver o nível · clique para ver onde aplico',
       levels: { advanced: 'Avançado', intermediate: 'Intermediário', basic: 'Básico' },
       usesLabel: 'Onde aplico',
       uses: {
@@ -369,7 +367,6 @@ export const content: Record<Lang, SiteContent> = {
         typescript: ['protheus-research · servidor MCP', 'Tipagem em ferramentas internas'],
         nodejs: ['nova-hub · API Express', 'protheus-research · runtime MCP'],
         flutter: ['Protótipos multiplataforma (NOVA Hub V4)'],
-        dart: ['Protótipos multiplataforma (NOVA Hub V4)'],
         docker: ['Ambientes locais de desenvolvimento'],
         python: ['Scripts de automação e análise de dados'],
         cpp: ['Estudos de runtime e baixo nível (XNOVA)'],
@@ -684,7 +681,6 @@ export const content: Record<Lang, SiteContent> = {
       headingA: 'MY',
       headingB: 'TECHNOLOGIES',
       subtitle: 'Stack & tools',
-      hint: 'Hover to see the level · click to see where I apply it',
       levels: { advanced: 'Advanced', intermediate: 'Intermediate', basic: 'Basic' },
       usesLabel: 'Where I apply it',
       uses: {
@@ -703,7 +699,6 @@ export const content: Record<Lang, SiteContent> = {
         typescript: ['protheus-research · MCP server', 'Typing in internal tools'],
         nodejs: ['nova-hub · Express API', 'protheus-research · MCP runtime'],
         flutter: ['Cross-platform prototypes (NOVA Hub V4)'],
-        dart: ['Cross-platform prototypes (NOVA Hub V4)'],
         docker: ['Local development environments'],
         python: ['Automation scripts and data analysis'],
         cpp: ['Runtime and low-level studies (XNOVA)'],
@@ -1018,7 +1013,6 @@ export const content: Record<Lang, SiteContent> = {
       headingA: 'MIS',
       headingB: 'TECNOLOGÍAS',
       subtitle: 'Stack y herramientas',
-      hint: 'Pasa el cursor para ver el nivel · haz clic para ver dónde lo aplico',
       levels: { advanced: 'Avanzado', intermediate: 'Intermedio', basic: 'Básico' },
       usesLabel: 'Dónde lo aplico',
       uses: {
@@ -1037,7 +1031,6 @@ export const content: Record<Lang, SiteContent> = {
         typescript: ['protheus-research · servidor MCP', 'Tipado en herramientas internas'],
         nodejs: ['nova-hub · API Express', 'protheus-research · runtime MCP'],
         flutter: ['Prototipos multiplataforma (NOVA Hub V4)'],
-        dart: ['Prototipos multiplataforma (NOVA Hub V4)'],
         docker: ['Entornos locales de desarrollo'],
         python: ['Scripts de automatización y análisis de datos'],
         cpp: ['Estudios de runtime y bajo nivel (XNOVA)'],
