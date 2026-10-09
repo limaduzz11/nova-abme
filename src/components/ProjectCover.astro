@@ -2,16 +2,16 @@
 /**
  * Capas "blueprint" dos projetos — ilustrações vetoriais originais,
  * coerentes com a identidade. Não são screenshots dos sistemas.
+ * Decorativas: o nome acessível fica no link que as contém.
  */
 interface Props {
   id: 'hub' | 'research' | 'rest-lab' | 'po-ui';
-  label: string;
 }
 
-const { id, label } = Astro.props;
+const { id } = Astro.props;
 ---
 
-<div class="project-cover" role="img" aria-label={`${label} — capa ilustrativa`}>
+<div class="project-cover" aria-hidden="true">
   {id === 'hub' && (
     <svg viewBox="0 0 640 400" aria-hidden="true">
       <rect class="cv-bg" width="640" height="400" />
