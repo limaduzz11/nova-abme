@@ -54,7 +54,12 @@ rewritten for a root custom domain.
 
 ## Fallback: GitHub Pages
 
-The repository includes `.github/workflows/deploy-pages.yml`.
+The repository includes `.github/workflows/deploy-pages.yml`, kept as a
+**manual-only fallback** and currently **disabled** in GitHub Actions
+(`disabled_manually`). Running it on every push would publish a duplicate public
+copy of the site, which conflicts with the canonical/SEO of the primary domain.
+To activate it: enable the workflow in Actions, enable Pages
+(Settings → Pages → Source: GitHub Actions) and run it via `workflow_dispatch`.
 
 1. Push the repository to GitHub with the default branch named `main`.
 2. In repository **Settings → Pages**, choose **GitHub Actions** as the source.
