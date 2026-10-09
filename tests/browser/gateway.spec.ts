@@ -28,7 +28,6 @@ test('desktop keeps the main routes visible and captures a reference', async ({ 
   await expect(page.locator('#results')).toBeVisible();
   await expect(page.locator('#work')).toBeVisible();
   await expect(page.locator('#connect')).toBeVisible();
-  await expect(page.locator('.primary-nav')).toBeVisible();
   await revealWholePage(page);
   await page.locator('html').evaluate((element) => element.setAttribute('data-reference-capture', 'true'));
 
@@ -41,7 +40,6 @@ test('mobile remains navigable and captures a reference', async ({ page }) => {
 
   await expect(page.locator('#hero-title')).toBeVisible();
   await expect(page.locator('.command-trigger')).toBeVisible();
-  await expect(page.locator('.primary-nav')).toBeHidden();
   await expect(page.locator('body')).toHaveCSS('overflow-x', 'hidden');
   await revealWholePage(page);
   await page.locator('html').evaluate((element) => element.setAttribute('data-reference-capture', 'true'));
@@ -110,6 +108,25 @@ test('projects carousel exposes counter, dots and arrow navigation', async ({ pa
 
   await page.locator('[data-work-prev]').click();
   await expect(current).toHaveText('01', { timeout: 5000 });
+});
+
+test('tech stack reveals level and usage detail on interaction', async ({ page }) => {
+  await gotoPage(page);
+  const firstTech = page.locator('[data-tech-button]').first();
+  const detail = page.locator('[data-tech-detail]');
+
+  await expect(detail).toBeHidden();
+  await firstTech.click();
+  await expect(firstTech).toHaveAttribute('aria-expanded', 'true');
+  await expect(detail).toBeVisible();
+  await expect(page.locator('[data-tech-detail-name]')).toHaveText('ADVPL / TL++');
+  await expect(page.locator('[data-tech-detail-level]')).toHaveText(/Avançado|Advanced/);
+  const uses = page.locator('[data-tech-detail-uses] li');
+  await expect(uses.first()).toContainText(/SIGAFIN/);
+
+  // clicar de novo fecha
+  await firstTech.click();
+  await expect(detail).toBeHidden();
 });
 
 test('language switch navigates to the localized page', async ({ page }) => {

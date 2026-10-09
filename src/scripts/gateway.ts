@@ -32,7 +32,6 @@ const stackOptions = selectAll<HTMLButtonElement>('[data-stack-option]');
 const stackContext = select<HTMLElement>('[data-stack-context]');
 const stackCode = select<HTMLElement>('[data-stack-code]');
 const stackTitle = select<HTMLElement>('[data-stack-title]');
-const stackDescription = select<HTMLElement>('[data-stack-description]');
 const stackHighlights = select<HTMLElement>('[data-stack-highlights]');
 
 const setStack = (option: HTMLButtonElement, focus = false): void => {
@@ -45,7 +44,6 @@ const setStack = (option: HTMLButtonElement, focus = false): void => {
   if (stackContext) stackContext.textContent = option.dataset.context ?? '';
   if (stackCode) stackCode.textContent = `${option.dataset.number ?? ''} / ${option.dataset.label ?? ''}`;
   if (stackTitle) stackTitle.textContent = option.dataset.title ?? '';
-  if (stackDescription) stackDescription.textContent = option.dataset.description ?? '';
   if (stackHighlights) stackHighlights.textContent = option.dataset.highlights ?? '';
   if (focus) option.focus();
 };
@@ -245,6 +243,65 @@ if (workTrack) {
   });
 
   setActive(0);
+}
+
+// Tech stack: hover shows the level fill (CSS); click reveals where it is applied.
+const techButtons = selectAll<HTMLButtonElement>('[data-tech-button]');
+const techDetail = select<HTMLElement>('[data-tech-detail]');
+if (techButtons.length > 0 && techDetail) {
+  const detailIcon = techDetail.querySelector<HTMLElement>('[data-tech-detail-icon]');
+  const detailName = techDetail.querySelector<HTMLElement>('[data-tech-detail-name]');
+  const detailLevel = techDetail.querySelector<HTMLElement>('[data-tech-detail-level]');
+  const detailUses = techDetail.querySelector<HTMLElement>('[data-tech-detail-uses]');
+
+  const closeTechDetail = (): void => {
+    techButtons.forEach((button) => {
+      button.setAttribute('aria-expanded', 'false');
+      button.closest('.tech-item')?.classList.remove('is-open');
+    });
+    techDetail.hidden = true;
+  };
+
+  techButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const isOpen = button.getAttribute('aria-expanded') === 'true';
+      if (isOpen) {
+        closeTechDetail();
+        return;
+      }
+
+      techButtons.forEach((current) => {
+        current.setAttribute('aria-expanded', 'false');
+        current.closest('.tech-item')?.classList.remove('is-open');
+      });
+      button.setAttribute('aria-expanded', 'true');
+      button.closest('.tech-item')?.classList.add('is-open');
+
+      if (detailIcon) {
+        detailIcon.innerHTML = button.querySelector('.tech-orb__icon')?.innerHTML ?? '';
+      }
+      if (detailName) detailName.textContent = button.dataset.techName ?? '';
+      if (detailLevel) detailLevel.textContent = button.dataset.techLevel ?? '';
+      if (detailUses) {
+        detailUses.innerHTML = '';
+        try {
+          const uses = JSON.parse(button.dataset.techUses ?? '[]') as string[];
+          uses.forEach((use) => {
+            const item = document.createElement('li');
+            item.textContent = use;
+            detailUses.appendChild(item);
+          });
+        } catch {
+          /* payload inválido: ignora */
+        }
+      }
+      techDetail.hidden = false;
+    });
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !techDetail.hidden) closeTechDetail();
+  });
 }
 
 // Language switch: wipe transition between locales (disabled for reduced motion).

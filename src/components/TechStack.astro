@@ -15,18 +15,47 @@ const t = content[lang].techstack;
   <div class="techstack-head reveal">
     <h2 id="stack-title">{t.headingA} <em>{t.headingB}</em></h2>
     <p>{t.subtitle}</p>
+    <p class="techstack-hint">{t.hint}</p>
   </div>
 
   <ul class="techstack-grid reveal">
     {
       techStackItems.map((item) => (
-        <li class="tech-item">
-          <span class="tech-orb">
-            <TechIcon id={item.icon} size={26} />
-          </span>
+        <li class="tech-item" data-level={item.level}>
+          <button
+            type="button"
+            class="tech-orb"
+            data-tech-button
+            data-tech-name={item.name}
+            data-tech-level={t.levels[item.level]}
+            data-tech-uses={JSON.stringify(t.uses[item.id] ?? [])}
+            aria-expanded="false"
+            aria-controls="tech-detail"
+            aria-label={`${item.name} — ${t.levels[item.level]}`}
+          >
+            <span class="tech-orb__fill" aria-hidden="true" />
+            <span class="tech-orb__icon">
+              <TechIcon id={item.icon} size={26} />
+            </span>
+          </button>
           <span class="tech-name">{item.name}</span>
+          <span class="tech-level">{t.levels[item.level]}</span>
         </li>
       ))
     }
   </ul>
+
+  <div class="tech-detail" id="tech-detail" data-tech-detail aria-live="polite" hidden>
+    <div class="tech-detail__head">
+      <span class="tech-detail__icon" data-tech-detail-icon aria-hidden="true"></span>
+      <div>
+        <p class="tech-detail__name" data-tech-detail-name></p>
+        <p class="tech-detail__level" data-tech-detail-level></p>
+      </div>
+    </div>
+    <div class="tech-detail__body">
+      <span class="tech-detail__label">{t.usesLabel}</span>
+      <ul class="tech-detail__uses" data-tech-detail-uses></ul>
+    </div>
+  </div>
 </section>

@@ -36,7 +36,6 @@ const tr = content[lang].trajectory;
               data-stack-id={item.number}
               data-number={item.number}
               data-title={item.title}
-              data-description={item.description}
               data-context={item.context}
               data-label={item.label}
               data-highlights={item.highlights.join(' · ')}
@@ -54,7 +53,6 @@ const tr = content[lang].trajectory;
       <p class="micro-label" data-stack-context>{t.stack[0].context}</p>
       <p class="stack-detail__code" data-stack-code>{t.stack[0].number} / {t.stack[0].label}</p>
       <h3 data-stack-title>{t.stack[0].title}</h3>
-      <p data-stack-description>{t.stack[0].description}</p>
 
       <div class="stack-detail__highlights">
         <span class="highlights-label">{t.topicsLabel}</span>
@@ -73,10 +71,6 @@ const tr = content[lang].trajectory;
         <p class="eyebrow">{tr.eyebrow}</p>
         <h3 class="trajectory-title">{tr.title}</h3>
       </div>
-      <p class="trajectory-education">
-        <strong>{tr.degree}</strong><br />
-        {tr.education}
-      </p>
     </div>
 
     <ol class="trajectory-list">

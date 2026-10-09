@@ -76,8 +76,6 @@ export interface SiteContent {
   trajectory: {
     eyebrow: string;
     title: string;
-    education: string;
-    degree: string;
     items: readonly TrajectoryItemContent[];
   };
   work: {
@@ -97,6 +95,10 @@ export interface SiteContent {
     headingA: string;
     headingB: string;
     subtitle: string;
+    hint: string;
+    levels: { advanced: string; intermediate: string; basic: string };
+    usesLabel: string;
+    uses: Record<string, readonly string[]>;
   };
   lab: {
     eyebrow: string;
@@ -251,8 +253,6 @@ export const content: Record<Lang, SiteContent> = {
     trajectory: {
       eyebrow: 'TRAJETÓRIA PROFISSIONAL',
       title: 'EXPERIÊNCIA EM PRODUÇÃO.',
-      education: 'Centro Universitário FMU (FIAM-FAAM) · Mar 2023 — Jan 2026 · Concluído',
-      degree: 'Análise e Desenvolvimento de Sistemas',
       items: [
         {
           period: 'JUN 2024 — ATUAL',
@@ -350,6 +350,30 @@ export const content: Record<Lang, SiteContent> = {
       headingA: 'MINHAS',
       headingB: 'TECNOLOGIAS',
       subtitle: 'Stack & ferramentas',
+      hint: 'Passe o mouse para ver o nível · clique para ver onde aplico',
+      levels: { advanced: 'Avançado', intermediate: 'Intermediário', basic: 'Básico' },
+      usesLabel: 'Onde aplico',
+      uses: {
+        advpl: ['Relatórios financeiros (.prw) no SIGAFIN', 'Rotinas com ExecAuto e Pontos de Entrada', 'Padrões REST no protheus-rest-lab'],
+        protheus: ['Módulos FIN · FAT · COM · EST · CTB · APSDU', 'Faturamento SF2/SD2 · Pedidos SC5/SC6 · Clientes SA1'],
+        sqlserver: ['Queries e índices em tabelas volumosas', 'Diagnóstico de fechamento e conciliação'],
+        github: ['Organização de repositórios e releases', 'CI Quality nos projetos públicos'],
+        git: ['Branches de sustentação e feature', 'Compilação controlada de pacotes RPO'],
+        jobs: ['Lotes e fechamentos noturnos', 'Integrações e sincronizações agendadas'],
+        rest: ['Integração com hubs de marketplaces', 'protheus-rest-lab · endpoints padronizados'],
+        soap: ['Webservices de NF-e e parceiros', 'Análise de requisições SOAP/XML'],
+        poui: ['protheus-po-ui-template · portal Angular', 'Telas de consulta e operação'],
+        angular: ['Portal REST-ready com PO-UI', 'Consumo de APIs do Protheus'],
+        javascript: ['nova-hub · frontend Vanilla JS + xterm.js', 'Automação de scripts no dia a dia'],
+        linux: ['nova-hub · malha Tailscale privada', 'Builds e servidores de homologação'],
+        typescript: ['protheus-research · servidor MCP', 'Tipagem em ferramentas internas'],
+        nodejs: ['nova-hub · API Express', 'protheus-research · runtime MCP'],
+        flutter: ['Protótipos multiplataforma (NOVA Hub V4)'],
+        dart: ['Protótipos multiplataforma (NOVA Hub V4)'],
+        docker: ['Ambientes locais de desenvolvimento'],
+        python: ['Scripts de automação e análise de dados'],
+        cpp: ['Estudos de runtime e baixo nível (XNOVA)'],
+      },
     },
     lab: {
       eyebrow: 'CÓDIGO ABERTO & AUTONOMIA LOCAL',
@@ -457,7 +481,7 @@ export const content: Record<Lang, SiteContent> = {
       eyebrow: 'EDUARDO PARANHOS · SOFTWARE DEVELOPER | TOTVS PROTHEUS',
       actionsLabel: 'Primary actions',
       lede: 'TOTVS Protheus · ADVPL/TL++ · REST & SOAP APIs · SQL Server. In production since 2021.',
-      ctaCv: 'Download Résumé (PDF)',
+      ctaCv: 'Download Resume (PDF)',
       ctaLinkedin: 'LinkedIn',
       ctaWhatsapp: 'WhatsApp',
       projectsLink: 'View technical projects',
@@ -557,14 +581,12 @@ export const content: Record<Lang, SiteContent> = {
           },
         ],
         ctaQuestion: 'Want to assess whether my profile fits your team?',
-        ctaLink: 'Download full résumé (PDF)',
+        ctaLink: 'Download full resume (PDF)',
       },
     },
     trajectory: {
       eyebrow: 'CAREER PATH',
       title: 'PRODUCTION EXPERIENCE.',
-      education: 'FMU University Center (FIAM-FAAM) · Mar 2023 — Jan 2026 · Completed',
-      degree: 'Systems Analysis and Development',
       items: [
         {
           period: 'JUN 2024 — PRESENT',
@@ -662,6 +684,30 @@ export const content: Record<Lang, SiteContent> = {
       headingA: 'MY',
       headingB: 'TECHNOLOGIES',
       subtitle: 'Stack & tools',
+      hint: 'Hover to see the level · click to see where I apply it',
+      levels: { advanced: 'Advanced', intermediate: 'Intermediate', basic: 'Basic' },
+      usesLabel: 'Where I apply it',
+      uses: {
+        advpl: ['Financial reports (.prw) in SIGAFIN', 'Routines with ExecAuto and Entry Points', 'REST patterns in protheus-rest-lab'],
+        protheus: ['Modules FIN · FAT · COM · EST · CTB · APSDU', 'Billing SF2/SD2 · Orders SC5/SC6 · Customers SA1'],
+        sqlserver: ['Queries and indexes on high-volume tables', 'Closing and reconciliation diagnostics'],
+        github: ['Repository and release organization', 'CI Quality on public projects'],
+        git: ['Sustainment and feature branches', 'Controlled RPO package builds'],
+        jobs: ['Nightly batches and closings', 'Scheduled integrations and syncs'],
+        rest: ['Marketplace hub integrations', 'protheus-rest-lab · standardized endpoints'],
+        soap: ['Invoice and partner web services', 'SOAP/XML request analysis'],
+        poui: ['protheus-po-ui-template · Angular portal', 'Query and operation screens'],
+        angular: ['REST-ready portal with PO-UI', 'Protheus API consumption'],
+        javascript: ['nova-hub · Vanilla JS + xterm.js frontend', 'Day-to-day script automation'],
+        linux: ['nova-hub · private Tailscale mesh', 'Builds and staging servers'],
+        typescript: ['protheus-research · MCP server', 'Typing in internal tools'],
+        nodejs: ['nova-hub · Express API', 'protheus-research · MCP runtime'],
+        flutter: ['Cross-platform prototypes (NOVA Hub V4)'],
+        dart: ['Cross-platform prototypes (NOVA Hub V4)'],
+        docker: ['Local development environments'],
+        python: ['Automation scripts and data analysis'],
+        cpp: ['Runtime and low-level studies (XNOVA)'],
+      },
     },
     lab: {
       eyebrow: 'OPEN SOURCE & LOCAL AUTONOMY',
@@ -724,7 +770,7 @@ export const content: Record<Lang, SiteContent> = {
       channels: {
         whatsapp: { label: 'WhatsApp', detail: '+55 11 94466-5292', action: 'Chat' },
         email: { label: 'E-mail', detail: 'contatoeduardoparanhos@gmail.com', action: 'Send' },
-        cv: { label: 'Résumé (PDF)', detail: 'Technical PDF · ATS-friendly', action: 'Download' },
+        cv: { label: 'Resume (PDF)', detail: 'Technical PDF · ATS-friendly', action: 'Download' },
         linkedin: { label: 'LinkedIn', detail: 'Career path and recommendations', action: 'Open' },
         github: { label: 'GitHub', detail: 'Public code and projects', action: 'Open' },
         vcard: { label: 'Contact (vCard)', detail: 'Add to your phone', action: 'Save' },
@@ -875,8 +921,6 @@ export const content: Record<Lang, SiteContent> = {
     trajectory: {
       eyebrow: 'TRAYECTORIA PROFESIONAL',
       title: 'EXPERIENCIA EN PRODUCCIÓN.',
-      education: 'Centro Universitario FMU (FIAM-FAAM) · Mar 2023 — Ene 2026 · Completado',
-      degree: 'Análisis y Desarrollo de Sistemas',
       items: [
         {
           period: 'JUN 2024 — ACTUAL',
@@ -974,6 +1018,30 @@ export const content: Record<Lang, SiteContent> = {
       headingA: 'MIS',
       headingB: 'TECNOLOGÍAS',
       subtitle: 'Stack y herramientas',
+      hint: 'Pasa el cursor para ver el nivel · haz clic para ver dónde lo aplico',
+      levels: { advanced: 'Avanzado', intermediate: 'Intermedio', basic: 'Básico' },
+      usesLabel: 'Dónde lo aplico',
+      uses: {
+        advpl: ['Informes financieros (.prw) en SIGAFIN', 'Rutinas con ExecAuto y Puntos de Entrada', 'Patrones REST en protheus-rest-lab'],
+        protheus: ['Módulos FIN · FAT · COM · EST · CTB · APSDU', 'Facturación SF2/SD2 · Pedidos SC5/SC6 · Clientes SA1'],
+        sqlserver: ['Consultas e índices en tablas voluminosas', 'Diagnóstico de cierre y conciliación'],
+        github: ['Organización de repositorios y releases', 'CI Quality en proyectos públicos'],
+        git: ['Ramas de soporte y feature', 'Compilación controlada de paquetes RPO'],
+        jobs: ['Lotes y cierres nocturnos', 'Integraciones y sincronizaciones programadas'],
+        rest: ['Integración con hubs de marketplaces', 'protheus-rest-lab · endpoints estandarizados'],
+        soap: ['Web services de facturas y socios', 'Análisis de solicitudes SOAP/XML'],
+        poui: ['protheus-po-ui-template · portal Angular', 'Pantallas de consulta y operación'],
+        angular: ['Portal REST-ready con PO-UI', 'Consumo de APIs de Protheus'],
+        javascript: ['nova-hub · frontend Vanilla JS + xterm.js', 'Automatización de scripts diarios'],
+        linux: ['nova-hub · malla Tailscale privada', 'Builds y servidores de homologación'],
+        typescript: ['protheus-research · servidor MCP', 'Tipado en herramientas internas'],
+        nodejs: ['nova-hub · API Express', 'protheus-research · runtime MCP'],
+        flutter: ['Prototipos multiplataforma (NOVA Hub V4)'],
+        dart: ['Prototipos multiplataforma (NOVA Hub V4)'],
+        docker: ['Entornos locales de desarrollo'],
+        python: ['Scripts de automatización y análisis de datos'],
+        cpp: ['Estudios de runtime y bajo nivel (XNOVA)'],
+      },
     },
     lab: {
       eyebrow: 'CÓDIGO ABIERTO Y AUTONOMÍA LOCAL',

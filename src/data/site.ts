@@ -100,25 +100,36 @@ export const projectsData: readonly ProjectData[] = [
   },
 ] as const;
 
-export const techStackItems: readonly { icon: string; name: string }[] = [
-  { icon: 'code', name: 'ADVPL / TL++' },
-  { icon: 'layers', name: 'TOTVS Protheus' },
-  { icon: 'database', name: 'SQL Server' },
-  { icon: 'doc', name: 'T-SQL' },
-  { icon: 'sync', name: 'APIs REST' },
-  { icon: 'globe', name: 'SOAP / XML' },
-  { icon: 'browser', name: 'PO-UI' },
-  { icon: 'angular', name: 'Angular' },
-  { icon: 'typescript', name: 'TypeScript' },
-  { icon: 'javascript', name: 'JavaScript' },
-  { icon: 'nodedotjs', name: 'Node.js' },
-  { icon: 'flutter', name: 'Flutter' },
-  { icon: 'dart', name: 'Dart' },
-  { icon: 'git', name: 'Git' },
-  { icon: 'github', name: 'GitHub' },
-  { icon: 'docker', name: 'Docker' },
-  { icon: 'linux', name: 'Linux' },
-  { icon: 'terminal', name: 'Jobs & Schedules' },
+export type TechLevel = 'advanced' | 'intermediate' | 'basic';
+
+export interface TechStackItem {
+  id: string;
+  icon: string;
+  name: string;
+  level: TechLevel;
+}
+
+/** Ordenado por domínio (avançado → intermediário → básico), conforme currículo. */
+export const techStackItems: readonly TechStackItem[] = [
+  { id: 'advpl', icon: 'code', name: 'ADVPL / TL++', level: 'advanced' },
+  { id: 'protheus', icon: 'layers', name: 'ERP Protheus', level: 'advanced' },
+  { id: 'sqlserver', icon: 'database', name: 'SQL Server', level: 'advanced' },
+  { id: 'github', icon: 'github', name: 'GitHub', level: 'advanced' },
+  { id: 'git', icon: 'git', name: 'Git', level: 'advanced' },
+  { id: 'jobs', icon: 'terminal', name: 'Jobs & Schedules', level: 'advanced' },
+  { id: 'rest', icon: 'sync', name: 'APIs REST', level: 'intermediate' },
+  { id: 'soap', icon: 'globe', name: 'SOAP / XML', level: 'intermediate' },
+  { id: 'poui', icon: 'browser', name: 'PO-UI', level: 'intermediate' },
+  { id: 'angular', icon: 'angular', name: 'Angular', level: 'intermediate' },
+  { id: 'javascript', icon: 'javascript', name: 'JavaScript', level: 'intermediate' },
+  { id: 'linux', icon: 'linux', name: 'Linux', level: 'intermediate' },
+  { id: 'typescript', icon: 'typescript', name: 'TypeScript', level: 'basic' },
+  { id: 'nodejs', icon: 'nodedotjs', name: 'Node.js', level: 'basic' },
+  { id: 'flutter', icon: 'flutter', name: 'Flutter', level: 'basic' },
+  { id: 'dart', icon: 'dart', name: 'Dart', level: 'basic' },
+  { id: 'docker', icon: 'docker', name: 'Docker', level: 'basic' },
+  { id: 'python', icon: 'python', name: 'Python', level: 'basic' },
+  { id: 'cpp', icon: 'cpp', name: 'C++', level: 'basic' },
 ] as const;
 
 export interface LabItemData {

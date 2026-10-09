@@ -20,14 +20,6 @@ const t = content[lang];
       </span>
     </a>
 
-    <nav class="primary-nav" aria-label={t.navLabel}>
-      {
-        t.nav.map((item) => (
-          <a href={item.href}>{item.label}</a>
-        ))
-      }
-    </nav>
-
     <div class="header-actions">
       <LangSwitch lang={lang} />
 

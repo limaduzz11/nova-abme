@@ -1,4 +1,5 @@
 ---
+import TechIcon from './TechIcon.astro';
 import { content, type Lang } from '../data/i18n';
 import { contactChannels, publicLinks, whatsappLink } from '../data/site';
 
@@ -8,6 +9,15 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = content[lang].connect;
+
+const iconByChannel: Record<string, string> = {
+  whatsapp: 'whatsapp',
+  email: 'mail',
+  cv: 'file',
+  linkedin: 'linkedin',
+  github: 'github',
+  vcard: 'contact',
+};
 ---
 
 <section class="section-shell connect-section" id="connect" aria-labelledby="connect-title">
@@ -16,24 +26,31 @@ const t = content[lang].connect;
       <h2 id="connect-title" set:html={t.title.replace('\n', '<br />')} />
     </div>
     <p>
-      {t.introBefore}
+      {t.introBefore}{' '}
       <a class="inline-link" href={publicLinks.elp} target="_blank" rel="noopener noreferrer">ELP Tecnologia</a>{t.introAfter}
     </p>
   </div>
 
-  <ul class="connect-list reveal">
+  <ul class="connect-tiles reveal">
     {
       contactChannels.map((channel) => {
         const txt = t.channels[channel.id];
         const href = channel.id === 'whatsapp' ? whatsappLink(lang) : channel.href;
         return (
-          <li class:list={['connect-row', { 'connect-row--primary': channel.primary }]}>
-            <span class="connect-row__label">{txt.label}</span>
-            <span class="connect-row__detail">{txt.detail}</span>
-            <span class="connect-row__actions">
+          <li class:list={['connect-tile', { 'connect-tile--primary': channel.primary }]}>
+            <span class="connect-tile__icon">
+              <TechIcon id={iconByChannel[channel.id]} size={20} />
+            </span>
+
+            <div class="connect-tile__body">
+              <span class="connect-tile__label">{txt.label}</span>
+              <span class="connect-tile__detail">{txt.detail}</span>
+            </div>
+
+            <span class="connect-tile__actions">
               {channel.copyable && (
                 <button
-                  class="connect-row__copy"
+                  class="connect-tile__copy"
                   type="button"
                   data-copy-email={publicLinks.emailRaw}
                   title={txt.label}
@@ -42,7 +59,7 @@ const t = content[lang].connect;
                 </button>
               )}
               <a
-                class="connect-row__action"
+                class="connect-tile__action"
                 href={href}
                 target={channel.isExternal ? '_blank' : undefined}
                 rel={channel.isExternal ? 'noopener noreferrer' : undefined}
