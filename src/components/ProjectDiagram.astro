@@ -12,6 +12,7 @@ const { id, caption } = Astro.props;
 ---
 
 <figure class="project-diagram">
+  <div class="project-diagram__viewport" tabindex="0" role="region" aria-label={`Diagrama de arquitetura — ${caption}`}>
   {
     id === 'hub' && (
       <svg viewBox="0 0 760 180" role="img" aria-label="Arquitetura do NOVA HUB: navegador, serviços Express com terminal PTY e sistema Linux, conectados em malha privada Tailscale.">
@@ -160,5 +161,6 @@ const { id, caption } = Astro.props;
       </svg>
     )
   }
+  </div>
   <figcaption>{caption}</figcaption>
 </figure>
