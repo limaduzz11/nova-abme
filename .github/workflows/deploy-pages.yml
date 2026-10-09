@@ -1,9 +1,12 @@
 name: Deploy fallback to GitHub Pages
 
+# Fallback MANUAL. O host primário é o Cloudflare Pages (integração Git).
+# Este workflow não roda em push para evitar uma cópia pública duplicada do site
+# (duplicação prejudica o canonical/SEO do domínio principal).
+# Para usar: habilite Settings → Pages → Source: GitHub Actions e dispare manualmente.
+
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
 
 permissions:
   contents: read
