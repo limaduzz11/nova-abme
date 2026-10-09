@@ -7,6 +7,15 @@ and the provider connects directly to GitHub. The custom production domain is
 `https://portfolioeduardo.elptecnologia.com.br/` (backed by Cloudflare Pages).
 No Cloudflare token is stored in this repository.
 
+> **Critical project setting (canonical/SEO).** The Pages project must define
+> `PUBLIC_SITE_URL=https://portfolioeduardo.elptecnologia.com.br` for the
+> **Production** environment (and ideally the same for Preview, or leave it
+> unset so `astro.config.mjs` defaults to the production origin). If the value
+> keeps the old `*.pages.dev` origin, every build emits wrong canonical,
+> Open Graph and sitemap URLs even though the repository is correct — this
+> exact stale variable was the root cause of the 2026-10 canonical defect.
+> Verify after every settings change: `curl -s <prod-url> | grep canonical`.
+
 1. Create or select a Cloudflare Pages project.
 2. Connect only the intended GitHub repository through the official GitHub
    integration.
