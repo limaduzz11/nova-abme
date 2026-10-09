@@ -47,6 +47,25 @@
 - Raio: 0 (cantos retos — identidade editorial). Sombra: nenhuma.
 - Movimento: reveal por IntersectionObserver (opacity/translate 12px), `prefers-reduced-motion` respeitado; transições 160–320ms `cubic-bezier(0.2, 0.8, 0.2, 1)`.
 
+## Idiomas (PT/EN/ES)
+
+- Rotas dedicadas: `/` (pt), `/en/`, `/es/` — com `hreflang` + `x-default` e canonical próprio.
+- **Lang switch**: pill no header (PT/EN/ES) com transição **wipe** (overlay claro `--paper` + código do idioma
+  em display `--ink`, borda `--accent`, `transform: scaleX` com `cubic-bezier(0.76,0,0.24,1)`; revelação no load
+  via `sessionStorage`; desativado em `prefers-reduced-motion`).
+- Conteúdo 100% traduzido em `src/data/i18n.ts`; dados neutros em `src/data/site.ts`; WhatsApp pré-preenchido por idioma.
+
+## Seções de destaque (2026-10-09)
+
+- **MEUS PROJETOS** (carousel horizontal): cover blueprint SVG + categoria + nome + título + descrição curta +
+  métricas + stack com ícones + `<details>` "Arquitetura técnica" + link. Contador `01/04`, progress bar, dots
+  (com nomes acessíveis) e setas; `scroll-snap-type: x mandatory`; lock de recálculo durante animação.
+- **MINHAS TECNOLOGIAS** (integrada à seção Experiência): 18 orbs com ícones (Simple Icons CC0 +
+  geometrias próprias em `src/data/icons.ts`), hover eleva o orb com borda `--accent`.
+- **Trajetória**: régua com marcador `--accent` no período atual; bullets curtos (2–3 por item).
+- **Dourado (`--accent`)**: reservado a pequenos detalhes — hover de botões/links, marcadores do carousel
+  (progress, dots, categoria, borda de métricas), timeline atual, wipe de idioma, hover de orbs. Nunca em texto corrido.
+
 ## Componentes e estados
 
 - **Header**: brand EP + nav + botão Menu (Ctrl+K). States: hover sublinha; focus-visible outline `--paper`.
