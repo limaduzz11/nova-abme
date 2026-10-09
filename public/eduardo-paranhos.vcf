@@ -2,7 +2,7 @@ BEGIN:VCARD
 VERSION:3.0
 N:Paranhos;Eduardo;de Lima;;
 FN:Eduardo de Lima Paranhos
-TITLE:Desenvolvedor ADVPL / TOTVS Protheus
+TITLE:Desenvolvedor de Software | TOTVS Protheus
 ORG:ELP Tecnologia
 TEL;TYPE=CELL,VOICE,PREF:+55 11 94466-5292
 EMAIL;TYPE=INTERNET,HOME:contatoeduardoparanhos@gmail.com
@@ -11,5 +11,5 @@ URL:https://portfolioeduardo.elptecnologia.com.br
 URL;TYPE=LinkedIn:https://www.linkedin.com/in/eduardo-de-lima-paranhos-910930263/
 URL;TYPE=GitHub:https://github.com/limaduzz11
 ADR;TYPE=WORK:;;São Paulo;SP;;Brasil
-NOTE:Desenvolvedor especialista em TOTVS Protheus, ADVPL, TL++, APIs REST e SQL Server.
+NOTE:Desenvolvedor de Software com foco em TOTVS Protheus, ADVPL/TL++, integrações REST/SOAP e SQL Server desde 2021.
 END:VCARD

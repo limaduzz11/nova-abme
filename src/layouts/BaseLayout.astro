@@ -76,6 +76,13 @@ const profilePageSchema = {
     <link rel="canonical" href={canonical} />
     <link rel="icon" href={toPath('/favicon.svg')} type="image/svg+xml" />
     <link rel="manifest" href={toPath('/site.webmanifest')} />
+    <link
+      rel="preload"
+      href={toPath('/fonts/archivo-latin-var.woff2')}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
 
     <meta property="og:type" content="profile" />
     <meta property="og:locale" content="pt_BR" />

@@ -8,7 +8,8 @@ async function revealWholePage(page: Page) {
   }
   await page.evaluate(() => window.scrollTo(0, 0));
   await page.evaluate(() => (document.activeElement as HTMLElement | null)?.blur());
-  await page.waitForTimeout(100);
+  // Aguarda o término das transições de reveal (700ms) para medir o estado final.
+  await page.waitForTimeout(850);
 }
 
 async function gotoPage(page: Page) {
@@ -20,7 +21,7 @@ test('desktop keeps the main routes visible and captures a reference', async ({ 
   await page.setViewportSize({ width: 1440, height: 1000 });
   await gotoPage(page);
 
-  await expect(page).toHaveTitle('Eduardo Paranhos — Desenvolvedor ADVPL / TOTVS Protheus · APIs & ERP');
+  await expect(page).toHaveTitle('Eduardo Paranhos — Desenvolvedor de Software | TOTVS Protheus · ADVPL, APIs & SQL Server');
   await expect(page.locator('html')).toHaveAttribute('lang', 'pt-BR');
   await expect(page.locator('#hero-title')).toBeVisible();
   await expect(page.locator('#engineering')).toBeVisible();

@@ -1,5 +1,5 @@
 ---
-import { provenResults, publicLinks, stackItems } from '../data/site';
+import { careerTimeline, education, provenResults, publicLinks, stackItems } from '../data/site';
 ---
 
 <section class="section-shell engineering-section" id="engineering" aria-labelledby="engineering-title">
@@ -54,6 +54,40 @@ import { provenResults, publicLinks, stackItems } from '../data/site';
 
 
     </div>
+  </div>
+
+  <!-- Trajetória Profissional (dados verificáveis do CV) -->
+  <div class="trajectory-block reveal" id="trajectory">
+    <div class="trajectory-header">
+      <div>
+        <p class="eyebrow">TRAJETÓRIA PROFISSIONAL</p>
+        <h3 class="trajectory-title">EXPERIÊNCIA EM PRODUÇÃO.</h3>
+      </div>
+      <p class="trajectory-education">
+        <strong>{education.degree}</strong><br />
+        {education.institution} · {education.period}
+      </p>
+    </div>
+
+    <ol class="trajectory-list">
+      {
+        careerTimeline.map((item) => (
+          <li class:list={['trajectory-item', { 'is-current': item.current }]}>
+            <p class="trajectory-period">{item.period}</p>
+            <div class="trajectory-body">
+              <p class="trajectory-role">
+                {item.role} <span>· {item.company}</span>
+              </p>
+              <ul class="trajectory-highlights">
+                {item.highlights.map((highlight) => (
+                  <li>{highlight}</li>
+                ))}
+              </ul>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
   </div>
 
   <!-- Bloco de Resultados no Mundo Real (Métricas Anonimizadas) -->

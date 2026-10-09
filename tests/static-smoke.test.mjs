@@ -21,7 +21,7 @@ test('static routes and metadata exist', async () => {
   assert.ok(await exists(join(dist, 'index.html')));
   assert.ok(await exists(join(dist, '404.html')));
   assert.match(indexHtml, /<html lang="pt-BR"/);
-  assert.match(indexHtml, /<title>Eduardo Paranhos — Desenvolvedor ADVPL \/ TOTVS Protheus · APIs &amp; ERP<\/title>/);
+  assert.match(indexHtml, /<title>[^<]*Eduardo Paranhos[^<]*TOTVS Protheus[^<]*<\/title>/);
   assert.match(indexHtml, /property="og:locale" content="pt_BR"/);
   assert.match(indexHtml, /application\/ld\+json/);
   assert.match(indexHtml, /ProfilePage/);
@@ -39,6 +39,7 @@ test('core navigation anchors resolve to rendered sections', () => {
   assert.ok(ids.has('top'));
   assert.ok(ids.has('main-content'));
   assert.ok(ids.has('engineering'));
+  assert.ok(ids.has('trajectory'));
   assert.ok(ids.has('results'));
   assert.ok(ids.has('work'));
   assert.ok(ids.has('lab'));

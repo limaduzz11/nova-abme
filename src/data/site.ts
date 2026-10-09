@@ -3,10 +3,10 @@ export const siteMeta = {
   profileSlug: 'eduardodelimaparanhos',
   name: 'Eduardo de Lima Paranhos',
   shortName: 'Eduardo Paranhos',
-  role: 'Desenvolvedor ADVPL / TOTVS Protheus',
-  title: 'Eduardo Paranhos — Desenvolvedor ADVPL / TOTVS Protheus · APIs & ERP',
+  role: 'Desenvolvedor de Software · TOTVS Protheus',
+  title: 'Eduardo Paranhos — Desenvolvedor de Software | TOTVS Protheus · ADVPL, APIs & SQL Server',
   description:
-    'Desenvolvimento de software com foco em TOTVS Protheus, ADVPL/TL++, APIs REST, SQL Server e automação de processos. São Paulo, remoto.',
+    'Desenvolvedor de Software com foco em TOTVS Protheus, ADVPL/TL++, integrações REST/SOAP e SQL Server desde 2021, em rotinas de Financeiro, Faturamento, Compras e Contábil. São Paulo, remoto.',
   defaultUrl: 'https://portfolioeduardo.elptecnologia.com.br',
   year: 2026,
   location: 'São Paulo, Brasil · Remoto & Híbrido (GMT-3)',
@@ -59,9 +59,9 @@ export const stackItems = [
     label: 'TOTVS PROTHEUS',
     title: 'Domínio funcional em módulos operacionais e financeiros',
     description:
-      'Experiência prática com regras de negócio e rotinas nos módulos Financeiro (SIGAFIN), Faturamento (SIGAFAT), Compras (SIGACOM), Contabilidade Gerencial (SIGACTB) e manutenção de base via APSDU.',
+      'Experiência prática com regras de negócio e rotinas nos módulos Financeiro (SIGAFIN), Faturamento (SIGAFAT), Compras (SIGACOM), Estoque (SIGAEST), Contabilidade Gerencial (SIGACTB) e manutenção de base via APSDU.',
     context: 'ERP / módulos corporativos',
-    highlights: ['Financeiro (SIGAFIN)', 'Faturamento (SIGAFAT)', 'Compras (SIGACOM)', 'Contábil (SIGACTB) & APSDU'],
+    highlights: ['Financeiro (SIGAFIN)', 'Faturamento (SIGAFAT)', 'Compras (SIGACOM)', 'Estoque (SIGAEST) · Contábil (SIGACTB) & APSDU'],
   },
   {
     id: 'rest',
@@ -127,49 +127,94 @@ export const stackItems = [
 
 export const provenResults = [
   {
-    metric: 'Pipeline Automatizado',
-    title: 'Integração de ERP com API Externa',
+    metric: 'Integração REST',
+    title: 'ERP conectado a plataforma externa',
     description:
-      'Criação, manutenção e melhoria de integração REST: consumo de dados externos via GET, persistência em tabela temporária de alta performance, validação transacional e geração automática de Cliente (SA1), Pedido de Venda (SC5/SC6) e Faturamento (SF2/SD2) no Protheus.',
+      'Consumo de dados de sistema externo via API REST, persistência em tabela temporária, validação transacional e geração de Cliente (SA1), Pedido de Venda (SC5/SC6) e Faturamento (SF2/SD2) no Protheus.',
     tag: 'API REST / INTEGRAÇÃO',
   },
   {
-    metric: 'ADVPL Nativo (.prw)',
-    title: 'Relatórios Customizados de Alta Performance',
+    metric: 'ADVPL nativo (.prw)',
+    title: 'Relatórios analíticos customizados',
     description:
-      'Desenvolvimento de relatórios analíticos em ADVPL puro (`.prw`), consolidação financeira de títulos, extratos de movimentações e análise gerencial com filtros dinâmicos e consultas diretas ao banco de dados do ERP.',
+      'Relatórios em ADVPL puro (`.prw`): consolidação financeira de títulos, extratos de movimentações e análise gerencial com filtros dinâmicos e consultas diretas ao banco do ERP.',
     tag: 'ADVPL / FINANCEIRO',
   },
   {
-    metric: '100% Automático',
-    title: 'Integrações de Marketplaces & E-commerce',
+    metric: 'Fluxo contínuo',
+    title: 'Marketplaces integrados ao Protheus',
     description:
-      'Criação, manutenção e melhoria de integrações: fluxo contínuo de pedidos, conciliação de pagamentos e emissão no Protheus conectado a hubs e plataformas externas, eliminando digitação manual e inconsistências operacionais.',
+      'Integrações com hubs de marketplaces (Anymarket, Shopee, Magalu, Casas Bahia): recebimento de pedidos, conciliação de pagamentos e emissão no Protheus a partir das plataformas conectadas.',
     tag: 'E-COMMERCE / REST',
   },
   {
-    metric: 'Alta Performance',
-    title: 'Otimização de Consultas em SQL Server',
+    metric: 'Refatoração SQL',
+    title: 'Queries críticas e índices sobre tabelas volumosas',
     description:
-      'Refatoração de queries críticas e criação de índices estratégicos sobre tabelas volumosas do ERP (SIGAFIN/SIGAFAT/SIGACOM), reduzindo expressivamente o tempo de processamento em rotinas pesadas e fechamentos.',
+      'Refatoração de queries e criação de índices sobre tabelas de alto volume (SIGAFIN/SIGAFAT/SIGACOM), com análise de planos de execução aplicada a rotinas de fechamento e conciliação.',
     tag: 'SQL / DIAGNÓSTICO',
   },
 ] as const;
+
+export const careerTimeline = [
+  {
+    period: 'JUN 2024 — ATUAL',
+    role: 'Analista Desenvolvedor',
+    company: 'COMM',
+    current: true,
+    highlights: [
+      'Rotinas de Backoffice em ADVPL/TL++ com ExecAuto e Pontos de Entrada.',
+      'Integrações REST e SOAP com marketplaces, gateways e serviços parceiros.',
+      'Automação de lotes e fechamentos com Jobs e Schedules; diagnóstico SQL Server.',
+    ],
+  },
+  {
+    period: 'NOV 2023 — JUN 2024',
+    role: 'Estagiário de TI',
+    company: 'COMM',
+    current: false,
+    highlights: [
+      'Suporte a incidentes no Protheus e acompanhamento de correções.',
+      'Monitoramento de integrações, logs, e-commerce e NF-e.',
+      'Promovido a Analista Desenvolvedor em 7 meses.',
+    ],
+  },
+  {
+    period: 'ABR 2021 — NOV 2023',
+    role: 'Desenvolvedor ADVPL / Protheus',
+    company: 'Freelancer',
+    current: false,
+    highlights: [
+      'Relatórios ADVPL/TReport e SQL Server de títulos e movimentação bancária (SIGAFIN).',
+      'Rotinas, Pontos de Entrada e telas de apoio no Protheus.',
+      'Tratamento de inconsistências de dados e consultas de alto volume.',
+    ],
+  },
+] as const;
+
+export const education = {
+  degree: 'Análise e Desenvolvimento de Sistemas',
+  institution: 'Centro Universitário FMU (FIAM-FAAM)',
+  period: 'Mar 2023 — Jan 2026 · Concluído',
+} as const;
 
 export const projects = [
   {
     number: '01',
     name: 'nova-hub',
-    badge: 'PLATAFORMA & OPERAÇÕES',
-    title: 'Painel Central Multiplataforma, Telemetria & Integrações',
+    badge: 'OPERAÇÕES & INFRAESTRUTURA',
+    title: 'Dashboard web de operações: telemetria, terminal remoto e orquestração',
     description:
-      'Painel de telemetria e orquestração de serviços com 3 módulos integrados: NEXUS (integração corporativa com plataforma de tickets/chamados), ARCADIA (consumo de dados via IGDB API) e CORTEX (motor de contexto e núcleo da arquitetura de Engineering AI Harness).',
+      'Painel web privado para operar infraestrutura pessoal em malha Tailscale: telemetria de hardware em tempo real, terminal SSH persistente no navegador (PTY via WebSocket) e orquestração de tarefas. Backend Express com API REST e frontend em JavaScript puro — sem framework SPA. O repositório público documenta o blueprint arquitetural.',
     modules: [
-      { name: 'NEXUS', role: 'Integração com plataforma corporativa de tickets e chamados' },
-      { name: 'ARCADIA', role: 'Consumo estruturado e catálogo de dados via IGDB API' },
-      { name: 'CORTEX', role: 'Motor de contextos e core da arquitetura de Engineering AI Harness' },
+      { name: 'LINK', role: 'Telemetria de hardware, saúde de serviços e controles de energia' },
+      { name: 'NEXUS', role: 'Kanban de tarefas com workspaces, prioridades e filtros' },
+      { name: 'ARCADIA', role: 'Catálogo de mídia com metadados IGDB e orquestração de streaming' },
+      { name: 'CORTEX', role: 'Grafo de conhecimento em canvas, sem banco de grafos externo' },
     ],
-    stack: 'Flutter · Dart · Linux · REST · Architecture',
+    stack: 'Node.js 22 · Express 5 · Vanilla JS · node-pty/WebSocket · Tailscale',
+    diagram: 'hub',
+    diagramCaption: 'Fluxo: navegador ↔ API Express ↔ host Linux, sob malha privada Tailscale.',
     year: '2026',
     href: 'https://github.com/limaduzz11/nova-hub',
   },
@@ -182,6 +227,8 @@ export const projects = [
       'Servidor Model Context Protocol (MCP) em TypeScript que indexa sintaxe ADVPL, rotinas, tabelas e regras do Protheus, permitindo consultas técnicas estruturadas por agentes de IA e desenvolvedores.',
     modules: [],
     stack: 'TypeScript · Node.js · MCP · TOTVS',
+    diagram: 'research',
+    diagramCaption: 'Fluxo: cliente MCP → servidor TypeScript → base indexada do ecossistema Protheus.',
     year: '2026',
     href: 'https://github.com/limaduzz11/protheus-research',
   },
@@ -194,6 +241,8 @@ export const projects = [
       'Implementação de referência para construção de endpoints REST seguros e padronizados no Protheus: paginação, controle de status HTTP, serialização JSON e tratamento consistente de exceções.',
     modules: [],
     stack: 'ADVPL / TL++ · REST · JSON · ERP',
+    diagram: 'rest-lab',
+    diagramCaption: 'Fluxo: cliente HTTP → WSRESTFUL (ADVPL) → dados do ERP com envelope e status corretos.',
     year: '2026',
     href: 'https://github.com/limaduzz11/protheus-rest-lab',
   },
@@ -206,6 +255,8 @@ export const projects = [
       'Base de aplicação corporativa completa utilizando o design system PO-UI sobre Angular, pronta para integração via REST com backends do Protheus para telas de consulta e operação rápida.',
     modules: [],
     stack: 'Angular · PO-UI · TypeScript · REST',
+    diagram: 'po-ui',
+    diagramCaption: 'Fluxo: portal Angular + PO-UI → REST → rotinas Protheus de consulta e operação.',
     year: '2026',
     href: 'https://github.com/limaduzz11/protheus-po-ui-template',
   },
@@ -215,30 +266,34 @@ export const vantaProjects = [
   {
     name: 'VANTA Reader',
     badge: 'EM EVOLUÇÃO',
+    maturity: 'active',
     role: 'LEITOR OFFLINE-FIRST',
     description:
-      'Leitor e organizador de conteúdo focado em autonomia de armazenamento local, leitura fluida e zero distrações.',
+      'Leitor e organizador de conteúdo offline-first: catálogo local, armazenamento sob controle do usuário e leitura sem distrações.',
   },
   {
     name: 'XNOVA Runtime',
     badge: 'EM DESENVOLVIMENTO',
-    role: '',
+    maturity: 'active',
+    role: 'PESQUISA DE RUNTIME',
     description:
-      'Runtime em C/C++ e UWP voltado para Xbox Series em Dev Mode, permitindo a execução de binários (.exe) de Windows diretamente no console.',
+      'Runtime experimental em C/C++ e UWP para Xbox Series em Dev Mode, investigando a execução de binários Win32 no console.',
   },
   {
     name: 'VANTA Feed',
-    badge: 'CONCEITO EM LABORATÓRIO',
+    badge: 'CONCEITO',
+    maturity: 'concept',
     role: '',
     description:
-      'Conceito de organizador de feeds e fontes de informação técnica com prioridade estrita para privacidade e leitura limpa.',
+      'Conceito de organizador de feeds e fontes de informação técnica com prioridade para privacidade e leitura limpa.',
   },
   {
     name: 'VANTA Scan & Doc Toolkit',
-    badge: 'CONCEITO EM LABORATÓRIO',
+    badge: 'CONCEITO',
+    maturity: 'concept',
     role: '',
     description:
-      'Conceito de utilitários locais para digitalização, tratamento e extração estruturada de documentos e relatórios.',
+      'Conceito de utilitários locais para digitalização, tratamento e extração estruturada de documentos.',
   },
 ] as const;
 

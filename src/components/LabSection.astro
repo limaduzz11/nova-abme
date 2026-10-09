@@ -1,5 +1,8 @@
 ---
 import { publicLinks, vantaProjects } from '../data/site';
+
+const activeVanta = vantaProjects.filter((project) => project.maturity === 'active');
+const conceptVanta = vantaProjects.filter((project) => project.maturity === 'concept');
 ---
 
 <section class="section-shell lab-section" id="lab" aria-labelledby="lab-title">
@@ -19,7 +22,7 @@ import { publicLinks, vantaProjects } from '../data/site';
 
     <div class="vanta-cards-grid reveal">
       {
-        vantaProjects.map((item) => (
+        activeVanta.map((item) => (
           <div class="vanta-card">
             <div class="vanta-card__header">
               <span class="micro-label vanta-card__badge">{item.badge}</span>
@@ -31,6 +34,25 @@ import { publicLinks, vantaProjects } from '../data/site';
         ))
       }
     </div>
+
+    {
+      conceptVanta.length > 0 && (
+        <div class="vanta-concepts reveal">
+          <p class="micro-label vanta-concepts__label">Conceitos em laboratório</p>
+          <div class="vanta-cards-grid vanta-cards-grid--concept">
+            {conceptVanta.map((item) => (
+              <div class="vanta-card">
+                <div class="vanta-card__header">
+                  <span class="micro-label vanta-card__badge">{item.badge}</span>
+                </div>
+                <h3 class="vanta-card__name">{item.name}</h3>
+                <p class="vanta-card__desc">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )
+    }
 
     <div class="lab-actions reveal">
       <a class="button button-primary" href={publicLinks.github} target="_blank" rel="noopener noreferrer" data-cursor-target>
