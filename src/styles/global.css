@@ -1847,14 +1847,15 @@ html[data-audience='exploring'] [data-audience-focus~='exploring'] {
 }
 
 .work-gallery__tabs {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-wrap: wrap;
   gap: 1px;
   border-top: 1px solid var(--line);
   background: var(--line);
 }
 
 .work-gallery__tab {
+  flex: 1 1 8rem;
   min-height: 2.75rem;
   border: 0;
   padding: 0.55rem 0.75rem;

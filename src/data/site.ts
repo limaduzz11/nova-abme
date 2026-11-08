@@ -66,7 +66,7 @@ export interface ProjectGalleryItem {
   src: string;
   width: number;
   height: number;
-  href: string;
+  href?: string;
 }
 
 export interface ProjectGallery {
@@ -106,10 +106,37 @@ export const projectsData: readonly ProjectData[] = [
     number: '01',
     status: 'live',
     media: {
-      kind: 'screenshot',
-      src: '/images/projects/nova-hub',
-      width: 1440,
-      height: 1000,
+      kind: 'gallery',
+      items: [
+        {
+          id: 'link',
+          name: 'LINK',
+          src: '/images/projects/nova-hub',
+          width: 1440,
+          height: 900,
+        },
+        {
+          id: 'nexus',
+          name: 'NEXUS',
+          src: '/images/projects/nova-hub-nexus',
+          width: 1440,
+          height: 900,
+        },
+        {
+          id: 'arcadia',
+          name: 'ARCADIA',
+          src: '/images/projects/nova-hub-arcadia',
+          width: 1440,
+          height: 900,
+        },
+        {
+          id: 'nahi',
+          name: 'N.A.H.I',
+          src: '/images/projects/nova-hub-nahi',
+          width: 1440,
+          height: 900,
+        },
+      ],
     },
     diagram: 'hub',
     stack: [
@@ -128,8 +155,8 @@ export const projectsData: readonly ProjectData[] = [
     media: {
       kind: 'screenshot',
       src: '/images/projects/vanta-reader',
-      width: 1280,
-      height: 720,
+      width: 1440,
+      height: 900,
     },
     diagram: 'hub',
     stack: [

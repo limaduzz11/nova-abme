@@ -180,6 +180,16 @@ test('project carousel shows one slide per view, supports keyboard and the inner
   await expect(elpTab).toHaveAttribute('aria-selected', 'true');
   await expect(page.locator('#work-gallery-elp-tecnologia')).toBeVisible();
 
+  // NOVA HUB exposes its four modules in the same inner gallery.
+  await page.locator('[data-work-dot]').nth(0).click();
+  await expect(page.locator('[data-work-current]')).toHaveText('01');
+  const hubTabs = page.locator('.work-slide.is-active [data-work-gallery-tab]');
+  await expect(hubTabs).toHaveCount(4);
+  await page.locator('#work-gallery-tab-arcadia').click();
+  await expect(page.locator('#work-gallery-arcadia')).toBeVisible();
+
+  await page.locator('[data-work-dot]').nth(2).click();
+  await expect(page.locator('[data-work-current]')).toHaveText('03');
   const zoom = page.locator('.work-slide.is-active .work-gallery__slide:not([hidden]) [data-work-zoom]').first();
   await expect(zoom).toBeVisible();
   await zoom.click();

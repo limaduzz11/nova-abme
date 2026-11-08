@@ -3,8 +3,8 @@ root.classList.remove('no-js');
 root.classList.add('js');
 
 const select = <T extends Element>(selector: string): T | null => document.querySelector<T>(selector);
-const selectAll = <T extends Element>(selector: string): T[] =>
-  Array.from(document.querySelectorAll<T>(selector));
+const selectAll = <T extends Element>(selector: string, scope: ParentNode = document): T[] =>
+  Array.from(scope.querySelectorAll<T>(selector));
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -366,11 +366,11 @@ if (workViewport) {
   }
 }
 
-// Web project gallery: an accessible tablist for the two published sites.
-const workGallery = select<HTMLElement>('[data-work-gallery]');
-if (workGallery) {
-  const galleryTabs = selectAll<HTMLButtonElement>('[data-work-gallery-tab]');
-  const galleryPanels = selectAll<HTMLElement>('[data-work-gallery-slide]');
+// Project galleries: each slide with a gallery owns an independent tablist.
+const workGalleries = selectAll<HTMLElement>('[data-work-gallery]');
+workGalleries.forEach((gallery) => {
+  const galleryTabs = selectAll<HTMLButtonElement>('[data-work-gallery-tab]', gallery);
+  const galleryPanels = selectAll<HTMLElement>('[data-work-gallery-slide]', gallery);
 
   const selectGallery = (index: number, focus = false): void => {
     if (!galleryTabs.length) return;
@@ -408,7 +408,7 @@ if (workGallery) {
   });
 
   selectGallery(0);
-}
+});
 
 // Tech stack: hover shows the level fill (CSS); click reveals where it is applied.
 const techButtons = selectAll<HTMLButtonElement>('[data-tech-button]');

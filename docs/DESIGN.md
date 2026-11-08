@@ -62,8 +62,8 @@
   nome, título, descrição, métricas, stack, nota de proveniência, `<details>` "Arquitetura técnica" e links.
   Contador `01/07`, progress bar, navegação por setas, sete números acessíveis (`aria-current`), teclado no
   viewport (←/→/Home/End) e swipe nativo por `scroll-snap`. Slides inativos recebem `inert`; o status é
-  anunciado em `aria-live`. O projeto "Desenvolvimento Web" usa uma galeria interna com tablist
-  OpenPantheon/ELP Tecnologia. No mobile cada card dimensiona pela própria altura; no desktop os cards
+  anunciado em `aria-live`. O NOVA HUB usa uma galeria interna com 4 módulos (LINK, NEXUS, ARCADIA,
+  N.A.H.I); "Desenvolvimento Web" usa a mesma galeria com OpenPantheon/ELP Tecnologia. No mobile cada card dimensiona pela própria altura; no desktop os cards
   compartilham a altura do maior slide. Movimento reduzido desativa o smooth scroll.
 - **MINHAS TECNOLOGIAS** (integrada à seção Experiência): 18 orbs com ícones (Simple Icons CC0 +
   geometrias próprias em `src/data/icons.ts`), hover eleva o orb com borda `--accent`.
@@ -87,8 +87,8 @@
 ## Regras responsivas
 
 - 1 coluna < 820px (grids); nav colapsa em ≤880px; gutter fluido; alvos de toque ≥44px nos botões.
-- Vitrine: 2 colunas no desktop; 1 coluna e cards de altura natural em ≤900px; tabs da galeria empilhados
-  em ≤900px; números de navegação com 44px em ≤680px.
+- Vitrine: 2 colunas no desktop; 1 coluna e cards de altura natural em ≤900px; tabs da galeria
+  quebram em 2 colunas em ≤900px; números de navegação com 44px em ≤680px.
 - Matriz validada: 320 / 390 / 768 / 1024 / 1440 / 1920 sem overflow horizontal.
 
 ## Capturas reais (2026-11-08)

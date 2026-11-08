@@ -14,12 +14,12 @@ montados.
 
 | Arquivo | Mudança |
 |---|---|
-| `src/components/SelectedWork.astro` | Vitrine de um slide por vez; mídia real, galeria de sites, lightbox `<dialog>`, dots numerados, status, notas e painel de transparência |
+| `src/components/SelectedWork.astro` | Vitrine de um slide por vez; mídia real, galerias internas (NOVA HUB com 4 módulos e sites com 2), lightbox `<dialog>`, dots numerados, status, notas e painel de transparência |
 | `src/data/site.ts` | Modelo `ProjectMedia` (screenshot/gallery/diagram), 7 projetos, links e stacks |
 | `src/data/i18n.ts` | Conteúdo PT/EN/ES dos 7 projetos, estados, rótulos de captura, galeria e proveniência |
-| `src/scripts/gateway.ts` | Scroll-snap com setas/teclado/dots, `inert`, anúncio `aria-live`, galeria em tablist e lightbox |
+| `src/scripts/gateway.ts` | Scroll-snap com setas/teclado/dots, `inert`, anúncio `aria-live`, galerias independentes em tablist e lightbox |
 | `src/styles/global.css` | Layout dois-columns no desktop e uma coluna no mobile, mídia 16:10 sem corte, tabs, lightbox, estados de foco e movimento reduzido |
-| `public/images/projects/` | AVIF + WebP em duas larguras (1440/720 ou 1280/720) |
+| `public/images/projects/` | AVIF + WebP em duas larguras (1440/720) |
 | `tests/static-smoke.test.mjs` | 7 slides, ativos reais, CSP sem style inline, projetos nos 3 idiomas |
 | `tests/browser/gateway.spec.ts` | Um projeto por view, teclado, galeria, lightbox, mobile e acessibilidade |
 | `docs/DESIGN.md` | Direção visual e regra de capturas reais |
@@ -29,8 +29,8 @@ montados.
 
 | Projeto | Estado | Interface | Origem da captura | Tratamento |
 |---|---|---|---|---|
-| **NOVA HUB WEB** | Em produção privada | Dashboard web | `02-PROJECTS/NOVA HUB/NOVA HUB V4 WEB/screen_nova_hub.png`, 1440×1000, interface real em execução | IP Tailscale e usuário do host mascarados na imagem; card informa o mascaramento |
-| **VANTA Reader** | Em evolução | App Flutter desktop/Android | Build Linux `build/linux/x64/debug/bundle/vantareader`, executado em display Xephyr isolado; captura 1280×720 | Catálogo público carregado; obra de domínio público (Frankenstein, Project Gutenberg) na biblioteca local; sem dados pessoais |
+| **NOVA HUB WEB** | Em produção privada | Dashboard web com 4 módulos | HUB em execução, Chromium/Playwright, 1440×900, 2026-11-08. Quatro capturas: **LINK** (telemetria), **NEXUS** (Kanban), **ARCADIA** (biblioteca) e **N.A.H.I** (arquitetura). | Interface real com dados de demonstração; usuário/IP do host mascarados no DOM; capas de jogos reais carregadas no ARCADIA. CORTEX removido do texto e substituído por N.A.H.I. |
+| **VANTA Reader** | Em evolução | App Flutter desktop/Android | Build Linux `build/linux/x64/debug/bundle/vantareader`, executado em display Xephyr isolado; captura 1440×900 | Catálogo público carregado; obra de domínio público (Frankenstein, Project Gutenberg) na biblioteca local; sem dados pessoais |
 | **Desenvolvimento Web — OpenPantheon** | Em produção | Site editorial | `https://openpantheon.com.br/`, Chromium/Playwright, 1440×900, 2026-11-08 | Banner de cookies dispensado; conteúdo público |
 | **Desenvolvimento Web — ELP Tecnologia** | Em produção | Site institucional | `https://elptecnologia.com.br/`, Chromium/Playwright, 1440×900, 2026-11-08 | Conteúdo público |
 | **NOVA CRM** | Protótipo funcional/homologação | Dashboard CRM | `https://elptecnologia.com.br/labs/nova-crm/app/`, Chromium/Playwright, 1440×900, 2026-11-08 | Nome do cliente, usuário, contato e iniciais substituídos por rótulos demo no DOM antes da captura; nenhuma credencial persistida |
@@ -48,8 +48,9 @@ montados.
 ## Formatos e performance
 
 - `<picture>` com AVIF e WebP; `srcset`/`sizes`; `width`/`height` explícitos; `loading="lazy"`; `decoding="async"`.
-- Tamanhos: 1440w/720w para NOVA HUB, OpenPantheon, ELP e NOVA CRM; 1280w/720w para VANTA Reader.
+- Tamanhos: 1440w/720w para todas as capturas (NOVA HUB, VANTA Reader, OpenPantheon, ELP e NOVA CRM).
 - Nenhuma imagem fictícia, mockup genérico ou captura de terceiros.
+- Todas as capturas estão em **16:10 (1440×900)**, então preenchem 100% do frame sem letterbox/barras pretas, como o OpenPantheon.
 - Cards sem corte: mídia 16:10 com `object-fit: contain`; texto sem truncamento; altura natural no mobile.
 - CSP `style-src 'self'`: a barra de progresso usa `data-progress` + classes CSS, sem `style` inline.
 
@@ -59,8 +60,8 @@ montados.
 |---|---|
 | `npm run typecheck` | 0 erros, 0 avisos |
 | `npm run build` | 4 páginas geradas |
-| `npm test` | 8/8 testes estáticos |
-| `npm run test:browser` | 13/13 testes Playwright (Firefox) |
+| `npm test` | 9/9 testes estáticos |
+| `npm run test:browser` | 14/14 testes Playwright (Firefox) |
 | Axe (WCAG 2.0/2.1 A/AA) | 0 violações em 1440×1000 e 390×844 |
 | Um slide por view | Largura do slide = largura do viewport em desktop e mobile |
 | Teclado | ←/→/Home/End no viewport; tabs da galeria com setas; `inert` nos slides inativos |

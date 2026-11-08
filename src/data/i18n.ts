@@ -344,17 +344,17 @@ export const content: Record<Lang, SiteContent> = {
       },
       creditsSummary: 'Sobre as capturas e a transparência',
       credits:
-        'NOVA HUB, VANTA Reader, OpenPantheon, ELP Tecnologia e NOVA CRM usam capturas reais das interfaces. Dados sensíveis foram mascarados. protheus-research e protheus-rest-lab são servidores e bibliotecas sem interface gráfica; o template PO-UI depende de um pacote TOTVS não público e teve a captura registrada como pendência.',
+        'NOVA HUB, VANTA Reader, OpenPantheon, ELP Tecnologia e NOVA CRM usam capturas reais das interfaces. Dados sensíveis foram mascarados. As capturas do NOVA HUB mostram os módulos com dados de demonstração. protheus-research e protheus-rest-lab são servidores e bibliotecas sem interface gráfica; o template PO-UI depende de um pacote TOTVS não público e teve a captura registrada como pendência.',
       projects: {
         'nova-hub': {
           category: 'Operações & infraestrutura',
-          diagramCaption: 'Fluxo: navegador ↔ API Express ↔ host Linux, sob malha privada Tailscale.',
+          diagramCaption: 'Fluxo: navegador ↔ API Express ↔ host Linux; módulos LINK, NEXUS, ARCADIA e N.A.H.I sob malha privada Tailscale.',
           title: 'Dashboard web de operações: telemetria, terminal remoto e orquestração',
           description:
-            'Painel web privado para operar infraestrutura: telemetria, terminal SSH no navegador e orquestração de tarefas. Node.js + Express, em malha Tailscale sem porta pública.',
-          note: 'Captura real do dashboard; usuário e endereço do host foram mascarados.',
+            'Painel web privado para operar infraestrutura: telemetria, terminal SSH no navegador e orquestração de tarefas. Quatro módulos — LINK, NEXUS, ARCADIA e N.A.H.I, a nova camada de estado da arquitetura NOVA — em Node.js + Express, sob malha Tailscale sem porta pública.',
+          note: 'Capturas reais dos módulos; dados de demonstração e host mascarado.',
           metrics: [
-            { value: '4 módulos', label: 'LINK · NEXUS · ARCADIA · CORTEX' },
+            { value: '4 módulos', label: 'LINK · NEXUS · ARCADIA · N.A.H.I' },
             { value: 'Privado', label: 'malha Tailscale, sem porta pública' },
           ],
         },
@@ -755,17 +755,17 @@ export const content: Record<Lang, SiteContent> = {
       },
       creditsSummary: 'About the screenshots and transparency',
       credits:
-        'NOVA HUB, VANTA Reader, OpenPantheon, ELP Tecnologia and NOVA CRM use real interface screenshots. Sensitive data has been masked. protheus-research and protheus-rest-lab are servers and libraries without a graphical interface; the PO-UI template depends on a non-public TOTVS package and its screenshot is recorded as pending.',
+        'NOVA HUB, VANTA Reader, OpenPantheon, ELP Tecnologia and NOVA CRM use real interface screenshots. Sensitive data has been masked. The NOVA HUB captures show the modules with demo data. protheus-research and protheus-rest-lab are servers and libraries without a graphical interface; the PO-UI template depends on a non-public TOTVS package and its screenshot is recorded as pending.',
       projects: {
         'nova-hub': {
           category: 'Operations & infrastructure',
-          diagramCaption: 'Flow: browser ↔ Express API ↔ Linux host, over a private Tailscale mesh.',
+          diagramCaption: 'Flow: browser ↔ Express API ↔ Linux host; LINK, NEXUS, ARCADIA and N.A.H.I modules over a private Tailscale mesh.',
           title: 'Web operations dashboard: telemetry, remote terminal and orchestration',
           description:
-            'Private web panel to operate infrastructure: telemetry, in-browser SSH terminal and task orchestration. Node.js + Express over a Tailscale mesh, no public port.',
-          note: 'Real dashboard capture; host user and address have been masked.',
+            'Private web panel to operate infrastructure: telemetry, in-browser SSH terminal and task orchestration. Four modules — LINK, NEXUS, ARCADIA and N.A.H.I, the new architecture state layer for NOVA — built with Node.js + Express over a Tailscale mesh, no public port.',
+          note: 'Real module captures; demo data and host masked.',
           metrics: [
-            { value: '4 modules', label: 'LINK · NEXUS · ARCADIA · CORTEX' },
+            { value: '4 modules', label: 'LINK · NEXUS · ARCADIA · N.A.H.I' },
             { value: 'Private', label: 'Tailscale mesh, no public port' },
           ],
         },
@@ -1166,17 +1166,17 @@ export const content: Record<Lang, SiteContent> = {
       },
       creditsSummary: 'Sobre las capturas y la transparencia',
       credits:
-        'NOVA HUB, VANTA Reader, OpenPantheon, ELP Tecnologia y NOVA CRM usan capturas reales de las interfaces. Los datos sensibles fueron enmascarados. protheus-research y protheus-rest-lab son servidores y bibliotecas sin interfaz gráfica; la plantilla PO-UI depende de un paquete TOTVS no público y su captura queda registrada como pendiente.',
+        'NOVA HUB, VANTA Reader, OpenPantheon, ELP Tecnologia y NOVA CRM usan capturas reales de las interfaces. Los datos sensibles fueron enmascarados. Las capturas de NOVA HUB muestran los módulos con datos de demostración. protheus-research y protheus-rest-lab son servidores y bibliotecas sin interfaz gráfica; la plantilla PO-UI depende de un paquete TOTVS no público y su captura queda registrada como pendiente.',
       projects: {
         'nova-hub': {
           category: 'Operaciones e infraestructura',
-          diagramCaption: 'Flujo: navegador ↔ API Express ↔ host Linux, sobre malla privada Tailscale.',
+          diagramCaption: 'Flujo: navegador ↔ API Express ↔ host Linux; módulos LINK, NEXUS, ARCADIA y N.A.H.I sobre malla privada Tailscale.',
           title: 'Panel web de operaciones: telemetría, terminal remoto y orquestación',
           description:
-            'Panel web privado para operar infraestructura: telemetría, terminal SSH en el navegador y orquestación de tareas. Node.js + Express en malla Tailscale, sin puerto público.',
-          note: 'Captura real del panel; usuario y dirección del host enmascarados.',
+            'Panel web privado para operar infraestructura: telemetría, terminal SSH en el navegador y orquestación de tareas. Cuatro módulos — LINK, NEXUS, ARCADIA y N.A.H.I, la nueva capa de estado de la arquitectura NOVA — con Node.js + Express, en malla Tailscale sin puerto público.',
+          note: 'Capturas reales de los módulos; datos de demostración y host enmascarado.',
           metrics: [
-            { value: '4 módulos', label: 'LINK · NEXUS · ARCADIA · CORTEX' },
+            { value: '4 módulos', label: 'LINK · NEXUS · ARCADIA · N.A.H.I' },
             { value: 'Privado', label: 'malla Tailscale, sin puerto público' },
           ],
         },

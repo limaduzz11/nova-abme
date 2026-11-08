@@ -120,12 +120,15 @@ test('project showcase ships seven slides, real capture assets and no inline pro
     assert.ok(indexHtml.includes(project), `missing project: ${project}`);
   }
 
-  for (const asset of ['nova-hub', 'vanta-reader', 'openpantheon', 'elp-tecnologia', 'nova-crm']) {
+  for (const asset of ['nova-hub', 'nova-hub-nexus', 'nova-hub-arcadia', 'nova-hub-nahi', 'vanta-reader', 'openpantheon', 'elp-tecnologia', 'nova-crm']) {
     assert.ok(await exists(join(dist, 'images', 'projects', `${asset}.webp`)), `missing ${asset}.webp`);
     assert.ok(await exists(join(dist, 'images', 'projects', `${asset}.avif`)), `missing ${asset}.avif`);
     assert.ok(await exists(join(dist, 'images', 'projects', `${asset}-720.webp`)), `missing ${asset}-720.webp`);
   }
 
+  assert.match(indexHtml, /N\.A\.H\.I/);
+  assert.doesNotMatch(indexHtml, /LINK · NEXUS · ARCADIA · CORTEX/);
+  assert.match(indexHtml, /LINK · NEXUS · ARCADIA · N\.A\.H\.I/);
   // CSP uses style-src 'self': the initial progress must be driven by data attributes, not inline style.
   assert.doesNotMatch(indexHtml, /work-progress-fill[^>]+style=/);
   assert.match(indexHtml, /work-progress-fill[^>]+data-progress="1"/);
@@ -136,9 +139,10 @@ test('project showcase ships seven slides, real capture assets and no inline pro
 test('new projects are present in every locale', () => {
   const localizedWebLabel = { pt: 'Desenvolvimento Web', en: 'Web Development', es: 'Desarrollo Web' };
   for (const [code, html] of [['pt', indexHtml], ['en', enHtml], ['es', esHtml]]) {
-    for (const label of ['VANTA Reader', localizedWebLabel[code], 'OpenPantheon', 'ELP Tecnologia', 'NOVA CRM']) {
+    for (const label of ['VANTA Reader', localizedWebLabel[code], 'OpenPantheon', 'ELP Tecnologia', 'NOVA CRM', 'N.A.H.I']) {
       assert.ok(html.includes(label), `missing ${label} on ${code}`);
     }
+    assert.doesNotMatch(html, /LINK · NEXUS · ARCADIA · CORTEX/);
   }
 });
 
