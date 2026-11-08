@@ -71,6 +71,7 @@ montados.
 | Responsividade | Matriz 320/375/390/430/768/1024/1280/1440/1920 sem overflow horizontal |
 | Lighthouse mobile (Chrome headless) | Performance 97 · Acessibilidade 100 · Boas práticas 100 · SEO 100; LCP 2,0 s, CLS 0 |
 | Lighthouse desktop (Chrome headless) | Performance 100 · Acessibilidade 100 · Boas práticas 100 · SEO 100; LCP 0,3 s, CLS 0 |
+| Lighthouse produção (2026-11-08) | Performance **99** · Acessibilidade **100** · Boas práticas **100** · SEO **100**; FCP/LCP 1,0 s, CLS 0, TBT 110 ms |
 
 ## Pendências
 
