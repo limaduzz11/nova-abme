@@ -11,6 +11,9 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = content[lang].work;
+const total = projectsData.length;
+const singleShotSizes = '(min-width: 1100px) 760px, (min-width: 700px) 92vw, 100vw';
+const totalLabel = String(total).padStart(2, '0');
 ---
 
 <section class="section-shell work-section" id="work" aria-labelledby="work-title">
@@ -27,10 +30,10 @@ const t = content[lang].work;
 
   <div class="work-controls">
     <p class="work-progress-count" aria-hidden="true">
-      <span data-work-current>01</span> / <span data-work-total>{String(projectsData.length).padStart(2, '0')}</span>
+      <span data-work-current>01</span> / <span data-work-total>{totalLabel}</span>
     </p>
     <div class="work-progress-track" aria-hidden="true">
-      <span class="work-progress-fill" data-work-fill></span>
+      <span class="work-progress-fill" data-work-fill data-progress="1"></span>
     </div>
     <div class="work-arrows">
       <button class="work-arrow" type="button" data-work-prev aria-label={t.prevLabel}>
@@ -42,79 +45,260 @@ const t = content[lang].work;
     </div>
   </div>
 
-  <ul class="work-track" data-work-track>
-    {
-      projectsData.map((project) => {
-        const pt = t.projects[project.id];
-        return (
-          <li class="work-card" data-work-card>
-            <a
-              class="work-card__cover"
-              href={project.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-work-cover
+  <div
+    class="work-viewport"
+    data-work-viewport
+    tabindex="0"
+    role="region"
+    aria-roledescription={t.carouselLabel}
+    aria-label={t.carouselLabel}
+  >
+    <div class="work-track" data-work-track>
+      {
+        projectsData.map((project, index) => {
+          const pt = t.projects[project.id];
+          const projectName = pt.name ?? project.displayName;
+          return (
+            <div
+              class={`work-slide${index === 0 ? ' is-active' : ''}`}
+              data-work-slide
+              data-index={String(index)}
+              role="group"
+              aria-roledescription={t.slideLabel}
+              aria-label={`${t.slideLabel} ${index + 1} / ${total} — ${projectName}`}
             >
-              <ProjectCover id={project.cover} />
-              <span class="sr-only">{project.displayName} — {t.linkLabel}</span>
-              <span class="work-card__link" aria-hidden="true">↗</span>
-            </a>
+              <article class="work-case">
+                <div class={`work-case__media work-case__media--${project.media.kind}`}>
+                  {project.media.kind === 'screenshot' && (
+                    <button
+                      class="work-shot"
+                      type="button"
+                      data-work-zoom
+                      data-full={`${project.media.src}.webp`}
+                      data-caption={`${projectName} — ${t.captureAlt}`}
+                      aria-label={`${t.zoomLabel}: ${projectName}`}
+                    >
+                      <span class="work-shot__head" aria-hidden="true">
+                        <span class="work-shot__badge">{t.captureLabel}</span>
+                        <span class="work-shot__zoom">⤢</span>
+                      </span>
+                      <span class="work-shot__frame">
+                        <picture>
+                          <source
+                            type="image/avif"
+                            srcset={`${project.media.src}-720.avif 720w, ${project.media.src}.avif ${project.media.width}w`}
+                            sizes={singleShotSizes}
+                          />
+                          <source
+                            type="image/webp"
+                            srcset={`${project.media.src}-720.webp 720w, ${project.media.src}.webp ${project.media.width}w`}
+                            sizes={singleShotSizes}
+                          />
+                          <img
+                            src={`${project.media.src}.webp`}
+                            srcset={`${project.media.src}-720.webp 720w, ${project.media.src}.webp ${project.media.width}w`}
+                            sizes={singleShotSizes}
+                            width={project.media.width}
+                            height={project.media.height}
+                            alt={`${projectName} — ${t.captureAlt}`}
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </picture>
+                      </span>
+                    </button>
+                  )}
 
-            <div class="work-card__body">
-              <p class="work-card__category">{pt.category}</p>
-              <h3 class="work-card__name">{project.displayName}</h3>
-              <p class="work-card__title">{pt.title}</p>
-              <p class="work-card__desc">{pt.description}</p>
+                  {project.media.kind === 'gallery' && (
+                    <div class="work-gallery" data-work-gallery>
+                      <div class="work-gallery__stage">
+                        {project.media.items.map((item, itemIndex) => (
+                          <div
+                            class={`work-gallery__slide${itemIndex === 0 ? ' is-active' : ''}`}
+                            data-work-gallery-slide
+                            data-gallery-id={item.id}
+                            role="tabpanel"
+                            id={`work-gallery-${item.id}`}
+                            aria-labelledby={`work-gallery-tab-${item.id}`}
+                            hidden={itemIndex !== 0}
+                          >
+                            <button
+                              class="work-shot"
+                              type="button"
+                              data-work-zoom
+                              data-full={`${item.src}.webp`}
+                              data-caption={`${item.name} — ${t.captureAlt}`}
+                              aria-label={`${t.zoomLabel}: ${item.name}`}
+                            >
+                              <span class="work-shot__head" aria-hidden="true">
+                                <span class="work-shot__badge">{t.captureLabel}</span>
+                                <span class="work-shot__zoom">⤢</span>
+                              </span>
+                              <span class="work-shot__frame">
+                                <picture>
+                                  <source
+                                    type="image/avif"
+                                    srcset={`${item.src}-720.avif 720w, ${item.src}.avif ${item.width}w`}
+                                    sizes={singleShotSizes}
+                                  />
+                                  <source
+                                    type="image/webp"
+                                    srcset={`${item.src}-720.webp 720w, ${item.src}.webp ${item.width}w`}
+                                    sizes={singleShotSizes}
+                                  />
+                                  <img
+                                    src={`${item.src}.webp`}
+                                    srcset={`${item.src}-720.webp 720w, ${item.src}.webp ${item.width}w`}
+                                    sizes={singleShotSizes}
+                                    width={item.width}
+                                    height={item.height}
+                                    alt={`${item.name} — ${t.captureAlt}`}
+                                    loading="lazy"
+                                    decoding="async"
+                                  />
+                                </picture>
+                              </span>
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                      <div class="work-gallery__tabs" role="tablist" aria-label={t.galleryLabel}>
+                        {project.media.items.map((item, itemIndex) => (
+                          <button
+                            class={`work-gallery__tab${itemIndex === 0 ? ' is-active' : ''}`}
+                            type="button"
+                            role="tab"
+                            id={`work-gallery-tab-${item.id}`}
+                            aria-selected={itemIndex === 0 ? 'true' : 'false'}
+                            aria-controls={`work-gallery-${item.id}`}
+                            tabindex={itemIndex === 0 ? 0 : -1}
+                            data-work-gallery-tab
+                            data-gallery-target={item.id}
+                          >
+                            {item.name}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
 
-              <dl class="work-card__metrics">
-                {pt.metrics.map((metric) => (
-                  <div class="work-card__metric">
-                    <dt>{metric.value}</dt>
-                    <dd>{metric.label}</dd>
+                  {project.media.kind === 'diagram' && (
+                    <>
+                      <div class="work-shot__head work-shot__head--diagram">
+                        <span class="work-shot__badge work-shot__badge--diagram">{t.diagramLabel}</span>
+                      </div>
+                      <div class="work-diagram">
+                        <ProjectCover id={project.media.cover} />
+                      </div>
+                    </>
+                  )}
+                </div>
+
+                <div class="work-case__body">
+                  <div class="work-case__meta">
+                    <p class="work-case__category">{pt.category}</p>
+                    <span class="work-case__status" data-status={project.status}>{t.status[project.status]}</span>
                   </div>
-                ))}
-              </dl>
 
-              <div class="work-card__stack">
-                <h4>{t.toolsLabel}</h4>
-                <ul class="work-card__tools">
-                  {project.stack.map((tool) => (
-                    <li class="work-tool" title={tool.name}>
-                      <span class="work-tool__orb"><TechIcon id={tool.icon} size={18} /></span>
-                      <span class="work-tool__name">{tool.name}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                  <h3 class="work-case__name">{projectName}</h3>
+                  <p class="work-case__title">{pt.title}</p>
+                  <p class="work-case__desc">{pt.description}</p>
 
-              <details class="work-card__arch">
-                <summary>{t.archLabel}</summary>
-                <ProjectDiagram id={project.diagram} caption={pt.diagramCaption} />
-              </details>
+                  {pt.sites && (
+                    <ul class="work-sites">
+                      {pt.sites.map((site) => (
+                        <li class="work-site">
+                          <a class="work-site__name" href={site.href} target="_blank" rel="noopener noreferrer">
+                            {site.name} <span aria-hidden="true">↗</span>
+                          </a>
+                          <p class="work-site__desc">{site.description}</p>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
 
-              <a class="work-card__repo" href={project.href} target="_blank" rel="noopener noreferrer">
-                {t.linkLabel} <span aria-hidden="true">↗</span>
-              </a>
+                  <dl class="work-case__metrics">
+                    {pt.metrics.map((metric) => (
+                      <div class="work-case__metric">
+                        <dt>{metric.value}</dt>
+                        <dd>{metric.label}</dd>
+                      </div>
+                    ))}
+                  </dl>
+
+                  <div class="work-case__stack">
+                    <h4>{t.toolsLabel}</h4>
+                    <ul class="work-case__tools">
+                      {project.stack.map((tool) => (
+                        <li class="work-tool" title={tool.name}>
+                          <span class="work-tool__orb"><TechIcon id={tool.icon} size={16} /></span>
+                          <span class="work-tool__name">{tool.name}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {pt.note && <p class="work-case__note">{pt.note}</p>}
+
+                  {project.diagram && (
+                    <details class="work-case__arch">
+                      <summary>{t.archLabel}</summary>
+                      <ProjectDiagram id={project.diagram} caption={pt.diagramCaption} />
+                    </details>
+                  )}
+
+                  {project.links.length > 0 && (
+                    <div class="work-case__actions">
+                      {project.links.map((link) => (
+                        <a
+                          class={`work-case__link${link.kind === 'product' ? ' work-case__link--primary' : ''}`}
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {t.links[link.kind]} <span aria-hidden="true">↗</span>
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </article>
             </div>
-          </li>
-        );
-      })
-    }
-  </ul>
-
-  <div class="work-dots" data-work-dots>
-    {
-      projectsData.map((project) => (
-        <button
-          class="work-dot"
-          type="button"
-          data-work-dot
-          data-index={project.number}
-          aria-label={project.displayName}
-        />
-      ))
-    }
+          );
+        })
+      }
+    </div>
   </div>
+
+  <div class="work-footer">
+    <div class="work-dots" role="group" aria-label={t.carouselLabel}>
+      {
+        projectsData.map((project, index) => {
+          const projectName = t.projects[project.id].name ?? project.displayName;
+          return (
+            <button
+              class="work-dot"
+              type="button"
+              data-work-dot
+              data-index={String(index)}
+              aria-label={`${t.slideLabel} ${index + 1}: ${projectName}`}
+              aria-current={index === 0 ? 'true' : 'false'}
+            >
+              {project.number}
+            </button>
+          );
+        })
+      }
+    </div>
+    <p class="work-hint">{t.hint}</p>
+  </div>
+
+  <p class="sr-only" aria-live="polite" data-work-status></p>
+
+  <details class="work-captures">
+    <summary>{t.creditsSummary}</summary>
+    <p>{t.credits}</p>
+  </details>
 
   <div class="section-end-link">
     <a class="text-link" href={publicLinks.github} target="_blank" rel="noopener noreferrer">
@@ -122,3 +306,16 @@ const t = content[lang].work;
     </a>
   </div>
 </section>
+
+<dialog class="work-lightbox" data-work-lightbox aria-labelledby="work-lightbox-caption">
+  <div class="work-lightbox__panel">
+    <button class="work-lightbox__close" type="button" data-work-lightbox-close aria-label={t.closeLabel}>
+      <span aria-hidden="true">×</span>
+    </button>
+    <img class="work-lightbox__img" data-work-lightbox-img alt="" />
+    <div class="work-lightbox__bar">
+      <p id="work-lightbox-caption" data-work-lightbox-caption></p>
+      <span class="work-lightbox__hint">{t.closeLabel} · Esc</span>
+    </div>
+  </div>
+</dialog>

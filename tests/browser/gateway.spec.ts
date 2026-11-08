@@ -153,3 +153,53 @@ test('localized page has no automated accessibility violations', async ({ page }
   const results = await new AxeBuilder({ page }).analyze();
   expect(results.violations).toEqual([]);
 });
+
+test('project carousel shows one slide per view, supports keyboard and the inner site gallery', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await gotoPage(page);
+  await page.evaluate(() => window.scrollTo(0, document.querySelector('#work')!.offsetTop - 80));
+
+  const slides = page.locator('[data-work-slide]');
+  await expect(slides).toHaveCount(7);
+  const dimensions = await page.evaluate(() => ({
+    viewport: document.querySelector<HTMLElement>('[data-work-viewport]')!.clientWidth,
+    slide: document.querySelector<HTMLElement>('[data-work-slide]')!.getBoundingClientRect().width,
+  }));
+  expect(Math.abs(dimensions.viewport - dimensions.slide)).toBeLessThanOrEqual(2);
+
+  const viewport = page.locator('[data-work-viewport]');
+  await viewport.focus();
+  await page.keyboard.press('ArrowRight');
+  await expect(page.locator('[data-work-current]')).toHaveText('02');
+
+  await page.locator('[data-work-dot]').nth(2).click();
+  await expect(page.locator('[data-work-current]')).toHaveText('03');
+  const elpTab = page.locator('#work-gallery-tab-elp-tecnologia');
+  await expect(elpTab).toHaveAttribute('aria-selected', 'false');
+  await elpTab.click();
+  await expect(elpTab).toHaveAttribute('aria-selected', 'true');
+  await expect(page.locator('#work-gallery-elp-tecnologia')).toBeVisible();
+
+  const zoom = page.locator('.work-slide.is-active .work-gallery__slide:not([hidden]) [data-work-zoom]').first();
+  await expect(zoom).toBeVisible();
+  await zoom.click();
+  const lightbox = page.locator('[data-work-lightbox]');
+  await expect(lightbox).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(lightbox).toBeHidden();
+  await expect(zoom).toBeFocused();
+});
+
+test('project carousel keeps one slide per view on mobile', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await gotoPage(page);
+  await page.evaluate(() => window.scrollTo(0, document.querySelector('#work')!.offsetTop - 70));
+  const dimensions = await page.evaluate(() => ({
+    viewport: document.querySelector<HTMLElement>('[data-work-viewport]')!.clientWidth,
+    slide: document.querySelector<HTMLElement>('[data-work-slide]')!.getBoundingClientRect().width,
+    body: document.documentElement.scrollWidth,
+    width: window.innerWidth,
+  }));
+  expect(Math.abs(dimensions.viewport - dimensions.slide)).toBeLessThanOrEqual(2);
+  expect(dimensions.body).toBeLessThanOrEqual(dimensions.width);
+});

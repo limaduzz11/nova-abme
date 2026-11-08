@@ -101,3 +101,43 @@ test('the generated artifact does not reference local runtime dependencies', asy
     assert.doesNotMatch(content, /javascript:/i, entry.name);
   }
 });
+
+test('project showcase ships seven slides, real capture assets and no inline progress style', async () => {
+  const slides = indexHtml.match(/data-work-slide/g) ?? [];
+  assert.equal(slides.length, 7);
+
+  for (const project of [
+    'NOVA HUB WEB',
+    'VANTA Reader',
+    'Desenvolvimento Web',
+    'OpenPantheon',
+    'ELP Tecnologia',
+    'NOVA CRM',
+    'protheus-research',
+    'protheus-rest-lab',
+    'protheus-po-ui-template',
+  ]) {
+    assert.ok(indexHtml.includes(project), `missing project: ${project}`);
+  }
+
+  for (const asset of ['nova-hub', 'vanta-reader', 'openpantheon', 'elp-tecnologia', 'nova-crm']) {
+    assert.ok(await exists(join(dist, 'images', 'projects', `${asset}.webp`)), `missing ${asset}.webp`);
+    assert.ok(await exists(join(dist, 'images', 'projects', `${asset}.avif`)), `missing ${asset}.avif`);
+    assert.ok(await exists(join(dist, 'images', 'projects', `${asset}-720.webp`)), `missing ${asset}-720.webp`);
+  }
+
+  // CSP uses style-src 'self': the initial progress must be driven by data attributes, not inline style.
+  assert.doesNotMatch(indexHtml, /work-progress-fill[^>]+style=/);
+  assert.match(indexHtml, /work-progress-fill[^>]+data-progress="1"/);
+  assert.match(indexHtml, /data-work-lightbox/);
+  assert.match(indexHtml, /data-work-gallery/);
+});
+
+test('new projects are present in every locale', () => {
+  const localizedWebLabel = { pt: 'Desenvolvimento Web', en: 'Web Development', es: 'Desarrollo Web' };
+  for (const [code, html] of [['pt', indexHtml], ['en', enHtml], ['es', esHtml]]) {
+    for (const label of ['VANTA Reader', localizedWebLabel[code], 'OpenPantheon', 'ELP Tecnologia', 'NOVA CRM']) {
+      assert.ok(html.includes(label), `missing ${label} on ${code}`);
+    }
+  }
+});

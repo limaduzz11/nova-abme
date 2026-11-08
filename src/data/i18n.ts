@@ -28,12 +28,21 @@ export interface TrajectoryItemContent {
   highlights: readonly string[];
 }
 
+export interface ProjectSiteContent {
+  name: string;
+  description: string;
+  href: string;
+}
+
 export interface ProjectTextContent {
+  name?: string;
   category: string;
   title: string;
   description: string;
   diagramCaption: string;
   metrics: readonly { value: string; label: string }[];
+  note?: string;
+  sites?: readonly ProjectSiteContent[];
 }
 
 export interface LabItemContent {
@@ -89,6 +98,20 @@ export interface SiteContent {
     nextLabel: string;
     linkLabel: string;
     allRepos: string;
+    captureAlt: string;
+    captureLabel: string;
+    diagramLabel: string;
+    zoomLabel: string;
+    closeLabel: string;
+    openSite: string;
+    galleryLabel: string;
+    carouselLabel: string;
+    slideLabel: string;
+    hint: string;
+    status: Record<'live' | 'demo' | 'development' | 'lab', string>;
+    links: Record<'github' | 'site' | 'product', string>;
+    creditsSummary: string;
+    credits: string;
     projects: Record<string, ProjectTextContent>;
   };
   techstack: {
@@ -291,13 +314,37 @@ export const content: Record<Lang, SiteContent> = {
       headingA: 'MEUS',
       headingB: 'PROJETOS',
       intro:
-        'Além do trabalho corporativo sob sigilo de clientes, cada projeto público demonstra decisões reais de arquitetura, qualidade de código e capacidade de entrega.',
+        'Além do trabalho corporativo sob sigilo, cada projeto público demonstra decisões reais de arquitetura e entrega. As capturas são das interfaces reais — sem mockups gerados por IA.',
       toolsLabel: 'Tecnologias',
       archLabel: 'Arquitetura técnica',
       prevLabel: 'Projeto anterior',
       nextLabel: 'Próximo projeto',
       linkLabel: 'Ver no GitHub',
       allRepos: 'Explorar todos os repositórios no GitHub',
+      captureAlt: 'captura real da interface',
+      captureLabel: 'Captura real',
+      diagramLabel: 'Diagrama',
+      zoomLabel: 'Ampliar captura',
+      closeLabel: 'Fechar',
+      openSite: 'Abrir site',
+      galleryLabel: 'Sites em destaque',
+      carouselLabel: 'Carrossel de projetos',
+      slideLabel: 'Projeto',
+      hint: 'Use as setas, os números ou deslize para navegar.',
+      status: {
+        live: 'Em produção',
+        demo: 'Protótipo funcional',
+        development: 'Em evolução',
+        lab: 'Laboratório',
+      },
+      links: {
+        github: 'Ver no GitHub',
+        site: 'Abrir site',
+        product: 'Conhecer o projeto',
+      },
+      creditsSummary: 'Sobre as capturas e a transparência',
+      credits:
+        'NOVA HUB, VANTA Reader, OpenPantheon, ELP Tecnologia e NOVA CRM usam capturas reais das interfaces. Dados sensíveis foram mascarados. protheus-research e protheus-rest-lab são servidores e bibliotecas sem interface gráfica; o template PO-UI depende de um pacote TOTVS não público e teve a captura registrada como pendência.',
       projects: {
         'nova-hub': {
           category: 'Operações & infraestrutura',
@@ -305,17 +352,70 @@ export const content: Record<Lang, SiteContent> = {
           title: 'Dashboard web de operações: telemetria, terminal remoto e orquestração',
           description:
             'Painel web privado para operar infraestrutura: telemetria, terminal SSH no navegador e orquestração de tarefas. Node.js + Express, em malha Tailscale sem porta pública.',
+          note: 'Captura real do dashboard; usuário e endereço do host foram mascarados.',
           metrics: [
             { value: '4 módulos', label: 'LINK · NEXUS · ARCADIA · CORTEX' },
             { value: 'Privado', label: 'malha Tailscale, sem porta pública' },
           ],
         },
+        'vanta-reader': {
+          category: 'Leitura digital · Flutter',
+          diagramCaption: 'Fluxo: biblioteca local ↔ leitores EPUB/TXT/CBZ ↔ catálogo público opcional.',
+          title: 'Biblioteca local-first com leitura offline e catálogo online',
+          description:
+            'Aplicativo Flutter para Android e desktop que reúne livros e quadrinhos em uma biblioteca local, com progresso de leitura, downloads e leitura sem distrações. A rede é apenas um canal opcional de descoberta.',
+          note: 'Captura real da interface desktop; catálogo público carregado e obra de domínio público na biblioteca local.',
+          metrics: [
+            { value: 'Offline-first', label: 'biblioteca e progresso locais' },
+            { value: '216 testes', label: 'suíte Flutter validada' },
+          ],
+        },
+        'web-platforms': {
+          name: 'Desenvolvimento Web',
+          category: 'Sites & plataformas',
+          diagramCaption: 'Entrega: conteúdo editorial → build estático → borda global → leitura pública.',
+          title: 'Sites e plataformas em produção',
+          description:
+            'Projetos digitais que projetei, implementei e publiquei: uma publicação editorial independente e o site institucional da ELP Tecnologia.',
+          note: 'Capturas reais das páginas iniciais; nenhuma imagem gerada por IA.',
+          sites: [
+            {
+              name: 'OpenPantheon',
+              description:
+                'Publicação independente de tecnologia com artigos, busca, RSS e operação editorial própria. Site Astro na borda, coletor em Go e identidade visual autoral.',
+              href: 'https://openpantheon.com.br/',
+            },
+            {
+              name: 'ELP Tecnologia',
+              description:
+                'Site institucional da consultoria: posicionamento, soluções, cases, conteúdo técnico e contato. Astro, SEO técnico e identidade visual própria.',
+              href: 'https://elptecnologia.com.br/',
+            },
+          ],
+          metrics: [
+            { value: '2 sites', label: 'em produção' },
+            { value: 'Reais', label: 'capturas das interfaces' },
+          ],
+        },
+        'nova-crm': {
+          category: 'CRM · ERP',
+          diagramCaption: 'Fluxo: interface Astro → API PHP → SQLite/SQL Server → Protheus.',
+          title: 'CRM comercial single-tenant integrado ao Protheus',
+          description:
+            'Protótipo funcional de CRM com visão de pipeline, gestão de oportunidades, atividades e relatórios. A arquitetura prevê ambiente isolado por cliente e integração idempotente com o ERP.',
+          note: 'Captura real do protótipo em homologação; nome do cliente e dados pessoais mascarados.',
+          metrics: [
+            { value: 'Single-tenant', label: 'isolamento por cliente' },
+            { value: 'Pipeline Kanban', label: 'oportunidades e etapas' },
+          ],
+        },
         'protheus-research': {
-          category: 'MCP server / AI',
+          category: 'MCP server / IA',
           diagramCaption: 'Fluxo: cliente MCP → servidor TypeScript → base indexada do ecossistema Protheus.',
           title: 'Pesquisa técnica estruturada no ecossistema Protheus',
           description:
             'Servidor MCP em TypeScript que indexa sintaxe, rotinas, tabelas e regras do Protheus para consultas técnicas de agentes de IA.',
+          note: 'Servidor MCP via stdio — projeto sem interface gráfica.',
           metrics: [
             { value: 'MCP', label: 'servidor TypeScript' },
             { value: 'Local', label: 'índice do ecossistema Protheus' },
@@ -327,6 +427,7 @@ export const content: Record<Lang, SiteContent> = {
           title: 'Laboratório de padrões para APIs REST no Protheus',
           description:
             'Implementação de referência para endpoints REST no Protheus: paginação, status HTTP, JSON e tratamento de exceções.',
+          note: 'Laboratório de padrões ADVPL/REST — projeto sem interface gráfica.',
           metrics: [
             { value: 'REST', label: 'paginação e status HTTP' },
             { value: 'ADVPL', label: 'WSRESTFUL / WSMETHOD' },
@@ -338,6 +439,7 @@ export const content: Record<Lang, SiteContent> = {
           title: 'Template de portal corporativo em Angular e PO-UI',
           description:
             'Base de portal corporativo com PO-UI sobre Angular, pronta para integração REST com o Protheus.',
+          note: 'Template arquitetural; o build executável depende de um pacote TOTVS não público. Captura de interface pendente.',
           metrics: [
             { value: 'PO-UI', label: 'design system TOTVS' },
             { value: 'Angular', label: 'portal REST-ready' },
@@ -623,13 +725,37 @@ export const content: Record<Lang, SiteContent> = {
       headingA: 'MY',
       headingB: 'PROJECTS',
       intro:
-        'Beyond corporate work under client confidentiality, each public project demonstrates real architecture decisions, code quality and delivery capability.',
+        'Beyond corporate work under confidentiality, each public project demonstrates real architecture decisions and delivery. Screenshots show the real interfaces — no AI-generated mockups.',
       toolsLabel: 'Technologies',
       archLabel: 'Technical architecture',
       prevLabel: 'Previous project',
       nextLabel: 'Next project',
       linkLabel: 'View on GitHub',
       allRepos: 'Explore all repositories on GitHub',
+      captureAlt: 'real interface screenshot',
+      captureLabel: 'Real capture',
+      diagramLabel: 'Diagram',
+      zoomLabel: 'Enlarge screenshot',
+      closeLabel: 'Close',
+      openSite: 'Open site',
+      galleryLabel: 'Featured sites',
+      carouselLabel: 'Project carousel',
+      slideLabel: 'Project',
+      hint: 'Use the arrows, numbers or swipe to navigate.',
+      status: {
+        live: 'In production',
+        demo: 'Working prototype',
+        development: 'Evolving',
+        lab: 'Lab',
+      },
+      links: {
+        github: 'View on GitHub',
+        site: 'Open site',
+        product: 'Explore the project',
+      },
+      creditsSummary: 'About the screenshots and transparency',
+      credits:
+        'NOVA HUB, VANTA Reader, OpenPantheon, ELP Tecnologia and NOVA CRM use real interface screenshots. Sensitive data has been masked. protheus-research and protheus-rest-lab are servers and libraries without a graphical interface; the PO-UI template depends on a non-public TOTVS package and its screenshot is recorded as pending.',
       projects: {
         'nova-hub': {
           category: 'Operations & infrastructure',
@@ -637,9 +763,61 @@ export const content: Record<Lang, SiteContent> = {
           title: 'Web operations dashboard: telemetry, remote terminal and orchestration',
           description:
             'Private web panel to operate infrastructure: telemetry, in-browser SSH terminal and task orchestration. Node.js + Express over a Tailscale mesh, no public port.',
+          note: 'Real dashboard capture; host user and address have been masked.',
           metrics: [
             { value: '4 modules', label: 'LINK · NEXUS · ARCADIA · CORTEX' },
             { value: 'Private', label: 'Tailscale mesh, no public port' },
+          ],
+        },
+        'vanta-reader': {
+          category: 'Digital reading · Flutter',
+          diagramCaption: 'Flow: local library ↔ EPUB/TXT/CBZ readers ↔ optional public catalog.',
+          title: 'Local-first library with offline reading and online catalog',
+          description:
+            'Flutter app for Android and desktop that brings books and comics into a local library, with reading progress, downloads and distraction-free reading. The network is only an optional discovery channel.',
+          note: 'Real desktop interface capture; public catalog loaded and a public-domain work in the local library.',
+          metrics: [
+            { value: 'Offline-first', label: 'local library and progress' },
+            { value: '216 tests', label: 'validated Flutter suite' },
+          ],
+        },
+        'web-platforms': {
+          name: 'Web Development',
+          category: 'Websites & platforms',
+          diagramCaption: 'Delivery: editorial content → static build → global edge → public reading.',
+          title: 'Websites and platforms in production',
+          description:
+            'Digital projects I designed, implemented and published: an independent editorial publication and the ELP Tecnologia corporate website.',
+          note: 'Real homepage captures; no AI-generated imagery.',
+          sites: [
+            {
+              name: 'OpenPantheon',
+              description:
+                'Independent technology publication with articles, search, RSS and its own editorial operation. Static Astro site on the edge, Go collector and original visual identity.',
+              href: 'https://openpantheon.com.br/',
+            },
+            {
+              name: 'ELP Tecnologia',
+              description:
+                'Corporate website for the consultancy: positioning, solutions, cases, technical content and contact. Astro, technical SEO and original visual identity.',
+              href: 'https://elptecnologia.com.br/',
+            },
+          ],
+          metrics: [
+            { value: '2 sites', label: 'in production' },
+            { value: 'Real', label: 'interface captures' },
+          ],
+        },
+        'nova-crm': {
+          category: 'CRM · ERP',
+          diagramCaption: 'Flow: Astro interface → PHP API → SQLite/SQL Server → Protheus.',
+          title: 'Single-tenant commercial CRM integrated with Protheus',
+          description:
+            'Working CRM prototype with pipeline overview, opportunity management, activities and reports. The architecture targets an isolated environment per client and idempotent ERP integration.',
+          note: 'Real capture of the staging prototype; client name and personal data masked.',
+          metrics: [
+            { value: 'Single-tenant', label: 'per-client isolation' },
+            { value: 'Kanban pipeline', label: 'opportunities and stages' },
           ],
         },
         'protheus-research': {
@@ -648,6 +826,7 @@ export const content: Record<Lang, SiteContent> = {
           title: 'Structured technical research in the Protheus ecosystem',
           description:
             'MCP server in TypeScript indexing Protheus syntax, routines, tables and rules for structured AI-agent queries.',
+          note: 'MCP server over stdio — project without a graphical interface.',
           metrics: [
             { value: 'MCP', label: 'TypeScript server' },
             { value: 'Local', label: 'Protheus ecosystem index' },
@@ -659,6 +838,7 @@ export const content: Record<Lang, SiteContent> = {
           title: 'Pattern laboratory for REST APIs in Protheus',
           description:
             'Reference implementation for Protheus REST endpoints: pagination, HTTP status, JSON and exception handling.',
+          note: 'ADVPL/REST pattern lab — project without a graphical interface.',
           metrics: [
             { value: 'REST', label: 'pagination and HTTP status' },
             { value: 'ADVPL', label: 'WSRESTFUL / WSMETHOD' },
@@ -670,6 +850,7 @@ export const content: Record<Lang, SiteContent> = {
           title: 'Corporate portal template with Angular and PO-UI',
           description:
             'Corporate portal base with PO-UI on Angular, ready for REST integration with Protheus.',
+          note: 'Architectural template; the executable build depends on a non-public TOTVS package. Interface capture pending.',
           metrics: [
             { value: 'PO-UI', label: 'TOTVS design system' },
             { value: 'Angular', label: 'REST-ready portal' },
@@ -955,13 +1136,37 @@ export const content: Record<Lang, SiteContent> = {
       headingA: 'MIS',
       headingB: 'PROYECTOS',
       intro:
-        'Además del trabajo corporativo bajo confidencialidad de clientes, cada proyecto público demuestra decisiones reales de arquitectura, calidad de código y capacidad de entrega.',
+        'Además del trabajo corporativo bajo confidencialidad, cada proyecto público demuestra decisiones reales de arquitectura y entrega. Las capturas son de las interfaces reales — sin maquetas generadas por IA.',
       toolsLabel: 'Tecnologías',
       archLabel: 'Arquitectura técnica',
       prevLabel: 'Proyecto anterior',
       nextLabel: 'Proyecto siguiente',
       linkLabel: 'Ver en GitHub',
       allRepos: 'Explorar todos los repositorios en GitHub',
+      captureAlt: 'captura real de la interfaz',
+      captureLabel: 'Captura real',
+      diagramLabel: 'Diagrama',
+      zoomLabel: 'Ampliar captura',
+      closeLabel: 'Cerrar',
+      openSite: 'Abrir sitio',
+      galleryLabel: 'Sitios destacados',
+      carouselLabel: 'Carrusel de proyectos',
+      slideLabel: 'Proyecto',
+      hint: 'Usa las flechas, los números o desliza para navegar.',
+      status: {
+        live: 'En producción',
+        demo: 'Prototipo funcional',
+        development: 'En evolución',
+        lab: 'Laboratorio',
+      },
+      links: {
+        github: 'Ver en GitHub',
+        site: 'Abrir sitio',
+        product: 'Conocer el proyecto',
+      },
+      creditsSummary: 'Sobre las capturas y la transparencia',
+      credits:
+        'NOVA HUB, VANTA Reader, OpenPantheon, ELP Tecnologia y NOVA CRM usan capturas reales de las interfaces. Los datos sensibles fueron enmascarados. protheus-research y protheus-rest-lab son servidores y bibliotecas sin interfaz gráfica; la plantilla PO-UI depende de un paquete TOTVS no público y su captura queda registrada como pendiente.',
       projects: {
         'nova-hub': {
           category: 'Operaciones e infraestructura',
@@ -969,17 +1174,70 @@ export const content: Record<Lang, SiteContent> = {
           title: 'Panel web de operaciones: telemetría, terminal remoto y orquestación',
           description:
             'Panel web privado para operar infraestructura: telemetría, terminal SSH en el navegador y orquestación de tareas. Node.js + Express en malla Tailscale, sin puerto público.',
+          note: 'Captura real del panel; usuario y dirección del host enmascarados.',
           metrics: [
             { value: '4 módulos', label: 'LINK · NEXUS · ARCADIA · CORTEX' },
             { value: 'Privado', label: 'malla Tailscale, sin puerto público' },
           ],
         },
+        'vanta-reader': {
+          category: 'Lectura digital · Flutter',
+          diagramCaption: 'Flujo: biblioteca local ↔ lectores EPUB/TXT/CBZ ↔ catálogo público opcional.',
+          title: 'Biblioteca local-first con lectura offline y catálogo online',
+          description:
+            'Aplicación Flutter para Android y escritorio que reúne libros y cómics en una biblioteca local, con progreso de lectura, descargas y lectura sin distracciones. La red es solo un canal opcional de descubrimiento.',
+          note: 'Captura real de la interfaz de escritorio; catálogo público cargado y una obra de dominio público en la biblioteca local.',
+          metrics: [
+            { value: 'Offline-first', label: 'biblioteca y progreso locales' },
+            { value: '216 pruebas', label: 'suite Flutter validada' },
+          ],
+        },
+        'web-platforms': {
+          name: 'Desarrollo Web',
+          category: 'Sitios y plataformas',
+          diagramCaption: 'Entrega: contenido editorial → build estático → borde global → lectura pública.',
+          title: 'Sitios y plataformas en producción',
+          description:
+            'Proyectos digitales que diseñé, implementé y publiqué: una publicación editorial independiente y el sitio institucional de ELP Tecnologia.',
+          note: 'Capturas reales de las páginas iniciales; ninguna imagen generada por IA.',
+          sites: [
+            {
+              name: 'OpenPantheon',
+              description:
+                'Publicación independiente de tecnología con artículos, búsqueda, RSS y operación editorial propia. Sitio Astro en el borde, colector en Go e identidad visual original.',
+              href: 'https://openpantheon.com.br/',
+            },
+            {
+              name: 'ELP Tecnologia',
+              description:
+                'Sitio institucional de la consultoría: posicionamiento, soluciones, casos, contenido técnico y contacto. Astro, SEO técnico e identidad visual propia.',
+              href: 'https://elptecnologia.com.br/',
+            },
+          ],
+          metrics: [
+            { value: '2 sitios', label: 'en producción' },
+            { value: 'Reales', label: 'capturas de las interfaces' },
+          ],
+        },
+        'nova-crm': {
+          category: 'CRM · ERP',
+          diagramCaption: 'Flujo: interfaz Astro → API PHP → SQLite/SQL Server → Protheus.',
+          title: 'CRM comercial single-tenant integrado con Protheus',
+          description:
+            'Prototipo funcional de CRM con visión de pipeline, gestión de oportunidades, actividades e informes. La arquitectura prevé un entorno aislado por cliente e integración idempotente con el ERP.',
+          note: 'Captura real del prototipo en homologación; nombre del cliente y datos personales enmascarados.',
+          metrics: [
+            { value: 'Single-tenant', label: 'aislamiento por cliente' },
+            { value: 'Pipeline Kanban', label: 'oportunidades y etapas' },
+          ],
+        },
         'protheus-research': {
-          category: 'MCP server / IA',
+          category: 'Servidor MCP / IA',
           diagramCaption: 'Flujo: cliente MCP → servidor TypeScript → base indexada del ecosistema Protheus.',
           title: 'Investigación técnica estructurada en el ecosistema Protheus',
           description:
             'Servidor MCP en TypeScript que indexa sintaxis, rutinas, tablas y reglas de Protheus para consultas técnicas de agentes de IA.',
+          note: 'Servidor MCP vía stdio — proyecto sin interfaz gráfica.',
           metrics: [
             { value: 'MCP', label: 'servidor TypeScript' },
             { value: 'Local', label: 'índice del ecosistema Protheus' },
@@ -987,12 +1245,13 @@ export const content: Record<Lang, SiteContent> = {
         },
         'protheus-rest-lab': {
           category: 'Arquitectura / backend',
-          diagramCaption: 'Flujo: cliente HTTP → WSRESTFUL (ADVPL) → datos del ERP con envelope y status correctos.',
+          diagramCaption: 'Flujo: cliente HTTP → WSRESTFUL (ADVPL) → datos del ERP con envelope y estados correctos.',
           title: 'Laboratorio de patrones para APIs REST en Protheus',
           description:
-            'Implementación de referencia para endpoints REST en Protheus: paginación, status HTTP, JSON y manejo de excepciones.',
+            'Implementación de referencia para endpoints REST en Protheus: paginación, estado HTTP, JSON y manejo de excepciones.',
+          note: 'Laboratorio de patrones ADVPL/REST — proyecto sin interfaz gráfica.',
           metrics: [
-            { value: 'REST', label: 'paginación y status HTTP' },
+            { value: 'REST', label: 'paginación y estado HTTP' },
             { value: 'ADVPL', label: 'WSRESTFUL / WSMETHOD' },
           ],
         },
@@ -1002,6 +1261,7 @@ export const content: Record<Lang, SiteContent> = {
           title: 'Plantilla de portal corporativo con Angular y PO-UI',
           description:
             'Base de portal corporativo con PO-UI sobre Angular, lista para integración REST con Protheus.',
+          note: 'Plantilla arquitectónica; el build ejecutable depende de un paquete TOTVS no público. Captura de interfaz pendiente.',
           metrics: [
             { value: 'PO-UI', label: 'design system TOTVS' },
             { value: 'Angular', label: 'portal REST-ready' },

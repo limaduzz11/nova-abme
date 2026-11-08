@@ -29,25 +29,78 @@ export const publicLinks = {
   whatsapp: 'https://wa.me/5511944665292?text=Ol%C3%A1%20Eduardo%2C%20vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar',
   cv: '/cv/eduardo-paranhos-cv.pdf',
   vcard: '/eduardo-paranhos.vcf',
+  openpantheon: 'https://openpantheon.com.br/',
+  novaCrm: 'https://elptecnologia.com.br/labs/nova-crm/',
 } as const;
+
+export type ProjectStatus = 'live' | 'demo' | 'development' | 'lab';
+export type ProjectLinkKind = 'github' | 'site' | 'product';
+export type ProjectCoverId = 'hub' | 'research' | 'rest-lab' | 'po-ui';
+
+export interface ProjectLink {
+  kind: ProjectLinkKind;
+  href: string;
+}
+
+export interface ProjectScreenshot {
+  kind: 'screenshot';
+  /** Base path without extension: the component builds AVIF/WebP and 720px variants. */
+  src: string;
+  width: number;
+  height: number;
+}
+
+export interface ProjectGalleryItem {
+  id: string;
+  name: string;
+  src: string;
+  width: number;
+  height: number;
+  href: string;
+}
+
+export interface ProjectGallery {
+  kind: 'gallery';
+  items: readonly ProjectGalleryItem[];
+}
+
+export interface ProjectDiagramMedia {
+  kind: 'diagram';
+  cover: ProjectCoverId;
+}
+
+export type ProjectMedia = ProjectScreenshot | ProjectGallery | ProjectDiagramMedia;
 
 export interface ProjectData {
   id: string;
   number: string;
   displayName: string;
-  href: string;
-  cover: 'hub' | 'research' | 'rest-lab' | 'po-ui';
-  diagram: 'hub' | 'research' | 'rest-lab' | 'po-ui';
+  status: ProjectStatus;
+  media: ProjectMedia;
+  diagram?: ProjectCoverId;
   stack: readonly { icon: string; name: string }[];
+  links: readonly ProjectLink[];
 }
 
+/**
+ * Projetos exibidos na vitrine.
+ *
+ * Regra editorial: só entra captura de tela de interface real. Projetos sem
+ * interface gráfica usam um diagrama declarado (`kind: 'diagram'`) e nunca são
+ * apresentados como screenshot.
+ */
 export const projectsData: readonly ProjectData[] = [
   {
     id: 'nova-hub',
     displayName: 'NOVA HUB WEB',
     number: '01',
-    href: 'https://github.com/limaduzz11/nova-hub',
-    cover: 'hub',
+    status: 'live',
+    media: {
+      kind: 'screenshot',
+      src: '/images/projects/nova-hub',
+      width: 1440,
+      height: 1000,
+    },
     diagram: 'hub',
     stack: [
       { icon: 'nodedotjs', name: 'Node.js' },
@@ -55,48 +108,122 @@ export const projectsData: readonly ProjectData[] = [
       { icon: 'terminal', name: 'WebSocket / PTY' },
       { icon: 'linux', name: 'Linux' },
     ],
+    links: [{ kind: 'github', href: 'https://github.com/limaduzz11/nova-hub' }],
+  },
+  {
+    id: 'vanta-reader',
+    displayName: 'VANTA Reader',
+    number: '02',
+    status: 'development',
+    media: {
+      kind: 'screenshot',
+      src: '/images/projects/vanta-reader',
+      width: 1280,
+      height: 720,
+    },
+    diagram: 'hub',
+    stack: [
+      { icon: 'flutter', name: 'Flutter' },
+      { icon: 'dart', name: 'Dart' },
+      { icon: 'database', name: 'SQLite' },
+      { icon: 'sync', name: 'REST' },
+    ],
+    links: [{ kind: 'github', href: 'https://github.com/limaduzz11/vanta-reader' }],
+  },
+  {
+    id: 'web-platforms',
+    displayName: 'Desenvolvimento Web',
+    number: '03',
+    status: 'live',
+    media: {
+      kind: 'gallery',
+      items: [
+        {
+          id: 'openpantheon',
+          name: 'OpenPantheon',
+          src: '/images/projects/openpantheon',
+          width: 1440,
+          height: 900,
+          href: 'https://openpantheon.com.br/',
+        },
+        {
+          id: 'elp-tecnologia',
+          name: 'ELP Tecnologia',
+          src: '/images/projects/elp-tecnologia',
+          width: 1440,
+          height: 900,
+          href: 'https://elptecnologia.com.br/',
+        },
+      ],
+    },
+    stack: [
+      { icon: 'browser', name: 'Astro' },
+      { icon: 'typescript', name: 'TypeScript' },
+      { icon: 'globe', name: 'Cloudflare' },
+      { icon: 'terminal', name: 'Go' },
+    ],
+    links: [],
+  },
+  {
+    id: 'nova-crm',
+    displayName: 'NOVA CRM',
+    number: '04',
+    status: 'demo',
+    media: {
+      kind: 'screenshot',
+      src: '/images/projects/nova-crm',
+      width: 1440,
+      height: 900,
+    },
+    stack: [
+      { icon: 'browser', name: 'Astro' },
+      { icon: 'code', name: 'PHP' },
+      { icon: 'database', name: 'SQLite' },
+      { icon: 'database', name: 'SQL Server' },
+    ],
+    links: [{ kind: 'product', href: 'https://elptecnologia.com.br/labs/nova-crm/' }],
   },
   {
     id: 'protheus-research',
     displayName: 'protheus-research',
-    number: '02',
-    href: 'https://github.com/limaduzz11/protheus-research',
-    cover: 'research',
-    diagram: 'research',
+    number: '05',
+    status: 'lab',
+    media: { kind: 'diagram', cover: 'research' },
     stack: [
       { icon: 'typescript', name: 'TypeScript' },
       { icon: 'nodedotjs', name: 'Node.js' },
       { icon: 'code', name: 'ADVPL' },
       { icon: 'layers', name: 'TOTVS Protheus' },
     ],
+    links: [{ kind: 'github', href: 'https://github.com/limaduzz11/protheus-research' }],
   },
   {
     id: 'protheus-rest-lab',
     displayName: 'protheus-rest-lab',
-    number: '03',
-    href: 'https://github.com/limaduzz11/protheus-rest-lab',
-    cover: 'rest-lab',
-    diagram: 'rest-lab',
+    number: '06',
+    status: 'lab',
+    media: { kind: 'diagram', cover: 'rest-lab' },
     stack: [
       { icon: 'code', name: 'ADVPL / TL++' },
       { icon: 'sync', name: 'REST' },
       { icon: 'doc', name: 'JSON / XML' },
       { icon: 'database', name: 'SQL' },
     ],
+    links: [{ kind: 'github', href: 'https://github.com/limaduzz11/protheus-rest-lab' }],
   },
   {
     id: 'protheus-po-ui-template',
     displayName: 'protheus-po-ui-template',
-    number: '04',
-    href: 'https://github.com/limaduzz11/protheus-po-ui-template',
-    cover: 'po-ui',
-    diagram: 'po-ui',
+    number: '07',
+    status: 'lab',
+    media: { kind: 'diagram', cover: 'po-ui' },
     stack: [
       { icon: 'angular', name: 'Angular' },
       { icon: 'browser', name: 'PO-UI' },
       { icon: 'typescript', name: 'TypeScript' },
       { icon: 'sync', name: 'REST' },
     ],
+    links: [{ kind: 'github', href: 'https://github.com/limaduzz11/protheus-po-ui-template' }],
   },
 ] as const;
 
