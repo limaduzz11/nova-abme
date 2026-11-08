@@ -30,7 +30,7 @@ test('static routes and metadata exist', async () => {
   assert.match(indexHtml, /TOTVS Protheus/);
   assert.match(indexHtml, /rel="canonical"/);
   assert.match(indexHtml, /property="og:image"[^>]+og-image\.png/);
-  assert.match(indexHtml, /href="[^"]*eduardo-paranhos-cv\.pdf"/);
+  assert.match(indexHtml, /href="[^"]*CV-PT\.pdf"/);
   assert.match(indexHtml, /href="https:\/\/wa\.me\/[^"]+"/);
   assert.match(notFoundHtml, /CAMINHO_<em>NÃO ENCONTRADO\.<\/em>/);
 });
@@ -140,4 +140,22 @@ test('new projects are present in every locale', () => {
       assert.ok(html.includes(label), `missing ${label} on ${code}`);
     }
   }
+});
+
+test('language-specific ATS CVs are built and linked from the right pages', async () => {
+  const enCv = join(dist, 'cv', 'Eduardo-Paranhos-Software-Developer-CV-EN.pdf');
+  const ptCv = join(dist, 'cv', 'Eduardo-Paranhos-Desenvolvedor-Software-CV-PT.pdf');
+  const legacyCv = join(dist, 'cv', 'eduardo-paranhos-cv.pdf');
+
+  for (const path of [enCv, ptCv, legacyCv]) {
+    assert.ok(await exists(path), `missing CV: ${path}`);
+    const data = await readFile(path);
+    assert.ok(data.length > 10_000, `CV too small: ${path}`);
+    assert.equal(data.subarray(0, 4).toString('ascii'), '%PDF');
+  }
+
+  assert.match(indexHtml, /Eduardo-Paranhos-Desenvolvedor-Software-CV-PT\.pdf/);
+  assert.match(enHtml, /Eduardo-Paranhos-Software-Developer-CV-EN\.pdf/);
+  assert.match(esHtml, /Eduardo-Paranhos-Software-Developer-CV-EN\.pdf/);
+  assert.match(indexHtml, /download/);
 });

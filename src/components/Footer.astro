@@ -1,6 +1,6 @@
 ---
 import { content, type Lang } from '../data/i18n';
-import { publicLinks, siteMeta, whatsappLink } from '../data/site';
+import { cvPaths, publicLinks, siteMeta, whatsappLink } from '../data/site';
 
 interface Props {
   lang: Lang;
@@ -19,7 +19,7 @@ const t = content[lang].footer;
     </div>
 
     <nav class="footer-links" aria-label={t.quickLinks}>
-      <a href={publicLinks.cv} download>{content[lang].connect.channels.cv.label} ↓</a>
+      <a href={cvPaths[lang]} download>{content[lang].connect.channels.cv.label} ↓</a>
       <a href={publicLinks.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
       <a href={publicLinks.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
       <a href={whatsappLink(lang)} target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>

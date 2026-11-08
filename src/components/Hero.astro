@@ -1,6 +1,6 @@
 ---
 import { content, type Lang } from '../data/i18n';
-import { publicLinks, whatsappLink } from '../data/site';
+import { cvPaths, publicLinks, whatsappLink } from '../data/site';
 
 interface Props {
   lang: Lang;
@@ -24,7 +24,7 @@ const t = content[lang].hero;
       <p class="hero-lede">{t.lede}</p>
 
       <div class="hero-actions" role="group" aria-label={t.actionsLabel}>
-        <a class="button button-primary" href={publicLinks.cv} download>
+        <a class="button button-primary" href={cvPaths[lang]} download>
           <span>{t.ctaCv}</span>
           <span aria-hidden="true">↓</span>
         </a>

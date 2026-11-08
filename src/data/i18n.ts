@@ -535,7 +535,7 @@ export const content: Record<Lang, SiteContent> = {
       channels: {
         whatsapp: { label: 'WhatsApp', detail: '+55 11 94466-5292', action: 'Conversar' },
         email: { label: 'E-mail', detail: 'contatoeduardoparanhos@gmail.com', action: 'Enviar' },
-        cv: { label: 'Currículo (PDF)', detail: 'PDF técnico · triagem ATS', action: 'Baixar' },
+        cv: { label: 'Currículo (PDF)', detail: 'PDF em português · triagem ATS', action: 'Baixar' },
         linkedin: { label: 'LinkedIn', detail: 'Trajetória e recomendações', action: 'Abrir' },
         github: { label: 'GitHub', detail: 'Código público e projetos', action: 'Abrir' },
         vcard: { label: 'Contato (vCard)', detail: 'Adicionar ao celular', action: 'Salvar' },
@@ -946,7 +946,7 @@ export const content: Record<Lang, SiteContent> = {
       channels: {
         whatsapp: { label: 'WhatsApp', detail: '+55 11 94466-5292', action: 'Chat' },
         email: { label: 'E-mail', detail: 'contatoeduardoparanhos@gmail.com', action: 'Send' },
-        cv: { label: 'Resume (PDF)', detail: 'Technical PDF · ATS-friendly', action: 'Download' },
+        cv: { label: 'Resume (PDF)', detail: 'English PDF · ATS-friendly', action: 'Download' },
         linkedin: { label: 'LinkedIn', detail: 'Career path and recommendations', action: 'Open' },
         github: { label: 'GitHub', detail: 'Public code and projects', action: 'Open' },
         vcard: { label: 'Contact (vCard)', detail: 'Add to your phone', action: 'Save' },
@@ -1357,7 +1357,7 @@ export const content: Record<Lang, SiteContent> = {
       channels: {
         whatsapp: { label: 'WhatsApp', detail: '+55 11 94466-5292', action: 'Conversar' },
         email: { label: 'E-mail', detail: 'contatoeduardoparanhos@gmail.com', action: 'Enviar' },
-        cv: { label: 'CV (PDF)', detail: 'PDF técnico · filtros ATS', action: 'Descargar' },
+        cv: { label: 'CV (PDF)', detail: 'PDF en inglés · filtros ATS', action: 'Descargar' },
         linkedin: { label: 'LinkedIn', detail: 'Trayectoria y recomendaciones', action: 'Abrir' },
         github: { label: 'GitHub', detail: 'Código público y proyectos', action: 'Abrir' },
         vcard: { label: 'Contacto (vCard)', detail: 'Agregar al teléfono', action: 'Guardar' },

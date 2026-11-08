@@ -12,7 +12,7 @@ export const siteMeta = {
   elpEmail: 'contato@elptecnologia.com.br',
   phone: '+55 11 94466-5292',
   whatsappUrl: 'https://wa.me/5511944665292?text=Ol%C3%A1%20Eduardo%2C%20vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar',
-  cvPath: '/cv/eduardo-paranhos-cv.pdf',
+  cvPath: '/cv/Eduardo-Paranhos-Software-Developer-CV-EN.pdf',
   vcardPath: '/eduardo-paranhos.vcf',
 } as const;
 
@@ -27,10 +27,20 @@ export const publicLinks = {
   emailRaw: 'contatoeduardoparanhos@gmail.com',
   phoneRaw: '+55 11 94466-5292',
   whatsapp: 'https://wa.me/5511944665292?text=Ol%C3%A1%20Eduardo%2C%20vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar',
-  cv: '/cv/eduardo-paranhos-cv.pdf',
+  cv: '/cv/Eduardo-Paranhos-Software-Developer-CV-EN.pdf',
   vcard: '/eduardo-paranhos.vcf',
   openpantheon: 'https://openpantheon.com.br/',
   novaCrm: 'https://elptecnologia.com.br/labs/nova-crm/',
+} as const;
+
+/**
+ * Currículos por idioma. EN é o padrão para os mercados dos EUA/Europa;
+ * PT atende recrutamento no Brasil. ES usa a versão EN.
+ */
+export const cvPaths = {
+  pt: '/cv/Eduardo-Paranhos-Desenvolvedor-Software-CV-PT.pdf',
+  en: '/cv/Eduardo-Paranhos-Software-Developer-CV-EN.pdf',
+  es: '/cv/Eduardo-Paranhos-Software-Developer-CV-EN.pdf',
 } as const;
 
 export type ProjectStatus = 'live' | 'demo' | 'development' | 'lab';

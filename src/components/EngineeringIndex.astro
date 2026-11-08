@@ -1,7 +1,7 @@
 ---
 import TechStack from './TechStack.astro';
 import { content, type Lang } from '../data/i18n';
-import { publicLinks } from '../data/site';
+import { cvPaths } from '../data/site';
 
 interface Props {
   lang: Lang;
@@ -118,7 +118,7 @@ const tr = content[lang].trajectory;
 
     <div class="results-cta">
       <span>{t.results.ctaQuestion}</span>
-      <a class="text-link" href={publicLinks.cv} download>
+      <a class="text-link" href={cvPaths[lang]} download>
         {t.results.ctaLink} ↓
       </a>
     </div>

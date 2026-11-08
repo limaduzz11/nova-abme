@@ -1,7 +1,7 @@
 ---
 import TechIcon from './TechIcon.astro';
 import { content, type Lang } from '../data/i18n';
-import { contactChannels, publicLinks, whatsappLink } from '../data/site';
+import { contactChannels, cvPaths, publicLinks, whatsappLink } from '../data/site';
 
 interface Props {
   lang: Lang;
@@ -35,7 +35,7 @@ const iconByChannel: Record<string, string> = {
     {
       contactChannels.map((channel) => {
         const txt = t.channels[channel.id];
-        const href = channel.id === 'whatsapp' ? whatsappLink(lang) : channel.href;
+        const href = channel.id === 'whatsapp' ? whatsappLink(lang) : channel.id === 'cv' ? cvPaths[lang] : channel.href;
         return (
           <li class:list={['connect-tile', { 'connect-tile--primary': channel.primary }]}>
             <span class="connect-tile__icon">

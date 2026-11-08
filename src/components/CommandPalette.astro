@@ -1,6 +1,6 @@
 ---
 import { content, type Lang } from '../data/i18n';
-import { publicLinks, whatsappLink } from '../data/site';
+import { cvPaths, publicLinks, whatsappLink } from '../data/site';
 
 interface Props {
   lang: Lang;
@@ -50,7 +50,7 @@ const channels = content[lang].connect.channels;
         </a>
       ))
     }
-    <a href={publicLinks.cv} download data-command-item data-command-label={channels.cv.label}>
+    <a href={cvPaths[lang]} download data-command-item data-command-label={channels.cv.label}>
       {channels.cv.label} <span>↓</span>
     </a>
     <a href={whatsappLink(lang)} target="_blank" rel="noopener noreferrer" data-command-item data-command-label={channels.whatsapp.label}>

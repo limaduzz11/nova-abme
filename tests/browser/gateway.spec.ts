@@ -203,3 +203,21 @@ test('project carousel keeps one slide per view on mobile', async ({ page }) => 
   expect(Math.abs(dimensions.viewport - dimensions.slide)).toBeLessThanOrEqual(2);
   expect(dimensions.body).toBeLessThanOrEqual(dimensions.width);
 });
+
+test('CV download resolves to the language-specific ATS PDF', async ({ page }) => {
+  await gotoPage(page);
+  const ptLink = page.locator('.hero-actions a').first();
+  await expect(ptLink).toHaveAttribute('href', '/cv/Eduardo-Paranhos-Desenvolvedor-Software-CV-PT.pdf');
+  expect(await ptLink.getAttribute('download')).not.toBeNull();
+  const ptResponse = await page.request.get(new URL('/cv/Eduardo-Paranhos-Desenvolvedor-Software-CV-PT.pdf', page.url()).href);
+  expect(ptResponse.status()).toBe(200);
+  expect(ptResponse.headers()['content-type']).toContain('application/pdf');
+
+  await page.goto('/en/');
+  await expect(page.locator('html')).toHaveAttribute('data-gateway-ready', 'true');
+  const enLink = page.locator('.hero-actions a').first();
+  await expect(enLink).toHaveAttribute('href', '/cv/Eduardo-Paranhos-Software-Developer-CV-EN.pdf');
+  const enResponse = await page.request.get(new URL('/cv/Eduardo-Paranhos-Software-Developer-CV-EN.pdf', page.url()).href);
+  expect(enResponse.status()).toBe(200);
+  expect(enResponse.headers()['content-type']).toContain('application/pdf');
+});
